@@ -40,7 +40,17 @@
       "Bash(ls .venv/Scripts/python.exe)",
       "Bash(du -sh volumes/*)",
       "Bash(ls volumes/milvus/)",
-      "PowerShell(Start-Process -FilePath wsl -ArgumentList \"-d\",\"Ubuntu\",\"--\",\"bash\",\"-lc\",\"cd /home/dong/projects/super_biz_agent_py && ./.venv/bin/python -m uvicorn app.main:app --host 0.0.0.0 --port 9900\" -WindowStyle Hidden)"
+      "PowerShell(Start-Process -FilePath wsl -ArgumentList \"-d\",\"Ubuntu\",\"--\",\"bash\",\"-lc\",\"cd /home/dong/projects/super_biz_agent_py && ./.venv/bin/python -m uvicorn app.main:app --host 0.0.0.0 --port 9900\" -WindowStyle Hidden)",
+      "Read(//mnt/c/Users/dong/projects/**)",
+      "Read(//Users/dev/**)",
+      "Bash(mkdir -p /home/dong/projects/super_biz_agent_py/tests/eval/reports)",
+      "Read(//home/dong/projects/super_biz_agent_py/tests/**)",
+      "Bash(python -m tests.eval.run_eval --tag baseline)",
+      "Bash(uv run *)",
+      "Bash(python -c \"import sys; sys.path.insert\\(0, '.'\\); from tests.eval import run_eval; run_eval.main\\(\\)\")",
+      "PowerShell(wsl -d Ubuntu -- bash -lc \"ps -ef | grep -E 'rq|worker|index_worker' | grep -v grep | head -20\")",
+      "Bash(/home/dong/projects/super_biz_agent_py/.venv/bin/python -c \"import ast; ast.parse\\(open\\('app/api/file.py'\\).read\\(\\)\\); print\\('file.py OK'\\)\")",
+      "PowerShell(wsl -d Ubuntu -- bash -lc \"cd /home/dong/projects/super_biz_agent_py && .venv/bin/python -m pytest tests/unit/test_vector_embedding_service.py -v 2>&1 | tail -40\")"
     ]
   }
 }

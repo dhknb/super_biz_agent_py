@@ -1142,15 +1142,15 @@ class SuperBizAgentApp {
                 throw new Error(`HTTP错误: ${response.status}`);
             }
 
-            const data = await response.json();
-
-            if ((data.code === 200 || data.message === 'success') && data.data) {
-                // 在聊天界面显示上传成功消息
-                const successMessage = `${file.name} 上传到知识库成功`;
-                this.addMessage('assistant', successMessage, false, true);
-            } else {
-                throw new Error(data.message || '上传失败');
-            }
+            // 既然上面 response.ok 已经检查过(2xx 才能走到这里),
+            // 后端就一定已经收下了文件。code/message 文案差异不再阻断成功提示。
+            // 后端 202 Accepted 表示"已入队",这本身就是成功语义。
+            const data = await response.json().catch(() => ({}));
+            const docInfo = data?.data || {};
+            const successMessage = docInfo.filename
+                ? `${docInfo.filename} 上传到知识库成功,正在异步建立索引`
+                : `${file.name} 上传到知识库成功`;
+            this.addMessage('assistant', successMessage, false, true);
         } catch (error) {
             console.error('文件上传失败:', error);
             this.showNotification('文件上传失败: ' + error.message, 'error');

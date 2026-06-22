@@ -67,6 +67,7 @@ def pytest_unconfigure(config: pytest.Config) -> None:
 @pytest.fixture(autouse=True)
 def _isolate_env() -> None:
     """确保测试不通过真实配置泄露到环境"""
+    os.environ.pop("DEBUG", None)
     os.environ.setdefault("DASHSCOPE_API_KEY", "test-key")
     os.environ.setdefault("MILVUS_HOST", "localhost")
     os.environ.setdefault("MILVUS_PORT", "19530")
@@ -103,6 +104,15 @@ def mock_mcp_client() -> AsyncMock:
 def client():
     """FastAPI TestClient，milvus / vector_store / MemorySaver 已提前 mock"""
     from fastapi.testclient import TestClient as TC
+
+    from app.core.database import get_db
     from app.main import app
 
-    return TC(app)
+    def override_get_db():
+        yield MagicMock()
+
+    app.dependency_overrides[get_db] = override_get_db
+    try:
+        return TC(app)
+    finally:
+        app.dependency_overrides.pop(get_db, None)

@@ -1,27 +1,37 @@
 """文件上传接口模块"""
 
+import hashlib
 from pathlib import Path
 
-from fastapi import APIRouter, File, HTTPException, UploadFile
+from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
 from fastapi.responses import JSONResponse
+from sqlalchemy.orm import Session
 
+from app.config import config
+from app.core.database import get_db
+from app.models.knowledge_base import DocumentStatus
+from app.repositories.knowledge_repository import KnowledgeRepository
+from app.services.index_job_queue import enqueue_index_job
 from app.services.vector_index_service import vector_index_service
 from loguru import logger
 
 router = APIRouter()
 
 # 文件上传后存储的路径
-UPLOAD_DIR = Path("./uploads")
+UPLOAD_DIR = Path(config.upload_dir)
 # 支持的文件类型
 ALLOWED_EXTENSIONS = ["txt", "md"]
 # 单个文件支持最大大小
 MAX_FILE_SIZE = 10 * 1024 * 1024  # 10MB
 
 
-@router.post("/upload")
-async def upload_file(file: UploadFile = File(...)):
+@router.post("/upload", status_code=202)
+async def upload_file(
+    file: UploadFile = File(...),
+    db: Session = Depends(get_db),
+):
     """
-    上传文件并自动创建向量索引
+    上传文件并创建异步索引任务
 
     Args:
         file: 上传的文件
@@ -67,29 +77,89 @@ async def upload_file(file: UploadFile = File(...)):
 
         logger.info(f"文件上传成功: {file_path}")
 
-        # 5. 自动创建向量索引
+        repo = KnowledgeRepository(db)
+        content_hash = hashlib.sha256(content).hexdigest()
+        resolved_path = str(file_path.resolve())
+
+        # 去重:按 sanitize 后的 filename 查同名(未软删)文档
+        existing = repo.get_document_by_filename(safe_filename)
+
+        if existing is None:
+            # 全新文档 → 正常创建
+            document = repo.create_document(
+                filename=safe_filename,
+                original_filename=file.filename,
+                file_path=resolved_path,
+                file_ext=file_extension,
+                file_size=len(content),
+                content_hash=content_hash,
+            )
+            reused = False
+        elif (
+            existing.content_hash == content_hash
+            and existing.status == DocumentStatus.INDEXED
+        ):
+            # 同名+内容没变+已索引完成 → 复用,跳过索引(省 embedding)
+            logger.info(f"复用现有文档(同名同内容已索引): id={existing.id}")
+            return JSONResponse(
+                status_code=200,
+                content={
+                    "code": 200,
+                    "message": "reused",
+                    "data": {
+                        "document_id": existing.id,
+                        "job_id": None,
+                        "rq_job_id": None,
+                        "status": existing.status.value,
+                        "filename": safe_filename,
+                        "file_path": str(file_path),
+                        "size": len(content),
+                        "version": existing.version,
+                        "reused": True,
+                    },
+                },
+            )
+        else:
+            # 同名但内容变了 / 之前失败 / pending → 更新现有记录,版本号 +1
+            logger.info(
+                f"同名重传,更新现有文档: id={existing.id}, old_version={existing.version}"
+            )
+            document = repo.update_document_for_reupload(
+                existing,
+                original_filename=file.filename,
+                file_path=resolved_path,
+                file_size=len(content),
+                content_hash=content_hash,
+            )
+            reused = False
+
+        job = repo.create_index_job(document.id)
+
         try:
-            logger.info(f"开始为上传文件创建向量索引: {file_path}")
-            indexed_chunks = vector_index_service.index_single_file(str(file_path))
-            logger.info(f"向量索引创建成功: {file_path}, 分片数: {indexed_chunks}")
+            rq_job = enqueue_index_job(job.id)
+            repo.bind_rq_job(job.id, rq_job.id)
         except Exception as e:
-            logger.exception(f"向量索引创建失败: {file_path}")
+            logger.exception(f"索引任务入队失败: document_id={document.id}, job_id={job.id}")
             raise HTTPException(
-                status_code=500,
-                detail=f"文件已保存，但向量索引创建失败: {e}",
+                status_code=503,
+                detail=f"文件已保存，但索引任务入队失败，请检查 Redis/RQ: {e}",
             ) from e
 
-        # 6. 返回响应
         return JSONResponse(
-            status_code=200,
+            status_code=202,
             content={
-                "code": 200,
-                "message": "success", 
+                "code": 202,
+                "message": "accepted",
                 "data": {
+                    "document_id": document.id,
+                    "job_id": job.id,
+                    "rq_job_id": job.rq_job_id,
+                    "status": document.status.value,
                     "filename": safe_filename,
                     "file_path": str(file_path),
                     "size": len(content),
-                    "indexed_chunks": indexed_chunks,
+                    "version": document.version,
+                    "reused": reused,
                 },
             },
         )
@@ -99,6 +169,84 @@ async def upload_file(file: UploadFile = File(...)):
     except Exception as e:
         logger.error(f"文件上传失败: {e}")
         raise HTTPException(status_code=500, detail=f"文件上传失败: {e}")
+
+
+@router.get("/documents")
+async def list_documents(db: Session = Depends(get_db)):
+    repo = KnowledgeRepository(db)
+    documents = repo.list_documents()
+    return {
+        "code": 200,
+        "message": "success",
+        "data": [
+            {
+                "id": document.id,
+                "filename": document.filename,
+                "original_filename": document.original_filename,
+                "status": document.status.value,
+                "version": document.version,
+                "file_size": document.file_size,
+                "content_hash": document.content_hash,
+                "created_at": document.created_at.isoformat(),
+                "updated_at": document.updated_at.isoformat(),
+                "error_message": document.error_message,
+            }
+            for document in documents
+        ],
+    }
+
+
+@router.post("/documents/{document_id}/reindex", status_code=202)
+async def reindex_document(
+    document_id: str,
+    db: Session = Depends(get_db),
+):
+    repo = KnowledgeRepository(db)
+    document = repo.get_document(document_id)
+    if document is None:
+        raise HTTPException(status_code=404, detail="文档不存在")
+
+    job = repo.create_index_job(document.id)
+    try:
+        rq_job = enqueue_index_job(job.id)
+        repo.bind_rq_job(job.id, rq_job.id)
+    except Exception as e:
+        logger.exception(f"重建索引任务入队失败: document_id={document.id}, job_id={job.id}")
+        raise HTTPException(status_code=503, detail=f"索引任务入队失败，请检查 Redis/RQ: {e}") from e
+
+    return {
+        "code": 202,
+        "message": "accepted",
+        "data": {
+            "document_id": document.id,
+            "job_id": job.id,
+            "rq_job_id": rq_job.id,
+        },
+    }
+
+
+@router.delete("/documents/{document_id}")
+async def delete_document(
+    document_id: str,
+    db: Session = Depends(get_db),
+):
+    repo = KnowledgeRepository(db)
+    document = repo.mark_document_deleted(document_id)
+    if document is None:
+        raise HTTPException(status_code=404, detail="文档不存在")
+
+    from app.services.vector_store_manager import vector_store_manager
+#删除collection中符合条件的document_id（在medata）
+    deleted_vectors = vector_store_manager.delete_by_document_id(document.id)
+    return {
+        "code": 200,
+        "message": "success",
+        "data": {
+            "document_id": document.id,
+            "status": document.status.value,
+            "deleted_vectors": deleted_vectors,
+        },
+    }
 
 
 @router.post("/index_directory")

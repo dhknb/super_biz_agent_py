@@ -68,6 +68,37 @@ services:
       MILVUS_URL: standalone:19530
     depends_on:
       - standalone # 确保 Milvus 启动后再启动 Attu
+
+  postgres:
+    container_name: super-biz-postgres
+    image: postgres:16
+    environment:
+      POSTGRES_DB: super_biz_agent
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "55432:5432"
+    volumes:
+      - ${DOCKER_VOLUME_DIRECTORY:-.}/volumes/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d super_biz_agent"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    container_name: super-biz-redis
+    image: redis:7
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    volumes:
+      - ${DOCKER_VOLUME_DIRECTORY:-.}/volumes/redis:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 networks:
   default:
     name: milvus

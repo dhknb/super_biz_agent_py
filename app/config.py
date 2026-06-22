@@ -3,10 +3,10 @@
 使用 Pydantic Settings 实现类型安全的配置管理
 """
 
-from typing import Any, Dict, List
+from typing import Annotated, Any, Dict, List
 
 from pydantic import field_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings, NoDecode, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -25,9 +25,13 @@ class Settings(BaseSettings):
     debug: bool = False
     host: str = "0.0.0.0"
     port: int = 9900
+    upload_dir: str = "./uploads"
 
     # CORS 配置：逗号分隔的来源列表；生产环境必须显式设置
-    cors_origins: List[str] = ["http://localhost:9900", "http://127.0.0.1:9900"]
+    cors_origins: Annotated[List[str], NoDecode] = [
+        "http://localhost:9900",
+        "http://127.0.0.1:9900",
+    ]
 
     @field_validator("cors_origins", mode="before")
     @classmethod
@@ -46,6 +50,13 @@ class Settings(BaseSettings):
     milvus_host: str = "localhost"
     milvus_port: int = 19530
     milvus_timeout: int = 10000  # 毫秒
+
+    # PostgreSQL / Redis / RQ 配置
+    database_url: str = (
+        "postgresql+psycopg://postgres:postgres@localhost:55432/super_biz_agent"
+    )
+    redis_url: str = "redis://localhost:6379/0"
+    rq_queue_name: str = "knowledge_index"
 
     # RAG 配置
     rag_top_k: int = 3

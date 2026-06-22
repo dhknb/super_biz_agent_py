@@ -9,6 +9,7 @@ UPLOAD_API = $(SERVER_URL)/api/upload
 HEALTH_CHECK_API = $(SERVER_URL)/health
 DOCS_DIR = aiops-docs
 MILVUS_CONTAINER = milvus-standalone
+RQ_QUEUE = knowledge_index
 
 # 颜色输出
 GREEN = \033[0;32m
@@ -21,7 +22,7 @@ NC = \033[0m
         install install-dev dev run test test-quick format lint fix type-check \
         security pre-commit-install pre-commit check-all coverage docs shell \
         ipython watch add add-dev remove list-docs test-upload sync logs \
-        start-cls stop-cls start-monitor stop-monitor start-api stop-api status-mcp
+        start-cls stop-cls start-monitor stop-monitor start-api stop-api start-worker stop-worker status-worker status-mcp migrate
 
 # ============================================================
 # 默认目标：显示帮助信息
@@ -45,6 +46,8 @@ help:
 	@echo "  $(YELLOW)make restart$(NC)      - 🔄 重启所有服务"
 	@echo "  $(YELLOW)make check$(NC)        - 🔍 检查 FastAPI 服务状态"
 	@echo "  $(YELLOW)make status-mcp$(NC)   - 📊 查看 MCP 服务状态"
+	@echo "  $(YELLOW)make status-worker$(NC) - 📊 查看 RQ Worker 状态"
+	@echo "  $(YELLOW)make migrate$(NC)      - 🗄️  执行数据库迁移"
 	@echo ""
 	@echo "$(CYAN)【MCP 服务管理】$(NC)"
 	@echo "  $(YELLOW)make start-cls$(NC)     - 📋 启动 CLS MCP 服务"
@@ -53,6 +56,8 @@ help:
 	@echo "  $(YELLOW)make stop-monitor$(NC)  - 🛑 停止 Monitor MCP 服务"
 	@echo "  $(YELLOW)make start-api$(NC)     - 🚀 启动 FastAPI 服务"
 	@echo "  $(YELLOW)make stop-api$(NC)      - 🛑 停止 FastAPI 服务"
+	@echo "  $(YELLOW)make start-worker$(NC)  - ⚙️  启动 RQ 索引 Worker"
+	@echo "  $(YELLOW)make stop-worker$(NC)   - 🛑 停止 RQ 索引 Worker"
 	@echo ""
 	@echo "$(CYAN)【开发模式】$(NC)"
 	@echo "  $(YELLOW)make dev$(NC)          - 🔧 开发模式运行（前台，热重载）"
@@ -136,11 +141,13 @@ up:
 		colima start 2>/dev/null || (echo "$(RED)❌ 无法启动 Docker，请手动启动$(NC)" && exit 1); \
 		sleep 3; \
 	fi
-	@if docker ps --format '{{.Names}}' | grep -q "^$(MILVUS_CONTAINER)$$"; then \
-		echo "$(GREEN)✅ Milvus 容器已经在运行中$(NC)"; \
-		docker ps --filter "name=milvus" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}" | head -10; \
+	@if docker ps --format '{{.Names}}' | grep -q "^$(MILVUS_CONTAINER)$$" && \
+		docker ps --format '{{.Names}}' | grep -q "^super-biz-postgres$$" && \
+		docker ps --format '{{.Names}}' | grep -q "^super-biz-redis$$"; then \
+		echo "$(GREEN)✅ 基础设施容器已经在运行中$(NC)"; \
+		docker ps --filter "name=milvus" --filter "name=super-biz" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"; \
 	else \
-		echo "$(YELLOW)🚀 启动 Milvus 相关容器...$(NC)"; \
+		echo "$(YELLOW)🚀 启动 Milvus / PostgreSQL / Redis 容器...$(NC)"; \
 		docker compose -f vector-database.yml up -d; \
 		echo "$(YELLOW)⏳ 等待容器启动...$(NC)"; \
 		sleep 5; \
@@ -148,12 +155,14 @@ up:
 			echo "$(GREEN)✅ Docker 容器启动成功！$(NC)"; \
 			echo ""; \
 			echo "$(GREEN)📋 运行中的容器:$(NC)"; \
-			docker ps --filter "name=milvus" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}" | head -10; \
+			docker ps --filter "name=milvus" --filter "name=super-biz" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"; \
 			echo ""; \
 			echo "$(GREEN)🌐 服务访问地址:$(NC)"; \
 			echo "   Milvus: localhost:19530"; \
 			echo "   Attu (Web UI): http://localhost:8000"; \
 			echo "   MinIO: http://localhost:9001 (admin/minioadmin)"; \
+			echo "   PostgreSQL: localhost:5432"; \
+			echo "   Redis: localhost:6379"; \
 		else \
 			echo "$(RED)❌ 容器启动失败$(NC)"; \
 			exit 1; \
@@ -192,14 +201,14 @@ status:
 # 启动 CLS MCP 服务
 start-cls:
 	@echo "$(YELLOW)📋 启动 CLS MCP 服务...$(NC)"
-	@if pgrep -f "[m]cp_servers/cls_server.py" > /dev/null 2>&1; then \
+	@if ss -ltn 2>/dev/null | grep -q ":8003 "; then \
 		echo "$(GREEN)✅ CLS MCP 服务已经在运行中$(NC)"; \
 	else \
 		echo "$(YELLOW)📦 正在启动 CLS MCP 服务（后台运行）...$(NC)"; \
 		nohup .venv/bin/python mcp_servers/cls_server.py > mcp_cls.log 2>&1 & \
 		echo $$! > mcp_cls.pid; \
 		sleep 2; \
-		if pgrep -f "[m]cp_servers/cls_server.py" > /dev/null 2>&1; then \
+		if ss -ltn 2>/dev/null | grep -q ":8003 "; then \
 			echo "$(GREEN)✅ CLS MCP 服务启动成功$(NC)"; \
 			echo "$(YELLOW)   PID: $$(cat mcp_cls.pid)$(NC)"; \
 			echo "$(YELLOW)   URL: http://127.0.0.1:8003/mcp$(NC)"; \
@@ -213,14 +222,14 @@ start-cls:
 # 启动 Monitor MCP 服务
 start-monitor:
 	@echo "$(YELLOW)📊 启动 Monitor MCP 服务...$(NC)"
-	@if pgrep -f "[m]cp_servers/monitor_server.py" > /dev/null 2>&1; then \
+	@if ss -ltn 2>/dev/null | grep -q ":8004 "; then \
 		echo "$(GREEN)✅ Monitor MCP 服务已经在运行中$(NC)"; \
 	else \
 		echo "$(YELLOW)📦 正在启动 Monitor MCP 服务（后台运行）...$(NC)"; \
 		nohup .venv/bin/python mcp_servers/monitor_server.py > mcp_monitor.log 2>&1 & \
 		echo $$! > mcp_monitor.pid; \
 		sleep 2; \
-		if pgrep -f "[m]cp_servers/monitor_server.py" > /dev/null 2>&1; then \
+		if ss -ltn 2>/dev/null | grep -q ":8004 "; then \
 			echo "$(GREEN)✅ Monitor MCP 服务启动成功$(NC)"; \
 			echo "$(YELLOW)   PID: $$(cat mcp_monitor.pid)$(NC)"; \
 			echo "$(YELLOW)   URL: http://127.0.0.1:8004/mcp$(NC)"; \
@@ -255,27 +264,23 @@ status-mcp:
 	@echo "$(YELLOW)📊 MCP 服务状态:$(NC)"
 	@echo ""
 	@echo "$(CYAN)CLS MCP 服务:$(NC)"
-	@if pgrep -f "[m]cp_servers/cls_server.py" > /dev/null 2>&1; then \
-		pid=$$(pgrep -f "[m]cp_servers/cls_server.py"); \
+	@if ss -ltnp 2>/dev/null | grep -q ":8003 "; then \
+		pid=$$(ss -ltnp 2>/dev/null | awk '/:8003 / {print $$NF}' | sed -n 's/.*pid=\([0-9]*\).*/\1/p' | head -n1); \
 		echo "  状态: $(GREEN)运行中$(NC)"; \
 		echo "  PID: $$pid"; \
 		echo "  URL: http://127.0.0.1:8003/mcp"; \
-		curl -s http://127.0.0.1:8003/mcp > /dev/null 2>&1 && \
-			echo "  连接: $(GREEN)✅ 正常$(NC)" || \
-			echo "  连接: $(RED)❌ 无法连接$(NC)"; \
+		echo "  连接: $(GREEN)✅ 端口监听正常$(NC)"; \
 	else \
 		echo "  状态: $(RED)未运行$(NC)"; \
 	fi
 	@echo ""
 	@echo "$(CYAN)Monitor MCP 服务:$(NC)"
-	@if pgrep -f "[m]cp_servers/monitor_server.py" > /dev/null 2>&1; then \
-		pid=$$(pgrep -f "[m]cp_servers/monitor_server.py"); \
+	@if ss -ltnp 2>/dev/null | grep -q ":8004 "; then \
+		pid=$$(ss -ltnp 2>/dev/null | awk '/:8004 / {print $$NF}' | sed -n 's/.*pid=\([0-9]*\).*/\1/p' | head -n1); \
 		echo "  状态: $(GREEN)运行中$(NC)"; \
 		echo "  PID: $$pid"; \
 		echo "  URL: http://127.0.0.1:8004/mcp"; \
-		curl -s http://127.0.0.1:8004/mcp > /dev/null 2>&1 && \
-			echo "  连接: $(GREEN)✅ 正常$(NC)" || \
-			echo "  连接: $(RED)❌ 无法连接$(NC)"; \
+		echo "  连接: $(GREEN)✅ 端口监听正常$(NC)"; \
 	else \
 		echo "  状态: $(RED)未运行$(NC)"; \
 	fi
@@ -299,6 +304,9 @@ start:
 	@$(MAKE) start-monitor
 	@sleep 1
 	@echo ""
+	@$(MAKE) start-worker
+	@sleep 1
+	@echo ""
 	@$(MAKE) start-api
 	@echo ""
 	@echo "$(GREEN)═══════════════════════════════════════════════════════$(NC)"
@@ -320,6 +328,60 @@ start-api:
 		echo "$(YELLOW)   日志: server.log$(NC)"; \
 	fi
 
+# 启动 RQ Worker
+start-worker:
+	@echo "$(YELLOW)⚙️  启动 RQ 索引 Worker...$(NC)"
+	@if [ -f rq_worker.pid ] && ps -p $$(cat rq_worker.pid) > /dev/null 2>&1; then \
+		echo "$(GREEN)✅ RQ Worker 已经在运行中 (PID: $$(cat rq_worker.pid))$(NC)"; \
+	else \
+		nohup .venv/bin/rq worker $(RQ_QUEUE) --url redis://localhost:6379/0 > rq_worker.log 2>&1 & \
+		echo $$! > rq_worker.pid; \
+		sleep 2; \
+		if ps -p $$(cat rq_worker.pid) > /dev/null 2>&1; then \
+			echo "$(GREEN)✅ RQ Worker 启动成功$(NC)"; \
+			echo "$(YELLOW)   PID: $$(cat rq_worker.pid)$(NC)"; \
+			echo "$(YELLOW)   Queue: $(RQ_QUEUE)$(NC)"; \
+			echo "$(YELLOW)   日志: rq_worker.log$(NC)"; \
+		else \
+			echo "$(RED)❌ RQ Worker 启动失败$(NC)"; \
+			echo "$(YELLOW)请检查日志: tail -f rq_worker.log$(NC)"; \
+		fi; \
+	fi
+
+# 停止 RQ Worker
+stop-worker:
+	@echo "$(YELLOW)🛑 停止 RQ Worker...$(NC)"
+	@if [ -f rq_worker.pid ]; then \
+		pid=$$(cat rq_worker.pid); \
+		if ps -p $$pid > /dev/null 2>&1; then \
+			kill $$pid; \
+			echo "$(GREEN)✅ RQ Worker 已停止 (PID: $$pid)$(NC)"; \
+		else \
+			echo "$(YELLOW)⚠️  RQ Worker 进程不存在 (PID: $$pid)$(NC)"; \
+		fi; \
+		rm -f rq_worker.pid; \
+	else \
+		echo "$(YELLOW)⚠️  未找到 rq_worker.pid 文件$(NC)"; \
+		pkill -f "rq worker $(RQ_QUEUE)" 2>/dev/null && \
+			echo "$(GREEN)✅ 已停止所有 RQ Worker 进程$(NC)" || \
+			echo "$(YELLOW)⚠️  没有运行中的 RQ Worker 进程$(NC)"; \
+	fi
+
+status-worker:
+	@echo "$(YELLOW)📊 RQ Worker 状态:$(NC)"
+	@if [ -f rq_worker.pid ] && ps -p $$(cat rq_worker.pid) > /dev/null 2>&1; then \
+		echo "  状态: $(GREEN)运行中$(NC)"; \
+		echo "  PID: $$(cat rq_worker.pid)"; \
+		echo "  Queue: $(RQ_QUEUE)"; \
+	else \
+		echo "  状态: $(RED)未运行$(NC)"; \
+	fi
+
+migrate:
+	@echo "$(YELLOW)🗄️  执行数据库迁移...$(NC)"
+	.venv/bin/alembic upgrade head
+	@echo "$(GREEN)✅ 数据库迁移完成$(NC)"
+
 # 停止所有服务（FastAPI + MCP）
 stop:
 	@echo "$(GREEN)═══════════════════════════════════════════════════════$(NC)"
@@ -327,6 +389,8 @@ stop:
 	@echo "$(GREEN)═══════════════════════════════════════════════════════$(NC)"
 	@echo ""
 	@$(MAKE) stop-api
+	@echo ""
+	@$(MAKE) stop-worker
 	@echo ""
 	@$(MAKE) stop-cls
 	@echo ""

@@ -123,6 +123,27 @@ class VectorStoreManager:
             logger.warning(f"删除旧数据失败 (可能是首次索引): {e}")
             return 0
 
+    def delete_by_document_id(self, document_id: str) -> int:
+        """
+        删除指定知识库文档的所有向量。
+
+        Args:
+            document_id: knowledge_documents.id
+
+        Returns:
+            int: 删除的向量数量
+        """
+        try:
+            collection = milvus_manager.get_collection()
+            expr = f'metadata["document_id"] == "{document_id}"'
+            result = collection.delete(expr)
+            deleted_count = result.delete_count if hasattr(result, "delete_count") else 0
+            logger.info(f"删除文档向量: document_id={document_id}, count={deleted_count}")
+            return deleted_count
+        except Exception as e:
+            logger.warning(f"删除文档向量失败: document_id={document_id}, error={e}")
+            return 0
+
     def get_vector_store(self) -> Milvus:
         """
         获取 VectorStore 实例

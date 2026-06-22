@@ -117,6 +117,10 @@ body {
     white-space: nowrap;
 }
 
+.sidebar-link-btn {
+    text-decoration: none;
+}
+
 
 /* 历史对话区域 */
 .chat-history-section {

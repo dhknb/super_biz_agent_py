@@ -77,7 +77,7 @@ class VectorSearchService:
             if bm25_retriever is None:
                 logger.warning("BM25 语料为空，降级为纯向量检索")
                 return vector_retriever.invoke(query)[:top_k]
-
+            #RRF混合排序
             ensemble_retriever = EnsembleRetriever(
                 retrievers=[vector_retriever, bm25_retriever],
                 weights=[self.VECTOR_WEIGHT, self.BM25_WEIGHT],

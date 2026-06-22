@@ -12,7 +12,7 @@ import os
 
 from app.config import config
 from loguru import logger
-from app.api import chat, health, file, aiops
+from app.api import chat, chat_v2, health, file, aiops
 from app.core.milvus_client import milvus_manager
 
 
@@ -61,6 +61,7 @@ app.add_middleware(
 # 注册路由
 app.include_router(health.router, tags=["健康检查"])
 app.include_router(chat.router, prefix="/api", tags=["对话"])
+app.include_router(chat_v2.router, prefix="/api", tags=["对话v2-多查询RAG"])
 app.include_router(file.router, prefix="/api", tags=["文件管理"])
 app.include_router(aiops.router, prefix="/api", tags=["AIOps智能运维"])
 
