@@ -50,7 +50,11 @@
       "Bash(python -c \"import sys; sys.path.insert\\(0, '.'\\); from tests.eval import run_eval; run_eval.main\\(\\)\")",
       "PowerShell(wsl -d Ubuntu -- bash -lc \"ps -ef | grep -E 'rq|worker|index_worker' | grep -v grep | head -20\")",
       "Bash(/home/dong/projects/super_biz_agent_py/.venv/bin/python -c \"import ast; ast.parse\\(open\\('app/api/file.py'\\).read\\(\\)\\); print\\('file.py OK'\\)\")",
-      "PowerShell(wsl -d Ubuntu -- bash -lc \"cd /home/dong/projects/super_biz_agent_py && .venv/bin/python -m pytest tests/unit/test_vector_embedding_service.py -v 2>&1 | tail -40\")"
+      "PowerShell(wsl -d Ubuntu -- bash -lc \"cd /home/dong/projects/super_biz_agent_py && .venv/bin/python -m pytest tests/unit/test_vector_embedding_service.py -v 2>&1 | tail -40\")",
+      "PowerShell(wsl -d Ubuntu -- bash -lc \"cd /home/dong/projects/super_biz_agent_py && .venv/bin/python tests/eval/_check_topdocs.py tests/eval/reports/bm25-weak-2026-06-22T02-26-28.json && echo '---' && .venv/bin/python tests/eval/_check_topdocs.py tests/eval/reports/baseline-real-2026-06-22T01-34-04.json\")",
+      "PowerShell(wsl -d Ubuntu -- bash -lc \"cd /home/dong/projects/super_biz_agent_py && .venv/bin/python -m tests.eval.run_eval --retriever rerank --tag rerank-v1 --top-k 10 2>&1 | tail -35\")",
+      "PowerShell(wsl -d Ubuntu -- bash -lc \"cd /home/dong/projects/super_biz_agent_py && .venv/bin/python tests/eval/_check_topdocs.py tests/eval/reports/rerank-v1-2026-06-22T02-27-48.json\")",
+      "PowerShell(wsl -d Ubuntu -- bash -lc \"cd /home/dong/projects/super_biz_agent_py && .venv/bin/python tests/eval/_test_rerank.py 2>&1\")"
     ]
   }
 }

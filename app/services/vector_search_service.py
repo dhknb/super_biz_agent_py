@@ -49,13 +49,22 @@ class VectorSearchService:
         self._bm25_doc_count = -1
         logger.info("混合检索服务初始化完成")
 
-    def retrieve_documents(self, query: str, top_k: int = 3) -> List[Document]:
+    def retrieve_documents(
+        self,
+        query: str,
+        top_k: int = 3,
+        vector_weight: float | None = None,
+        bm25_weight: float | None = None,
+    ) -> List[Document]:
         """
         使用 EnsembleRetriever 执行混合检索
 
         Args:
             query: 查询文本
             top_k: 返回最相关的 K 个文档
+            vector_weight: 向量检索权重(可选,默认走类常量 VECTOR_WEIGHT)
+            bm25_weight: BM25 检索权重(可选,默认走类常量 BM25_WEIGHT)
+                          —— 评测 / A/B 时可临时覆盖,生产代码调用不需要传
 
         Returns:
             List[Document]: 融合排序后的文档列表
@@ -63,8 +72,14 @@ class VectorSearchService:
         Raises:
             RuntimeError: 检索失败时抛出
         """
+        vw = vector_weight if vector_weight is not None else self.VECTOR_WEIGHT
+        bw = bm25_weight if bm25_weight is not None else self.BM25_WEIGHT
+
         try:
-            logger.info(f"开始混合检索, 查询: {query}, topK: {top_k}")
+            logger.info(
+                f"开始混合检索, 查询: {query}, topK: {top_k}, "
+                f"weights=(vector={vw}, bm25={bw})"
+            )
 
             candidate_k = max(top_k * 3, top_k, 10)
 
@@ -80,7 +95,7 @@ class VectorSearchService:
             #RRF混合排序
             ensemble_retriever = EnsembleRetriever(
                 retrievers=[vector_retriever, bm25_retriever],
-                weights=[self.VECTOR_WEIGHT, self.BM25_WEIGHT],
+                weights=[vw, bw],
             )
 
             docs = ensemble_retriever.invoke(query)[:top_k]

@@ -1,0 +1,274 @@
+{
+  "tag": "baseline",
+  "timestamp": "2026-06-14T07-10-09",
+  "summary": {
+    "total": 5,
+    "hit_at_k": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "recall_at_k": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "mrr": 1.0,
+    "by_tag": {
+      "aiops": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "cpu": {
+        "total": 1,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "easy": {
+        "total": 1,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "disk": {
+        "total": 1,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "colloquial": {
+        "total": 2,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "memory": {
+        "total": 1,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "medium": {
+        "total": 1,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "service": {
+        "total": 1,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "latency": {
+        "total": 1,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "hard": {
+        "total": 1,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      }
+    }
+  },
+  "cases": [
+    {
+      "case_id": "q-001",
+      "retrieved_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "cpu",
+        "easy"
+      ]
+    },
+    {
+      "case_id": "q-002",
+      "retrieved_doc_ids": [
+        "disk_high_usage"
+      ],
+      "expected_doc_ids": [
+        "disk_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "disk",
+        "colloquial"
+      ]
+    },
+    {
+      "case_id": "q-003",
+      "retrieved_doc_ids": [
+        "memory_high_usage"
+      ],
+      "expected_doc_ids": [
+        "memory_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "memory",
+        "medium"
+      ]
+    },
+    {
+      "case_id": "q-004",
+      "retrieved_doc_ids": [
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "colloquial"
+      ]
+    },
+    {
+      "case_id": "q-005",
+      "retrieved_doc_ids": [
+        "slow_response"
+      ],
+      "expected_doc_ids": [
+        "slow_response"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "hard"
+      ]
+    }
+  ]
+}

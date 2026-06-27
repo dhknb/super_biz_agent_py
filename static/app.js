@@ -2,7 +2,7 @@
 class SuperBizAgentApp {
     constructor() {
         this.apiBaseUrl = 'http://localhost:9900/api';
-        this.currentMode = 'quick'; // 'quick' 或 'stream'
+        this.currentMode = 'quick'; // 'quick' | 'stream' | 'multi'
         this.sessionId = this.generateSessionId();
         this.isStreaming = false;
         this.currentChatHistory = []; // 当前对话的消息历史
@@ -568,10 +568,10 @@ class SuperBizAgentApp {
         }
     }
 
-    // 选择模式
+    // Select mode
     selectMode(mode) {
         if (this.isStreaming) {
-            this.showNotification('请等待当前对话完成后再切换模式', 'warning');
+            this.showNotification('Please wait for the current response to finish', 'warning');
             return;
         }
         
@@ -579,25 +579,27 @@ class SuperBizAgentApp {
         this.updateUI();
         
         const modeNames = {
-            'quick': '快速',
-            'stream': '流式'
+            'quick': 'Quick',
+            'stream': 'Stream',
+            'multi': 'High Precision'
         };
         
-        this.showNotification(`已切换到${modeNames[mode]}模式`, 'info');
+        this.showNotification(`Switched to ${modeNames[mode]} mode`, 'info');
     }
 
-    // 更新UI
+    // Update UI
     updateUI() {
-        // 更新模式选择器显示
+        // Update mode selector label
         if (this.currentModeText) {
             const modeNames = {
-                'quick': '快速',
-                'stream': '流式'
+                'quick': 'Quick',
+                'stream': 'Stream',
+                'multi': 'High Precision'
             };
-            this.currentModeText.textContent = modeNames[this.currentMode] || '快速';
+            this.currentModeText.textContent = modeNames[this.currentMode] || 'Quick';
         }
         
-        // 更新下拉菜单选中状态
+        // Update dropdown selection state
         const dropdownItems = document.querySelectorAll('.dropdown-item');
         dropdownItems.forEach(item => {
             const mode = item.getAttribute('data-mode');
@@ -608,24 +610,24 @@ class SuperBizAgentApp {
             }
         });
         
-        // 更新发送按钮状态
+        // Update send button state
         if (this.sendButton) {
             this.sendButton.disabled = this.isStreaming;
         }
         
-        // 更新输入框状态
+        // Update input state
         if (this.messageInput) {
             this.messageInput.disabled = this.isStreaming;
-            this.messageInput.placeholder = '问问智能OnCall助手';
+            this.messageInput.placeholder = 'Ask the OnCall assistant';
         }
     }
 
-    // 生成随机会话ID
+    // Generate random session ID
     generateSessionId() {
         return 'session_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
     }
 
-    // 发送消息
+    // Send message
     async sendMessage() {
         let message = '';
         if (this.messageInput) {
@@ -633,24 +635,24 @@ class SuperBizAgentApp {
         }
         
         if (!message) {
-            this.showNotification('请输入消息内容', 'warning');
+            this.showNotification('Please enter a message', 'warning');
             return;
         }
 
         if (this.isStreaming) {
-            this.showNotification('请等待当前对话完成', 'warning');
+            this.showNotification('Please wait for the current response', 'warning');
             return;
         }
 
-        // 显示用户消息
+        // Show user message
         this.addMessage('user', message);
         
-        // 清空输入框
+        // Clear input
         if (this.messageInput) {
-            this.messageInput.value = '';
+            this.messageInput.value = "";
         }
 
-        // 设置发送状态
+        // Enter sending state
         this.isStreaming = true;
         this.updateUI();
 
@@ -659,26 +661,28 @@ class SuperBizAgentApp {
                 await this.sendQuickMessage(message);
             } else if (this.currentMode === 'stream') {
                 await this.sendStreamMessage(message);
+            } else if (this.currentMode === 'multi') {
+                await this.sendMultiQueryMessage(message);
             }
         } catch (error) {
-            console.error('发送消息失败:', error);
-            this.addMessage('assistant', '抱歉，发送消息时出现错误：' + error.message);
+            console.error('Send message failed:', error);
+            this.addMessage('assistant', 'Sorry, sending the message failed: ' + error.message);
         } finally {
             this.isStreaming = false;
             this.updateUI();
             
-            // 如果当前对话是从历史记录加载的，更新历史记录
+            // Refresh saved history when continuing a loaded chat
             if (this.isCurrentChatFromHistory && this.currentChatHistory.length > 0) {
                 this.updateCurrentChatHistory();
-                this.renderChatHistory(); // 更新历史对话列表显示
+                this.renderChatHistory();
             }
         }
     }
 
-    // 发送快速消息（普通对话）
+    // Send quick message (legacy quick chat)
     async sendQuickMessage(message) {
-        // 添加等待提示消息
-        const loadingMessage = this.addLoadingMessage('正在思考...');
+        // Add loading message
+        const loadingMessage = this.addLoadingMessage('Thinking...');
         
         try {
             const response = await fetch(`${this.apiBaseUrl}/chat`, {
@@ -693,40 +697,34 @@ class SuperBizAgentApp {
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP错误: ${response.status}`);
+                throw new Error(`HTTP error: ${response.status}`);
             }
 
             const data = await response.json();
-            console.log('[sendQuickMessage] 响应数据:', JSON.stringify(data));
+            console.log('[sendQuickMessage] response:', JSON.stringify(data));
             
-            // 移除等待提示消息
+            // Remove loading message
             if (loadingMessage && loadingMessage.parentNode) {
                 loadingMessage.parentNode.removeChild(loadingMessage);
             }
             
-            // 统一响应格式：检查 data.code 或 data.message 判断请求是否成功
+            // Unified response handling
             if (data.code === 200 || data.message === 'success') {
-                // data.data 是 ChatResponse 对象
                 const chatResponse = data.data;
                 
                 if (chatResponse && chatResponse.success) {
-                    // 成功：添加实际响应消息（即使 answer 为空也显示）
-                    const answer = chatResponse.answer || '（无回复内容）';
+                    const answer = chatResponse.answer || '(empty response)';
                     this.addMessage('assistant', answer);
                 } else if (chatResponse && chatResponse.errorMessage) {
-                    // 业务错误
                     throw new Error(chatResponse.errorMessage);
                 } else {
-                    // 兜底：尝试显示任何可用内容
-                    const fallbackAnswer = chatResponse?.answer || chatResponse?.errorMessage || '服务返回了空内容';
+                    const fallbackAnswer = chatResponse?.answer || chatResponse?.errorMessage || 'Service returned empty content';
                     this.addMessage('assistant', fallbackAnswer);
                 }
             } else {
-                // HTTP 成功但业务失败
-                throw new Error(data.message || '请求失败');
+                throw new Error(data.message || 'Request failed');
             }
         } catch (error) {
-            // 出错时也要移除等待提示消息
             if (loadingMessage && loadingMessage.parentNode) {
                 loadingMessage.parentNode.removeChild(loadingMessage);
             }
@@ -734,7 +732,56 @@ class SuperBizAgentApp {
         }
     }
 
-    // 发送流式消息
+    // High precision mode: multi-query RAG
+    async sendMultiQueryMessage(message) {
+        const loadingMessage = this.addLoadingMessage('Running multi-query retrieval...');
+
+        try {
+            const response = await fetch(`${this.apiBaseUrl}/chat_v2`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    Id: this.sessionId,
+                    Question: message
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            console.log('[sendMultiQueryMessage] response:', JSON.stringify(data));
+
+            if (loadingMessage && loadingMessage.parentNode) {
+                loadingMessage.parentNode.removeChild(loadingMessage);
+            }
+
+            if (data.code === 200 || data.message === 'success') {
+                const chatResponse = data.data;
+                if (chatResponse && chatResponse.success) {
+                    const answer = chatResponse.answer || '(empty response)';
+                    this.addMessage('assistant', answer);
+                } else if (chatResponse && chatResponse.errorMessage) {
+                    throw new Error(chatResponse.errorMessage);
+                } else {
+                    const fallbackAnswer = chatResponse?.answer || chatResponse?.errorMessage || 'Service returned empty content';
+                    this.addMessage('assistant', fallbackAnswer);
+                }
+            } else {
+                throw new Error(data.message || 'Request failed');
+            }
+        } catch (error) {
+            if (loadingMessage && loadingMessage.parentNode) {
+                loadingMessage.parentNode.removeChild(loadingMessage);
+            }
+            throw error;
+        }
+    }
+
+    // Send stream message
     async sendStreamMessage(message) {
         try {
             const response = await fetch(`${this.apiBaseUrl}/chat_stream`, {

@@ -90,29 +90,35 @@
                                 <div class="right-actions">
                                     <div class="mode-selector-wrapper">
                                         <button class="mode-selector-btn" id="modeSelectorBtn">
-                                            <span id="currentModeText">快速</span>
+                                            <span id="currentModeText">Quick</span>
                                             <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
                                         </button>
                                         <div class="mode-dropdown" id="modeDropdown">
-                                            <div class="dropdown-header">选择对话方式</div>
+                                            <div class="dropdown-header">Select Mode</div>
                                             <div class="dropdown-item active" data-mode="quick">
                                                 <div class="dropdown-item-main">
-                                                    <span>快速</span>
-                                                    <span class="badge-new">新</span>
+                                                    <span>Quick</span>
+                                                    <span class="badge-new">New</span>
                                                 </div>
-                                                <div class="dropdown-item-sub">快速对话</div>
+                                                <div class="dropdown-item-sub">Legacy quick chat</div>
                                             </div>
                                             <div class="dropdown-item" data-mode="stream">
                                                 <div class="dropdown-item-main">
-                                                    <span>流式</span>
+                                                    <span>Stream</span>
                                                 </div>
-                                                <div class="dropdown-item-sub">流式对话</div>
+                                                <div class="dropdown-item-sub">Legacy streaming chat</div>
+                                            </div>
+                                            <div class="dropdown-item" data-mode="multi">
+                                                <div class="dropdown-item-main">
+                                                    <span>High Precision</span>
+                                                </div>
+                                                <div class="dropdown-item-sub">Multi-query RAG</div>
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="send-btn-circle" id="sendButton" title="发送">
+                                    <button class="send-btn-circle" id="sendButton" title="Send">
                                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>

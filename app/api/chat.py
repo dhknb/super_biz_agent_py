@@ -1,46 +1,37 @@
-"""对话接口
-
-提供基于 RAG Agent 的普通对话和流式对话接口
-"""
+"""Chat API routes."""
 
 import json
-from fastapi import APIRouter, HTTPException
-from sse_starlette.sse import EventSourceResponse
-from app.models.request import ChatRequest, ClearRequest
-from app.models.response import SessionInfoResponse, ApiResponse
-from app.services.rag_agent_service import rag_agent_service
+
+from fastapi import APIRouter, Depends, HTTPException
 from loguru import logger
+from sqlalchemy.orm import Session
+from sse_starlette.sse import EventSourceResponse
+
+from app.core.database import get_db
+from app.models.request import ChatRequest, ClearRequest
+from app.models.response import ApiResponse, SessionInfoResponse
+from app.repositories.conversation_repository import ConversationRepository
+from app.services.rag_agent_service import rag_agent_service
 
 router = APIRouter()
 
 
 @router.post("/chat")
-async def chat(request: ChatRequest):
-    """快速对话接口
-    {
-        "code": 200,
-        "message": "success",
-        "data": {
-            "success": true,
-            "answer": "回答内容",
-            "errorMessage": null
-        }
-    }
-
-    Args:
-        request: 对话请求
-
-    Returns:
-        统一格式的对话响应
-    """
+async def chat(request: ChatRequest, db: Session = Depends(get_db)):
+    """Return a complete chat answer."""
     try:
-        logger.info(f"[会话 {request.id}] 收到快速对话请求: {request.question}")
+        logger.info(f"[session {request.id}] chat request received: {request.question}")
         answer = await rag_agent_service.query(
             request.question,
-            session_id=request.id
+            session_id=request.id,
+        )
+        ConversationRepository(db).append_exchange(
+            request.id,
+            user_content=request.question,
+            assistant_content=answer,
         )
 
-        logger.info(f"[会话 {request.id}] 快速对话完成")
+        logger.info(f"[session {request.id}] chat request completed")
 
         return {
             "code": 200,
@@ -48,173 +39,153 @@ async def chat(request: ChatRequest):
             "data": {
                 "success": True,
                 "answer": answer,
-                "errorMessage": None
-            }
+                "errorMessage": None,
+            },
         }
 
     except Exception as e:
-        logger.error(f"对话接口错误: {e}")
+        logger.error(f"chat endpoint error: {e}")
         return {
             "code": 500,
             "message": "error",
             "data": {
                 "success": False,
                 "answer": None,
-                "errorMessage": str(e)
-            }
+                "errorMessage": str(e),
+            },
         }
 
 
 @router.post("/chat_stream")
-async def chat_stream(request: ChatRequest):
-    """流式对话接口（基于 RAG Agent，SSE）
-
-    返回 SSE 格式，data 字段为 JSON：
-
-    工具调用事件:
-    event: message
-    data: {"type":"tool_call","data":{"tool":"工具名","status":"start|end","input":{...}}}
-
-    内容流式事件:
-    event: message
-    data: {"type":"content","data":"内容块"}
-
-    完成事件:
-    event: message
-    data: {"type":"done","data":{"answer":"完整答案","tool_calls":[...]}}
-
-    Args:
-        request: 对话请求
-
-    Returns:
-        SSE 事件流
-    """
-    logger.info(f"[会话 {request.id}] 收到流式对话请求: {request.question}")
+async def chat_stream(request: ChatRequest, db: Session = Depends(get_db)):
+    """Stream a chat answer over SSE."""
+    logger.info(f"[session {request.id}] chat stream request received: {request.question}")
 
     async def event_generator():
+        answer_parts = []
         try:
-            # 核心机制：yield 让函数变成生成器（惰性求值），async for 让迭代不阻塞，两者结合实现真正的流式输出
-            # —— LLM 每生成一个 token，前端就能立即看到，而不是等全部生成完才一次性返回 ฅ'ω'ฅ
-            async for chunk in rag_agent_service.query_stream(request.question, session_id=request.id):
+            async for chunk in rag_agent_service.query_stream(
+                request.question,
+                session_id=request.id,
+            ):
                 chunk_type = chunk.get("type", "unknown")
                 chunk_data = chunk.get("data", None)
 
-                # 处理调试类型消息（新增）
                 if chunk_type == "debug":
-                    # 调试信息，可以选择发送或忽略
                     yield {
                         "event": "message",
-                        "data": json.dumps({
-                            "type": "debug",
-                            "node": chunk.get("node", "unknown"),
-                            "message_type": chunk.get("message_type", "unknown")
-                        }, ensure_ascii=False)
+                        "data": json.dumps(
+                            {
+                                "type": "debug",
+                                "node": chunk.get("node", "unknown"),
+                                "message_type": chunk.get("message_type", "unknown"),
+                            },
+                            ensure_ascii=False,
+                        ),
                     }
                 elif chunk_type == "tool_call":
-                    # 发送工具调用事件（可选，前端可以显示工具调用状态）
                     yield {
                         "event": "message",
-                        "data": json.dumps({
-                            "type": "tool_call",
-                            "data": chunk_data
-                        }, ensure_ascii=False)
+                        "data": json.dumps(
+                            {"type": "tool_call", "data": chunk_data},
+                            ensure_ascii=False,
+                        ),
                     }
                 elif chunk_type == "search_results":
-                    # 发送检索结果（可选，前端可以忽略）
                     yield {
                         "event": "message",
-                        "data": json.dumps({
-                            "type": "search_results",
-                            "data": chunk_data
-                        }, ensure_ascii=False)
+                        "data": json.dumps(
+                            {"type": "search_results", "data": chunk_data},
+                            ensure_ascii=False,
+                        ),
                     }
                 elif chunk_type == "content":
-                    # 发送内容块 - 关键：data 必须是 JSON 字符串
+                    if chunk_data:
+                        answer_parts.append(str(chunk_data))
                     yield {
                         "event": "message",
-                        "data": json.dumps({
-                            "type": "content",
-                            "data": chunk_data
-                        }, ensure_ascii=False)
+                        "data": json.dumps(
+                            {"type": "content", "data": chunk_data},
+                            ensure_ascii=False,
+                        ),
                     }
                 elif chunk_type == "complete":
-                    # 发送完成信号
+                    answer = "".join(answer_parts)
+                    if answer:
+                        ConversationRepository(db).append_exchange(
+                            request.id,
+                            user_content=request.question,
+                            assistant_content=answer,
+                        )
+                        answer_parts.clear()
                     yield {
                         "event": "message",
-                        "data": json.dumps({
-                            "type": "done",
-                            "data": chunk_data
-                        }, ensure_ascii=False)
+                        "data": json.dumps(
+                            {"type": "done", "data": chunk_data},
+                            ensure_ascii=False,
+                        ),
                     }
                 elif chunk_type == "error":
-                    # 发送错误信息
                     yield {
                         "event": "message",
-                        "data": json.dumps({
-                            "type": "error",
-                            "data": str(chunk_data)
-                        }, ensure_ascii=False)
+                        "data": json.dumps(
+                            {"type": "error", "data": str(chunk_data)},
+                            ensure_ascii=False,
+                        ),
                     }
 
-            logger.info(f"[会话 {request.id}] 流式对话完成")
+            logger.info(f"[session {request.id}] chat stream request completed")
 
         except Exception as e:
-            logger.error(f"流式对话接口错误: {e}")
+            logger.error(f"chat stream endpoint error: {e}")
             yield {
                 "event": "message",
-                "data": json.dumps({
-                    "type": "error",
-                    "data": str(e)
-                }, ensure_ascii=False)
+                "data": json.dumps({"type": "error", "data": str(e)}, ensure_ascii=False),
             }
 
     return EventSourceResponse(event_generator())
 
 
 @router.post("/chat/clear", response_model=ApiResponse)
-async def clear_session(request: ClearRequest) -> ApiResponse:
-    """清空会话历史
-
-    Args:
-        request: 清空请求
-
-    Returns:
-        操作结果
-    """
+async def clear_session(
+    request: ClearRequest,
+    db: Session = Depends(get_db),
+) -> ApiResponse:
+    """Clear a chat session."""
     try:
         success = rag_agent_service.clear_session(request.session_id)
-        logger.info(f"清空会话: {request.session_id}, 结果: {success}")
+        if success:
+            ConversationRepository(db).clear_session(request.session_id)
+        logger.info(f"clear session: {request.session_id}, success={success}")
 
         return ApiResponse(
             status="success" if success else "error",
-            message="会话已清空" if success else "清空会话失败",
-            data=None
+            message="\u4f1a\u8bdd\u5df2\u6e05\u7a7a" if success else "\u6e05\u7a7a\u4f1a\u8bdd\u5931\u8d25",
+            data=None,
         )
 
     except Exception as e:
-        logger.error(f"清空会话错误: {e}")
+        logger.error(f"clear session endpoint error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
 @router.get("/chat/session/{session_id}", response_model=SessionInfoResponse)
-async def get_session_info(session_id: str) -> SessionInfoResponse:
-    """查询会话历史
-
-    Args:
-        session_id: 会话 ID
-
-    Returns:
-        会话信息
-    """
+async def get_session_info(
+    session_id: str,
+    db: Session = Depends(get_db),
+) -> SessionInfoResponse:
+    """Return persisted chat session history."""
     try:
-        history = rag_agent_service.get_session_history(session_id)
+        history = ConversationRepository(db).list_session_history(session_id)
+        if not history:
+            history = rag_agent_service.get_session_history(session_id)
 
         return SessionInfoResponse(
             session_id=session_id,
             message_count=len(history),
-            history=history
+            history=history,
         )
 
     except Exception as e:
-        logger.error(f"获取会话信息错误: {e}")
+        logger.error(f"get session endpoint error: {e}")
         raise HTTPException(status_code=500, detail=str(e))

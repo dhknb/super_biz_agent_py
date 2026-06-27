@@ -334,7 +334,7 @@ start-worker:
 	@if [ -f rq_worker.pid ] && ps -p $$(cat rq_worker.pid) > /dev/null 2>&1; then \
 		echo "$(GREEN)✅ RQ Worker 已经在运行中 (PID: $$(cat rq_worker.pid))$(NC)"; \
 	else \
-		nohup .venv/bin/rq worker $(RQ_QUEUE) --url redis://localhost:6379/0 > rq_worker.log 2>&1 & \
+		nohup env PYTHONPATH=. .venv/bin/rq worker $(RQ_QUEUE) --url redis://localhost:6379/0 > rq_worker.log 2>&1 & \
 		echo $$! > rq_worker.pid; \
 		sleep 2; \
 		if ps -p $$(cat rq_worker.pid) > /dev/null 2>&1; then \

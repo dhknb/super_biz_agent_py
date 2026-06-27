@@ -80,3 +80,6 @@ dmypy.json
 # Ruff
 .ruff_cache/
 
+
+# Local model weights
+models/*/*.safetensors
