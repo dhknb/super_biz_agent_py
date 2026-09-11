@@ -34,7 +34,7 @@
 ```bash
 # 1. 克隆项目
 git clone <repository_url>
-cd super_biz_agent_py
+cd SuperBizAgent
 
 # 2. 安装依赖（推荐使用 uv）
 # 方式 1: 使用 uv（推荐，更快）
@@ -64,7 +64,7 @@ make start
 ```powershell
 # 1. 克隆项目
 git clone <repository_url>
-cd super_biz_agent_py
+cd SuperBizAgent
 
 # 2. 创建虚拟环境并安装依赖
 # 方式 1: 使用 uv（推荐，更快）
