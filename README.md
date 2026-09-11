@@ -177,20 +177,32 @@ SuperBizAgent/
 │   │   ├── __init__.py
 │   │   ├── rag_agent_service.py            # RAG Agent（LangGraph 状态图）
 │   │   ├── first_response_service.py       # AIOps 告警首响分析服务
+│   │   ├── alert_diagnosis_orchestrator.py # 告警诊断编排器
+│   │   ├── sop_retrieval_service.py        # SOP 检索服务
+│   │   ├── conversation_memory_service.py  # 会话记忆服务
 │   │   ├── vector_store_manager.py         # 向量存储管理器
-│   │   ├── vector_embedding_service.py     # 向量embedding服务
+│   │   ├── vector_embedding_service.py     # 向量 embedding 服务
 │   │   ├── vector_index_service.py         # 向量索引服务
 │   │   ├── vector_search_service.py        # 向量检索服务
 │   │   └── document_splitter_service.py    # 文档分割服务
 │   ├── agent/                              # Agent 模块
 │   │   ├── __init__.py
 │   │   ├── mcp_client.py                   # MCP 客户端（工具调用）
+│   │   └── mcp_tool_provider.py            # MCP 工具提供者
 │   ├── models/                             # 数据模型层
 │   │   ├── __init__.py
 │   │   ├── aiops.py                        # AIOps 模型
+│   │   ├── aiops_diagnosis.py              # AIOps 诊断模型
+│   │   ├── aiops_report.py                 # AIOps 报告模型
+│   │   ├── chat_run_trace.py               # 对话运行追踪
+│   │   ├── chat_run_span.py                # 对话运行跨度
 │   │   ├── document.py                     # 文档模型
 │   │   ├── request.py                      # 请求模型
 │   │   └── response.py                     # 响应模型
+│   ├── repositories/                       # 数据访问层
+│   │   ├── aiops_diagnosis_repository.py   # AIOps 诊断数据访问
+│   │   ├── chat_run_trace_repository.py    # 对话追踪数据访问
+│   │   └── conversation_repository.py      # 会话数据访问
 │   ├── tools/                              # Agent 工具集
 │   │   ├── __init__.py
 │   │   ├── knowledge_tool.py               # 知识库查询工具
@@ -198,7 +210,18 @@ SuperBizAgent/
 │   ├── core/                               # 核心组件
 │   │   ├── __init__.py
 │   │   ├── llm_factory.py                  # LLM 工厂（模型管理）
-│   │   └── milvus_client.py                # Milvus 客户端
+│   │   ├── milvus_client.py                # Milvus 客户端
+│   │   ├── circuit_breaker.py              # 熔断器
+│   │   ├── breakers.py                     # 熔断器实例
+│   │   ├── metrics.py                      # 指标监控
+│   │   ├── middleware.py                   # 中间件
+│   │   ├── errors.py                       # 错误定义
+│   │   ├── exception_handlers.py           # 异常处理器
+│   │   ├── request_context.py              # 请求上下文
+│   │   ├── span_context.py                 # 跨度上下文
+│   │   ├── job_context.py                  # 作业上下文
+│   │   ├── job_failure.py                  # 作业失败处理
+│   │   └── used_documents.py               # 已使用文档追踪
 │   └── utils/                              # 工具类
 │       ├── __init__.py
 │       └── logger.py                       # 日志配置（Loguru）
@@ -211,6 +234,17 @@ SuperBizAgent/
 │   ├── monitor_server.py                   # 监控数据服务
 │   └── README.md                           # MCP 服务说明
 ├── aiops-docs/                             # 运维知识库（Markdown 文档）
+├── docs/                                   # 项目文档
+│   ├── adr/                                # 架构决策记录
+│   └── aiops-demo-guide.md                 # AIOps 演示指南
+├── migrations/                             # 数据库迁移脚本
+│   ├── env.py                              # Alembic 环境配置
+│   └── versions/                           # 迁移版本
+├── tests/                                  # 测试套件
+│   ├── unit/                               # 单元测试
+│   ├── integration/                        # 集成测试
+│   ├── eval/                               # 评估测试
+│   └── fixtures/                           # 测试固件
 ├── logs/                                   # 日志目录（Loguru 自动创建）
 │   └── app_YYYY-MM-DD.log                  # 按天轮转的日志文件
 ├── uploads/                                # 上传文件临时目录
