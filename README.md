@@ -162,7 +162,7 @@ curl -X POST "http://localhost:9900/api/aiops/alerts/analyze" \
 ## 📁 项目结构
 
 ```
-super_biz_agent_py/
+SuperBizAgent/
 ├── app/                                    # 应用核心
 │   ├── __init__.py                         # 包初始化（自动加载日志配置）
 │   ├── main.py                             # FastAPI 应用入口
