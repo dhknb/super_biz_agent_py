@@ -135,7 +135,7 @@ python -c "import requests, os, time; [requests.post('http://localhost:9900/api/
 |------|------|------|------|
 | 普通对话 | POST | `/api/chat` | 一次性返回 |
 | 流式对话 | POST | `/api/chat_stream` | SSE 流式输出 |
-| AIOps 诊断 | POST | `/api/aiops` | 自动故障诊断（流式） |
+| AIOps 告警首响分析 | POST | `/api/aiops/alerts/analyze` | 结构化告警首响报告 |
 | 文件上传 | POST | `/api/upload` | 上传并索引文档 |
 | 健康检查 | GET | `/api/health` | 服务状态检查 |
 
@@ -153,11 +153,10 @@ curl -X POST "http://localhost:9900/api/chat_stream" \
   -d '{"Id":"session-123","Question":"你好"}' \
   --no-buffer
 
-# AIOps 诊断
-curl -X POST "http://localhost:9900/api/aiops" \
+# AIOps 告警首响分析
+curl -X POST "http://localhost:9900/api/aiops/alerts/analyze" \
   -H "Content-Type: application/json" \
-  -d '{"session_id":"session-123"}' \
-  --no-buffer
+  -d '{"source":"manual","payload":{"alert_name":"HighCPUUsage","severity":"critical","service":"data-sync-service","summary":"CPU 使用率持续超过 80%"}}'
 ```
 
 ## 📁 项目结构
@@ -177,7 +176,7 @@ super_biz_agent_py/
 │   ├── services/                           # 业务服务层
 │   │   ├── __init__.py
 │   │   ├── rag_agent_service.py            # RAG Agent（LangGraph 状态图）
-│   │   ├── aiops_service.py                # AIOps 服务（计划-执行-重规划）
+│   │   ├── first_response_service.py       # AIOps 告警首响分析服务
 │   │   ├── vector_store_manager.py         # 向量存储管理器
 │   │   ├── vector_embedding_service.py     # 向量embedding服务
 │   │   ├── vector_index_service.py         # 向量索引服务
@@ -186,13 +185,6 @@ super_biz_agent_py/
 │   ├── agent/                              # Agent 模块
 │   │   ├── __init__.py
 │   │   ├── mcp_client.py                   # MCP 客户端（工具调用）
-│   │   └── aiops/                          # AIOps 核心逻辑
-│   │       ├── __init__.py
-│   │       ├── planner.py                  # 计划制定器
-│   │       ├── executor.py                 # 步骤执行器
-│   │       ├── replanner.py                # 重规划器
-│   │       ├── state.py                    # 状态定义
-│   │       └── utils.py                    # 工具函数
 │   ├── models/                             # 数据模型层
 │   │   ├── __init__.py
 │   │   ├── aiops.py                        # AIOps 模型
@@ -257,36 +249,25 @@ CHUNK_OVERLAP=100
 
 ## 🎯 AIOps 智能运维
 
-基于 **Plan-Execute-Replan** 模式实现自动故障诊断。
+本项目提供**告警首响分析**：输入一条标准化告警，自动检索 SOP、生成带**证据溯源**的结构化首响报告。证据区分「✅ 已验证事实」和「🤔 模型推断」，无依据时不编造根因。
 
-### 核心特性
-- ✅ 自动制定诊断计划（Planner）
-- ✅ 智能工具调用（Executor）
-- ✅ 动态调整步骤（Replanner）
-- ✅ 流式输出诊断过程
-- ✅ 生成结构化报告
+### 告警首响分析（Alert First-Response）
 
-### 快速测试
+一条告警 → 归一化 → 落库为可追踪诊断任务 → SOP 检索 → 结构化报告，全程可审计、可降级。
+
+| 功能 | 方法 | 路径 | 说明 |
+|------|------|------|------|
+| 首响分析（同步）| POST | `/api/aiops/alerts/analyze` | 一次拿到结构化报告 |
+| 任务列表 | GET | `/api/aiops/tasks` | 列出诊断任务，可按状态过滤 |
+| 任务详情 | GET | `/api/aiops/tasks/{id}` | 报告 + 证据 + 事件时间线 |
 
 ```bash
-# 服务已通过 make init 自动启动
-# 如需重启服务：make restart
-
-# 访问 Web 界面，点击"智能运维与诊断工具"
-# 或使用 API
-curl -X POST "http://localhost:9900/api/aiops" \
+curl -X POST "http://localhost:9900/api/aiops/alerts/analyze" \
   -H "Content-Type: application/json" \
-  -d '{"session_id":"test"}' \
-  --no-buffer
+  -d '{"source":"manual","payload":{"alert_name":"HighCPUUsage","severity":"critical","service":"order-api","summary":"CPU 使用率持续超过 90%"}}'
 ```
 
-### 诊断流程
-```
-1. Planner 制定计划 → 生成 4-6 个诊断步骤
-2. Executor 执行步骤 → 调用 MCP 工具（日志查询、监控数据）
-3. Replanner 评估结果 → 决定继续/调整/生成报告
-4. 输出诊断报告 → 根因分析 + 运维建议
-```
+完整演示见 [docs/aiops-demo-guide.md](docs/aiops-demo-guide.md)，设计决策见 [docs/adr/](docs/adr/)。
 
 ## 📝 开发指南
 
@@ -411,6 +392,11 @@ netstat -ano | findstr :8004  # Monitor MCP
 - [MCP 协议](https://modelcontextprotocol.io/)
 
 ## 📄 许可证
-author： chief
 
 MIT License
+
+---
+
+**作者：** Dong  
+**项目类型：** 企业级智能对话和运维助手  
+**最后更新：** 2026-09
