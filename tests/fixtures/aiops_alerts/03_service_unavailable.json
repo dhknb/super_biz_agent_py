@@ -1,0 +1,20 @@
+{
+  "source": "prometheus",
+  "payload": {
+    "status": "firing",
+    "labels": {
+      "alertname": "ServiceUnavailable",
+      "severity": "critical",
+      "service": "payment-api",
+      "instance": "10.0.0.30:8080"
+    },
+    "annotations": {
+      "summary": "payment-api 健康检查连续失败，服务不可用",
+      "description": "HTTP 探针连续 5 次返回非 200"
+    },
+    "startsAt": "2026-07-23T12:00:00Z",
+    "endsAt": "0001-01-01T00:00:00Z"
+  },
+  "expected_sop_keywords": ["服务", "不可用", "重启"],
+  "expected_report_points": ["服务", "可用", "健康检查"]
+}

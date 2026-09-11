@@ -11,7 +11,8 @@
 tests/eval/
 ├── __init__.py
 ├── README.md              ← 本文档
-├── golden_set.jsonl       ← 评测集(每行一个 question + 期望 chunk_ids + 参考答案)
+├── golden_set.jsonl       ← 原始评测集（18 条人工整理样本）
+├── golden_set_expanded.jsonl ← 扩展评测集（82 条，含 64 条基于 SOP 的合成改写）
 ├── metrics.py             ← Hit@K / MRR / Faithfulness 等指标实现
 ├── run_eval.py            ← CLI 入口:跑评测 → 出报告
 └── reports/               ← 每次跑的 JSON 报告(进 .gitignore)
@@ -28,6 +29,12 @@ $EDITOR tests/eval/golden_set.jsonl
 
 # 2. 跑评测(默认 baseline 配置)
 uv run python -m tests.eval.run_eval
+
+# 2.1 跑扩展评测集（保留原始集作为历史基线）
+uv run python -m tests.eval.run_eval \
+  --golden-set tests/eval/golden_set_expanded.jsonl \
+  --retriever vector \
+  --tag expanded-vector-v1
 
 # 3. 跑某个对照实验(改完检索代码后)
 uv run python -m tests.eval.run_eval --tag hybrid-rrf-v1
@@ -63,6 +70,13 @@ uv run python -m tests.eval.run_eval --compare baseline hybrid-rrf-v1
 | `expected_doc_ids` | ✅ | 命中的文档 id(必填,Hit@K 的最低门槛) |
 | `reference_answer` | ⭕ | 用于算 Faithfulness / Answer Relevance |
 | `tags` | ⭕ | 分组统计,如按场景/难度切片看指标 |
+
+扩展集说明：
+
+- `golden_set.jsonl` 保留最初的 18 条人工整理样本，不覆盖历史结果。
+- `golden_set_expanded.jsonl` 共 82 条，其中新增 64 条来自现有 `aiops-docs/` 文档的症状、排查步骤和交叉故障改写，并标记为 `expanded`、`synthetic`。
+- 扩展集用于比较检索策略的趋势，不等同于线上真实流量分布；上线前仍应补充真实日志脱敏样本、人工复核的 Chunk 标注和无答案样本。
+- 运行真实 `vector`、`rerank` 或 `local-rerank` 前，需要先启动 Milvus，并保证 Embedding/Rerank 依赖可用。
 
 ---
 

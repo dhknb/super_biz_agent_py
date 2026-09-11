@@ -1,6 +1,6 @@
 """Protocol PDF ingestion persistence models."""
 
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import StrEnum
 from typing import Any
 from uuid import uuid4
@@ -9,6 +9,11 @@ from sqlalchemy import JSON, DateTime, Enum, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.database import Base
+
+def _utcnow_naive() -> datetime:
+    """与项目其余模型保持一致：存 naive UTC 时间。"""
+    return datetime.now(UTC).replace(tzinfo=None)
+
 
 
 class ProtocolIngestionStatus(StrEnum):
@@ -59,11 +64,11 @@ class ProtocolPdfIngestion(Base):
     confirmed_by: Mapped[str | None] = mapped_column(String(255), nullable=True)
     confirmed_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     error_message: Mapped[str | None] = mapped_column(Text, nullable=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow_naive)
     updated_at: Mapped[datetime] = mapped_column(
         DateTime,
-        default=datetime.utcnow,
-        onupdate=datetime.utcnow,
+        default=_utcnow_naive,
+        onupdate=_utcnow_naive,
     )
 
     jobs: Mapped[list["ProtocolPdfIngestionJob"]] = relationship(back_populates="ingestion")
@@ -92,6 +97,6 @@ class ProtocolPdfIngestionJob(Base):
     error_message: Mapped[str | None] = mapped_column(Text, nullable=True)
     started_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     finished_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow_naive)
 
     ingestion: Mapped[ProtocolPdfIngestion] = relationship(back_populates="jobs")

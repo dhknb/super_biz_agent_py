@@ -30,3 +30,31 @@ def test_append_list_and_clear_session_history() -> None:
         assert repo.list_session_history("session-1") == []
 
     engine.dispose()
+
+
+def test_list_session_history_includes_message_metadata() -> None:
+    engine = create_engine("sqlite:///:memory:")
+    Base.metadata.create_all(engine)
+    SessionLocal = sessionmaker(bind=engine, expire_on_commit=False)
+
+    with SessionLocal() as db:
+        repo = ConversationRepository(db)
+        repo.append_exchange(
+            "session-1",
+            user_content="hello",
+            assistant_content="hi there",
+            message_metadata={
+                "source": "chat_v2",
+                "high_precision": {
+                    "sub_queries": ["q1"],
+                    "retrieved_count": 1,
+                    "used_documents": [],
+                    "validation": {"blocked": False},
+                },
+            },
+        )
+
+        history = repo.list_session_history("session-1")
+        assert history[1]["message_metadata"]["high_precision"]["sub_queries"] == ["q1"]
+
+    engine.dispose()

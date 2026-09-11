@@ -34,6 +34,19 @@ def mock_dependencies() -> None:
     ) as mock_mm:
         mock_vsm.get_vector_store.return_value = FakeVectorStore()
         mock_mm.get_collection.return_value.num_entities = 0  # no BM25 corpus
+
+        # 必须显式让 query_iterator.next() 返回空列表。
+        #
+        # 只设 num_entities=0 是不够的：_get_bm25_retriever 判断的是
+        # _load_documents_from_milvus() 的返回值，不是 num_entities，
+        # 所以语料加载照样会执行。而它的退出条件是 `if not rows: break`——
+        # 裸 MagicMock 的 next() 返回值**布尔为真**(不 break)、`__iter__` 又是空的
+        # (内层 for 不产生文档)，于是 `while True` 永远转不出去，测试整体挂死。
+        #
+        # 这是 mock 替身的通用坑：MagicMock 对「真假判断」和「可迭代」
+        # 给的默认值互相矛盾，凡是靠哨兵值退出的循环都要把返回值 stub 死。
+        iterator = mock_mm.get_collection.return_value.query_iterator.return_value
+        iterator.next.return_value = []
         yield
 
 

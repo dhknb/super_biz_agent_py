@@ -32,20 +32,29 @@ class TestChatEndpoint:
             assert data["data"]["success"] is True
             assert data["data"]["answer"] == "test reply"
 
-    def test_chat_error_returns_500(self, client: TestClient) -> None:
-        # 这里故意让 service 抛错，验证 endpoint 会把异常包装成统一响应结构。
+    def test_chat_error_returns_real_http_500(self, client_no_raise: TestClient) -> None:
+        """失败时 HTTP 状态码必须如实是 500。
+
+        `/chat` 原来的 except 块除了拼响应体没有任何副作用，所以整块删掉了，
+        由全局处理器统一构造错误响应（DRY）。响应体结构不变，另外附上
+        error_code / degrade_reason / request_id。
+        """
         with patch(
             "app.api.chat.rag_agent_service", new_callable=AsyncMock
         ) as mock_svc:
             mock_svc.query = AsyncMock(side_effect=RuntimeError("boom"))
-            response = client.post(
+            response = client_no_raise.post(
                 "/api/chat",
                 json={"Id": "s2", "Question": "任何问题"},
             )
-            assert response.status_code == 200  # endpoint catches, doesn't raise HTTP
+            assert response.status_code == 500
             data = response.json()
             assert data["code"] == 500
             assert data["data"]["success"] is False
+            assert data["data"]["answer"] is None
+            assert "boom" in data["data"]["errorMessage"]
+            assert data["data"]["error_code"] == "runtime_error"
+            assert data["data"]["request_id"]
 
     def test_chat_missing_required_fields_returns_422(self, client: TestClient) -> None:
         response = client.post("/api/chat", json={})

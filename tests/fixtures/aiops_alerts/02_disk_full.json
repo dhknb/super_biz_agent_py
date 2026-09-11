@@ -1,0 +1,17 @@
+{
+  "source": "manual",
+  "payload": {
+    "alert_id": "alert-disk-002",
+    "alert_name": "DiskSpaceHigh",
+    "severity": "warning",
+    "service": "log-collector",
+    "instance": "10.0.0.20:9100",
+    "metric_name": "node_filesystem_usage",
+    "metric_value": 92.0,
+    "summary": "log-collector 磁盘 /data 使用率达到 92%",
+    "labels": {"env": "prod", "mount": "/data"},
+    "fired_at": "2026-07-23T11:00:00Z"
+  },
+  "expected_sop_keywords": ["磁盘", "df", "清理"],
+  "expected_report_points": ["磁盘", "空间", "清理"]
+}

@@ -157,3 +157,22 @@ class TestProtocolPdfApi:
             "points_saved",
             "thresholds_saved",
         ]
+
+    def test_get_protocol_pdf_ingestion_detail(self, client: TestClient) -> None:
+        detail = FakeIngestion()
+        detail.status = ProtocolIngestionStatus.AWAITING_CONFIRMATION
+        detail.current_phase = "awaiting_confirmation"
+        detail.structured_data = {"protocol": {"name": "示例协议"}}
+        detail.validation_result = {"valid": True, "warnings": []}
+        detail.dry_run_plan = {"operation_count": 3}
+        detail.state_trace = [{"phase": "protocol_saved", "status": "recorded"}]
+        FakeRepository.ingestion = detail
+
+        with patch("app.api.protocol_pdf.ProtocolIngestionRepository", FakeRepository):
+            response = client.get("/api/protocol-pdfs/ing-1")
+
+        assert response.status_code == 200
+        data = response.json()["data"]
+        assert data["structured_data"]["protocol"]["name"] == "示例协议"
+        assert data["validation_result"]["valid"] is True
+        assert data["dry_run_plan"]["operation_count"] == 3

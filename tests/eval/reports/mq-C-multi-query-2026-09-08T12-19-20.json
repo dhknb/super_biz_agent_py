@@ -1,0 +1,3192 @@
+{
+  "tag": "mq-C-multi-query",
+  "timestamp": "2026-09-08T12-19-20",
+  "run_meta": {
+    "total_seconds": 271.2,
+    "avg_seconds_per_case": 3.307,
+    "max_seconds_per_case": 8.025,
+    "avg_sub_queries": 4.0,
+    "rewrite_degraded_cases": 0
+  },
+  "summary": {
+    "total": 82,
+    "hit_at_k": {
+      "1": 0.8170731707317073,
+      "3": 0.975609756097561,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "recall_at_k": {
+      "1": 0.8109756097560976,
+      "3": 0.9695121951219512,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "mrr": 0.8963414634146342,
+    "by_tag": {
+      "aiops": {
+        "total": 82,
+        "hit_at_k": {
+          "1": 0.8170731707317073,
+          "3": 0.975609756097561,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.8109756097560976,
+          "3": 0.9695121951219512,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.8963414634146342,
+        "by_tag": {}
+      },
+      "cpu": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "easy": {
+        "total": 10,
+        "hit_at_k": {
+          "1": 0.9,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.9,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.95,
+        "by_tag": {}
+      },
+      "colloquial": {
+        "total": 18,
+        "hit_at_k": {
+          "1": 0.9444444444444444,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.9166666666666666,
+          "3": 0.9722222222222222,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.9722222222222222,
+        "by_tag": {}
+      },
+      "disk": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 0.8,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.8,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.9,
+        "by_tag": {}
+      },
+      "memory": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "medium": {
+        "total": 26,
+        "hit_at_k": {
+          "1": 0.8461538461538461,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.8461538461538461,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.9166666666666666,
+        "by_tag": {}
+      },
+      "service": {
+        "total": 6,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "latency": {
+        "total": 10,
+        "hit_at_k": {
+          "1": 0.6,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.6,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.7666666666666666,
+        "by_tag": {}
+      },
+      "hard": {
+        "total": 24,
+        "hit_at_k": {
+          "1": 0.75,
+          "3": 0.9166666666666666,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.75,
+          "3": 0.9166666666666666,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.8472222222222222,
+        "by_tag": {}
+      },
+      "api": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 0.8,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.8,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.9,
+        "by_tag": {}
+      },
+      "llm": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 0.8,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.8,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.9,
+        "by_tag": {}
+      },
+      "rpc": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "rag": {
+        "total": 11,
+        "hit_at_k": {
+          "1": 0.7272727272727273,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.6818181818181818,
+          "3": 0.9545454545454546,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.8484848484848485,
+        "by_tag": {}
+      },
+      "mcp": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "milvus": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 0.6,
+          "3": 0.8,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.6,
+          "3": 0.8,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.75,
+        "by_tag": {}
+      },
+      "database": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 0.4,
+          "3": 0.8,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.4,
+          "3": 0.8,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.65,
+        "by_tag": {}
+      },
+      "redis": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "queue": {
+        "total": 6,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.9166666666666666,
+          "3": 0.9166666666666666,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "cross": {
+        "total": 2,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.75,
+          "3": 0.75,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "expanded": {
+        "total": 64,
+        "hit_at_k": {
+          "1": 0.78125,
+          "3": 0.96875,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.78125,
+          "3": 0.96875,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.875,
+        "by_tag": {}
+      },
+      "synthetic": {
+        "total": 64,
+        "hit_at_k": {
+          "1": 0.78125,
+          "3": 0.96875,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.78125,
+          "3": 0.96875,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.875,
+        "by_tag": {}
+      },
+      "diagnostic": {
+        "total": 18,
+        "hit_at_k": {
+          "1": 0.7777777777777778,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.7777777777777778,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.8796296296296297,
+        "by_tag": {}
+      }
+    }
+  },
+  "cases": [
+    {
+      "case_id": "q-001",
+      "retrieved_doc_ids": [
+        "cpu_high_usage",
+        "memory_high_usage",
+        "slow_response",
+        "disk_high_usage",
+        "mcp_service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "8746a5f7-358b-49ed-9214-fc62f26e9444",
+        "cfe12227-8751-4541-a07c-58c7673b97ba",
+        "85b38e01-87e0-4234-9bc2-f39121937540",
+        "3279ccb3-45ab-4f06-9f32-c7606abc2ffc"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "cpu",
+        "easy",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "线上机器 CPU 一直九十多下不来,我先看哪里?",
+        "线上机器 CPU 使用率高的常见原因",
+        "排查高 CPU 使用率的初步步骤",
+        "监控工具查看 CPU 使用情况的方法"
+      ]
+    },
+    {
+      "case_id": "q-002",
+      "retrieved_doc_ids": [
+        "disk_high_usage",
+        "memory_high_usage",
+        "postgres_connection_failed",
+        "service_unavailable",
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "disk_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "2d8ec782-d3c6-4264-b268-11517fafeafd",
+        "428abf00-9b52-481c-b1b8-14948243b6d4",
+        "f54d7888-9fc0-4847-91e9-1596385910d6",
+        "5f634413-230e-4428-a9d6-4ee484770ff8",
+        "1f998ebf-158a-4d89-bb8f-75f73c488ce1"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "disk",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "服务器磁盘快满了,告警一直响,该怎么清?",
+        "服务器磁盘空间不足的常见解决方法",
+        "清理服务器磁盘空间的安全操作步骤",
+        "避免服务器磁盘空间再次满载的最佳实践"
+      ]
+    },
+    {
+      "case_id": "q-003",
+      "retrieved_doc_ids": [
+        "memory_high_usage",
+        "cpu_high_usage",
+        "disk_high_usage",
+        "slow_response",
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "memory_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "f4bcda95-6336-43c4-b21b-0b69de764ff2",
+        "841f2f47-e220-4e68-b03e-154af1110b4c",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "8747e7f1-a15a-493f-a656-523665df716e"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "memory",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "内存已经 95% 了还在涨,会不会把服务打挂?",
+        "内存使用率达到95%对服务稳定性的影响",
+        "内存持续增长导致服务崩溃的可能性",
+        "高内存使用率下的服务优化措施"
+      ]
+    },
+    {
+      "case_id": "q-004",
+      "retrieved_doc_ids": [
+        "service_unavailable",
+        "slow_response",
+        "redis_connection_failed",
+        "mcp_service_unavailable",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "cf75cbf4-2ea6-429b-a090-ed0d0bafa50b",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "服务突然访问不了,端口也连不上,怎么查?",
+        "服务突然无法访问且端口连接失败的原因",
+        "排查服务无法访问和端口不通的方法",
+        "解决服务不可达及端口连接问题的步骤"
+      ]
+    },
+    {
+      "case_id": "q-005",
+      "retrieved_doc_ids": [
+        "slow_response",
+        "high_api_latency",
+        "dependency_call_timeout",
+        "vector_search_timeout",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "slow_response"
+      ],
+      "retrieved_chunk_ids": [
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "94130010-13c8-4a32-bea1-a842044eabb1",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "hard",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "接口慢得离谱,P95 都两秒多了,从哪开始定位?",
+        "接口响应时间长的原因",
+        "P95响应时间超过两秒的常见定位步骤",
+        "优化接口性能的方法"
+      ]
+    },
+    {
+      "case_id": "q-006",
+      "retrieved_doc_ids": [
+        "api_5xx_spike",
+        "slow_response",
+        "dependency_call_timeout",
+        "service_unavailable",
+        "dashscope_api_failed"
+      ],
+      "expected_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "retrieved_chunk_ids": [
+        "5cdfd72a-cc66-4693-9a5d-59a51ec875c8",
+        "73073552-796a-4d44-883c-c7dc460b9745",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "c566a212-6f56-4ede-abb5-ab10acd1a143",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "api",
+        "hard",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "刚上线没多久 API 就一堆 500,我该先排什么?",
+        "API 返回 500 错误的常见原因",
+        "解决 API 500 错误的优先步骤",
+        "API 500 错误排查工具和方法"
+      ]
+    },
+    {
+      "case_id": "q-007",
+      "retrieved_doc_ids": [
+        "dashscope_api_failed",
+        "document_index_failed",
+        "api_5xx_spike",
+        "milvus_unavailable",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "fadf8029-4b9d-4138-a6f7-44490400c6ad",
+        "da3ae4ab-3382-4a78-a2e5-f25218132981",
+        "7e99072c-06df-40e8-adb9-aa1fa71bdf59",
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "5cdfd72a-cc66-4693-9a5d-59a51ec875c8"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "llm",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "调 DashScope 报 400,但是 key 看着没错,还有啥可能?",
+        "调用DashScope API时返回400错误的原因",
+        "除了API密钥错误外，导致DashScope 400错误的其他常见原因",
+        "解决DashScope 400错误的方法"
+      ]
+    },
+    {
+      "case_id": "q-008",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout",
+        "slow_response",
+        "high_api_latency",
+        "api_5xx_spike",
+        "dashscope_api_failed"
+      ],
+      "expected_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "00c2ec1c-7057-4881-8dd8-017e207c3db0",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rpc",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "请求下游老是超时,到底是网络还是对方服务的问题?",
+        "请求下游超时的原因分析",
+        "网络问题导致请求超时的特征",
+        "对方服务问题导致请求超时的特征"
+      ]
+    },
+    {
+      "case_id": "q-009",
+      "retrieved_doc_ids": [
+        "document_index_failed",
+        "rq_worker_stopped",
+        "postgres_connection_failed",
+        "milvus_unavailable",
+        "vector_search_timeout"
+      ],
+      "expected_doc_ids": [
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "8e420d44-7eb3-4bd5-9e00-35e5e39dcc62",
+        "2b7f6583-1f4b-4616-9018-867e069a031c",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "e81a76ff-20a6-47ff-9e76-f30f3631f2aa"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "easy",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "文件上传显示成功了,但是知识库怎么搜都搜不到?",
+        "文件上传成功但知识库搜索不到的原因",
+        "解决文件上传成功但知识库搜索不到的方法",
+        "文件上传与知识库索引更新的时间延迟"
+      ]
+    },
+    {
+      "case_id": "q-010",
+      "retrieved_doc_ids": [
+        "slow_response",
+        "high_api_latency",
+        "dependency_call_timeout",
+        "api_5xx_spike",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "high_api_latency"
+      ],
+      "retrieved_chunk_ids": [
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "94130010-13c8-4a32-bea1-a842044eabb1"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "hard",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "接口平时 100ms,今天突然变成两三秒,怎么拆问题?",
+        "接口响应时间从100ms增加到两三秒的原因",
+        "排查接口性能下降的方法",
+        "解决接口延迟突然增大的常见措施"
+      ]
+    },
+    {
+      "case_id": "q-011",
+      "retrieved_doc_ids": [
+        "mcp_service_unavailable",
+        "dependency_call_timeout",
+        "service_unavailable",
+        "api_5xx_spike",
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "43816b68-66c2-4394-bea8-0736f63cf539",
+        "3279ccb3-45ab-4f06-9f32-c7606abc2ffc",
+        "8de35d71-0355-4b31-9623-d4f61a95ee82",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "f789adf1-739e-429c-a252-046264d70f50"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "mcp",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "MCP 工具全都调不通了,服务是不是断了?",
+        "MCP工具调不通的原因",
+        "MCP服务中断的迹象",
+        "排查MCP工具连接问题的方法"
+      ]
+    },
+    {
+      "case_id": "q-012",
+      "retrieved_doc_ids": [
+        "milvus_unavailable",
+        "vector_search_timeout",
+        "document_index_failed",
+        "api_5xx_spike",
+        "rq_worker_stopped"
+      ],
+      "expected_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "e81a76ff-20a6-47ff-9e76-f30f3631f2aa",
+        "95dd8a79-7fb8-4cf5-80fb-162c0ee8d1c3",
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "52a65c6b-0200-44cd-b17d-ba2ef14e4e3c",
+        "9860b697-dfc2-48c3-9719-d09007c57474"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "milvus",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "Milvus 好像挂了,知识库检索全部报错怎么办?",
+        "Milvus 系统故障的常见原因",
+        "解决 Milvus 检索错误的方法",
+        "Milvus 故障排查步骤"
+      ]
+    },
+    {
+      "case_id": "q-013",
+      "retrieved_doc_ids": [
+        "postgres_connection_failed",
+        "service_unavailable",
+        "slow_response",
+        "dependency_call_timeout",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "cf5dc670-4d22-40fa-be9e-e84d821c2147",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "database",
+        "hard",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "Postgres 连接像是被占满了,新请求都卡住不返回",
+        "Postgres 连接数达到上限的原因",
+        "解决Postgres连接占满的方法",
+        "Postgres连接管理的最佳实践"
+      ]
+    },
+    {
+      "case_id": "q-014",
+      "retrieved_doc_ids": [
+        "redis_connection_failed",
+        "slow_response",
+        "service_unavailable",
+        "memory_high_usage",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "58e7ecbb-b744-48e9-b309-87e4c16d8392",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "redis",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "Redis 连不上之后缓存全没命中,线上扛不住了咋办?",
+        "Redis连接失败导致缓存未命中的原因",
+        "解决Redis连接问题的方法",
+        "缓解因缓存失效导致的线上压力策略"
+      ]
+    },
+    {
+      "case_id": "q-015",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped",
+        "redis_connection_failed",
+        "document_index_failed",
+        "postgres_connection_failed",
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "retrieved_chunk_ids": [
+        "2b7f6583-1f4b-4616-9018-867e069a031c",
+        "6ebb606b-0564-4d46-9006-28a9c2f46229",
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "58e7ecbb-b744-48e9-b309-87e4c16d8392"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "后台任务一直不消费,RQ worker 是不是死了?",
+        "后台任务不消费的原因",
+        "RQ worker 的状态检查方法",
+        "RQ worker 常见问题及解决办法"
+      ]
+    },
+    {
+      "case_id": "q-016",
+      "retrieved_doc_ids": [
+        "vector_search_timeout",
+        "high_api_latency",
+        "slow_response",
+        "dependency_call_timeout",
+        "document_index_failed"
+      ],
+      "expected_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "hard",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "知识库查一次要等十秒,用户都等炸了,怎么优化?",
+        "知识库查询响应时间长的原因",
+        "优化知识库查询速度的方法",
+        "提高用户等待体验的策略"
+      ]
+    },
+    {
+      "case_id": "q-017",
+      "retrieved_doc_ids": [
+        "service_unavailable",
+        "redis_connection_failed",
+        "mcp_service_unavailable",
+        "cpu_high_usage",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "43816b68-66c2-4394-bea8-0736f63cf539",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "cc65d177-6f0e-49a7-80d8-67601b871cc2",
+        "5b03988e-274d-4240-b354-1d8dd044570d"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "hard",
+        "cross",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "机器指标看着都正常,但服务就是不可用,还要查啥?",
+        "服务不可用的常见原因",
+        "机器指标正常但服务不可用的排查步骤",
+        "除了机器指标外需要检查的服务相关因素"
+      ]
+    },
+    {
+      "case_id": "q-018",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped",
+        "postgres_connection_failed",
+        "redis_connection_failed",
+        "document_index_failed",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped",
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "dbc0012f-352a-4a61-a66d-7a382a2fdf92",
+        "6ebb606b-0564-4d46-9006-28a9c2f46229"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "rag",
+        "cross",
+        "colloquial"
+      ],
+      "sub_queries": [
+        "索引任务一直 pending,队列看着又没东西,这是哪里堵了?",
+        "索引任务pending的原因",
+        "队列无内容但任务pending的可能情况",
+        "解决索引任务堵塞的方法"
+      ]
+    },
+    {
+      "case_id": "q-019",
+      "retrieved_doc_ids": [
+        "api_5xx_spike",
+        "service_unavailable",
+        "dependency_call_timeout",
+        "slow_response",
+        "dashscope_api_failed"
+      ],
+      "expected_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "retrieved_chunk_ids": [
+        "73073552-796a-4d44-883c-c7dc460b9745",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "5cdfd72a-cc66-4693-9a5d-59a51ec875c8",
+        "9335b62d-b1af-4125-a485-5f8e34892015"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "api",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "发布后 API 500 突然飙升，先查依赖还是先回滚？",
+        "发布后API 500错误突然增加时的故障排查步骤",
+        "依赖服务问题与代码回滚在处理API 500错误中的优先级",
+        "API 500错误飙升的原因及解决策略"
+      ]
+    },
+    {
+      "case_id": "q-020",
+      "retrieved_doc_ids": [
+        "api_5xx_spike",
+        "slow_response",
+        "cpu_high_usage",
+        "high_api_latency",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "retrieved_chunk_ids": [
+        "c566a212-6f56-4ede-abb5-ab10acd1a143",
+        "00c2ec1c-7057-4881-8dd8-017e207c3db0",
+        "73073552-796a-4d44-883c-c7dc460b9745",
+        "cfe12227-8751-4541-a07c-58c7673b97ba",
+        "98d747ed-3d53-4fba-b3c9-aeed21ac572b"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "api",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "5xx 错误率连续五分钟超过阈值，怎么判断影响范围？",
+        "5xx错误率连续五分钟超过阈值的影响范围定义",
+        "5xx错误率连续五分钟超过阈值时判断影响范围的方法",
+        "5xx错误率连续五分钟超过阈值的常见影响场景"
+      ]
+    },
+    {
+      "case_id": "q-021",
+      "retrieved_doc_ids": [
+        "dashscope_api_failed",
+        "api_5xx_spike",
+        "postgres_connection_failed",
+        "dependency_call_timeout",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "retrieved_chunk_ids": [
+        "7e99072c-06df-40e8-adb9-aa1fa71bdf59",
+        "5cdfd72a-cc66-4693-9a5d-59a51ec875c8",
+        "73073552-796a-4d44-883c-c7dc460b9745",
+        "43816b68-66c2-4394-bea8-0736f63cf539",
+        "fadf8029-4b9d-4138-a6f7-44490400c6ad"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "api",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "聊天、上传、诊断接口一起报错，应该怎么拆分排查？",
+        "聊天接口报错的常见排查步骤",
+        "上传接口报错的可能原因及解决方法",
+        "诊断接口报错时如何进行问题定位"
+      ]
+    },
+    {
+      "case_id": "q-022",
+      "retrieved_doc_ids": [
+        "api_5xx_spike",
+        "service_unavailable",
+        "slow_response",
+        "redis_connection_failed",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "retrieved_chunk_ids": [
+        "c566a212-6f56-4ede-abb5-ab10acd1a143",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "73073552-796a-4d44-883c-c7dc460b9745",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "a6315506-7126-4f59-b773-13867c8c854b"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "api",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "错误率升高还伴随客户端重试，如何先止住故障放大？",
+        "错误率升高和客户端重试的原因",
+        "防止故障放大的策略",
+        "处理错误率升高时的客户端重试机制"
+      ]
+    },
+    {
+      "case_id": "q-023",
+      "retrieved_doc_ids": [
+        "cpu_high_usage",
+        "memory_high_usage",
+        "disk_high_usage",
+        "slow_response",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "cfe12227-8751-4541-a07c-58c7673b97ba",
+        "8746a5f7-358b-49ed-9214-fc62f26e9444",
+        "f4bcda95-6336-43c4-b21b-0b69de764ff2",
+        "85b38e01-87e0-4234-9bc2-f39121937540"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "cpu",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": [
+        "CPU 持续 85% 以上，第一轮应该看哪些信息？",
+        "CPU使用率持续85%以上时，第一轮应该检查的系统信息",
+        "高CPU使用率情况下，初步诊断步骤和关注点",
+        "处理CPU占用过高问题时，需要查看的关键性能指标"
+      ]
+    },
+    {
+      "case_id": "q-024",
+      "retrieved_doc_ids": [
+        "cpu_high_usage",
+        "redis_connection_failed",
+        "memory_high_usage",
+        "slow_response",
+        "mcp_service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "85b38e01-87e0-4234-9bc2-f39121937540",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "cpu",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "单个进程 CPU 接近 100%，日志里错误堆栈不断重复，可能是什么？",
+        "单个进程 CPU 接近 100% 的常见原因",
+        "日志中错误堆栈不断重复的可能问题",
+        "CPU 使用率高和错误堆栈重复出现时的诊断步骤"
+      ]
+    },
+    {
+      "case_id": "q-025",
+      "retrieved_doc_ids": [
+        "cpu_high_usage",
+        "memory_high_usage",
+        "slow_response",
+        "disk_high_usage",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "cpu",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "流量突然上涨导致多个进程 CPU 一起升高，怎么处理？",
+        "流量突然上涨导致CPU使用率升高的原因",
+        "处理多个进程CPU使用率同时升高的方法",
+        "预防流量激增对系统性能影响的策略"
+      ]
+    },
+    {
+      "case_id": "q-026",
+      "retrieved_doc_ids": [
+        "cpu_high_usage",
+        "slow_response",
+        "memory_high_usage",
+        "mcp_service_unavailable",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "cfe12227-8751-4541-a07c-58c7673b97ba",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "3279ccb3-45ab-4f06-9f32-c7606abc2ffc"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "cpu",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "CPU 每天在固定时间周期性升高，应该怀疑什么？",
+        "CPU周期性升高的常见原因",
+        "CPU在固定时间性能变化的可能因素",
+        "诊断CPU使用率周期性增高的方法"
+      ]
+    },
+    {
+      "case_id": "q-027",
+      "retrieved_doc_ids": [
+        "dashscope_api_failed",
+        "document_index_failed",
+        "api_5xx_spike",
+        "milvus_unavailable",
+        "rq_worker_stopped"
+      ],
+      "expected_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "fadf8029-4b9d-4138-a6f7-44490400c6ad",
+        "7e99072c-06df-40e8-adb9-aa1fa71bdf59",
+        "da3ae4ab-3382-4a78-a2e5-f25218132981",
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "73073552-796a-4d44-883c-c7dc460b9745"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "llm",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "DashScope 的聊天和 embedding 请求同时失败，先判断哪类问题？",
+        "DashScope的聊天请求失败的原因",
+        "DashScope的embedding请求失败的原因",
+        "同时出现聊天和embedding请求失败的常见问题"
+      ]
+    },
+    {
+      "case_id": "q-028",
+      "retrieved_doc_ids": [
+        "dashscope_api_failed",
+        "api_5xx_spike",
+        "high_api_latency",
+        "document_index_failed",
+        "rq_worker_stopped"
+      ],
+      "expected_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "fadf8029-4b9d-4138-a6f7-44490400c6ad",
+        "7e99072c-06df-40e8-adb9-aa1fa71bdf59",
+        "73073552-796a-4d44-883c-c7dc460b9745",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "llm",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "DashScope 返回 429，批量索引和在线聊天都在失败，怎么止损？",
+        "DashScope 返回 429 错误的原因",
+        "批量索引和在线聊天失败时的止损措施",
+        "处理 API 限流问题的最佳实践"
+      ]
+    },
+    {
+      "case_id": "q-029",
+      "retrieved_doc_ids": [
+        "dashscope_api_failed",
+        "api_5xx_spike",
+        "document_index_failed",
+        "dependency_call_timeout",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "fadf8029-4b9d-4138-a6f7-44490400c6ad",
+        "73073552-796a-4d44-883c-c7dc460b9745",
+        "7e99072c-06df-40e8-adb9-aa1fa71bdf59",
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "5cdfd72a-cc66-4693-9a5d-59a51ec875c8"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "llm",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "API key 看起来没错但 DashScope 返回 400，可能漏了什么？",
+        "API key 校验失败的常见原因",
+        "DashScope 返回 400 错误的具体含义",
+        "检查 API 请求中可能遗漏的参数或头部信息"
+      ]
+    },
+    {
+      "case_id": "q-030",
+      "retrieved_doc_ids": [
+        "document_index_failed",
+        "dashscope_api_failed",
+        "milvus_unavailable",
+        "vector_search_timeout",
+        "rq_worker_stopped"
+      ],
+      "expected_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "7e99072c-06df-40e8-adb9-aa1fa71bdf59",
+        "dbc0012f-352a-4a61-a66d-7a382a2fdf92",
+        "fadf8029-4b9d-4138-a6f7-44490400c6ad",
+        "e81a76ff-20a6-47ff-9e76-f30f3631f2aa"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "llm",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "只有超长文档做 embedding 时失败，应该从哪里定位？",
+        "超长文档做embedding失败的原因",
+        "解决超长文档embedding问题的方法",
+        "超长文档embedding的常见错误和调试技巧"
+      ]
+    },
+    {
+      "case_id": "q-031",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout",
+        "redis_connection_failed",
+        "slow_response",
+        "rq_worker_stopped",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "fdac0f8f-8873-423b-8765-33e8179d35e5"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rpc",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "下游调用有时 connect timeout，有时 read timeout，怎么区分？",
+        "connect timeout和read timeout的定义",
+        "connect timeout和read timeout的原因及区别",
+        "解决connect timeout和read timeout的方法"
+      ]
+    },
+    {
+      "case_id": "q-032",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout",
+        "slow_response",
+        "service_unavailable",
+        "redis_connection_failed",
+        "api_5xx_spike"
+      ],
+      "expected_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "fdac0f8f-8873-423b-8765-33e8179d35e5",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rpc",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "下游超时后不断重试，线程和连接池开始堆积，怎么处理？",
+        "处理下游超时后不断重试导致的线程和连接池堆积的方法",
+        "下游服务超时重试机制的工作原理",
+        "优化连接池配置以应对下游服务超时"
+      ]
+    },
+    {
+      "case_id": "q-033",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout",
+        "document_index_failed",
+        "milvus_unavailable",
+        "redis_connection_failed",
+        "dashscope_api_failed"
+      ],
+      "expected_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "dbc0012f-352a-4a61-a66d-7a382a2fdf92",
+        "95dd8a79-7fb8-4cf5-80fb-162c0ee8d1c3",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rpc",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "DashScope、Milvus、Redis 同时变慢，如何判断是不是级联故障？",
+        "DashScope、Milvus、Redis 同时变慢的原因分析",
+        "判断DashScope、Milvus、Redis之间是否存在级联故障的方法",
+        "解决DashScope、Milvus、Redis同时变慢问题的步骤"
+      ]
+    },
+    {
+      "case_id": "q-034",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout",
+        "slow_response",
+        "service_unavailable",
+        "high_api_latency",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "fdac0f8f-8873-423b-8765-33e8179d35e5",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rpc",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "请求还没真正发到下游就超时，应该检查什么资源？",
+        "请求超时前未到达下游的常见原因",
+        "检查与请求超时相关的系统资源",
+        "网络或配置问题导致请求未达下游的排查方法"
+      ]
+    },
+    {
+      "case_id": "q-035",
+      "retrieved_doc_ids": [
+        "disk_high_usage",
+        "memory_high_usage",
+        "postgres_connection_failed",
+        "service_unavailable",
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "disk_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "f54d7888-9fc0-4847-91e9-1596385910d6",
+        "428abf00-9b52-481c-b1b8-14948243b6d4",
+        "1f998ebf-158a-4d89-bb8f-75f73c488ce1",
+        "2d8ec782-d3c6-4264-b268-11517fafeafd",
+        "5f634413-230e-4428-a9d6-4ee484770ff8"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "disk",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": [
+        "/var/log 把磁盘占满了，怎么安全排查？",
+        "/var/log目录占用磁盘空间的原因",
+        "安全排查/var/log目录占用磁盘空间的方法",
+        "清理/var/log目录以释放磁盘空间的步骤"
+      ]
+    },
+    {
+      "case_id": "q-036",
+      "retrieved_doc_ids": [
+        "disk_high_usage",
+        "memory_high_usage",
+        "postgres_connection_failed",
+        "slow_response",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "disk_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "f54d7888-9fc0-4847-91e9-1596385910d6",
+        "2d8ec782-d3c6-4264-b268-11517fafeafd",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "428abf00-9b52-481c-b1b8-14948243b6d4",
+        "5f634413-230e-4428-a9d6-4ee484770ff8"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "disk",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "/tmp 临时文件大量堆积，通常从哪些方向处理？",
+        "/tmp 临时文件大量堆积的常见处理方法",
+        "/tmp 临时文件堆积的原因分析",
+        "预防/tmp目录下临时文件堆积的最佳实践"
+      ]
+    },
+    {
+      "case_id": "q-037",
+      "retrieved_doc_ids": [
+        "postgres_connection_failed",
+        "disk_high_usage",
+        "memory_high_usage",
+        "slow_response",
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "disk_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "f54d7888-9fc0-4847-91e9-1596385910d6",
+        "cf5dc670-4d22-40fa-be9e-e84d821c2147",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "2d8ec782-d3c6-4264-b268-11517fafeafd"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "disk",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "数据库文件持续增长导致磁盘告警，怎么判断是正常增长还是异常？",
+        "数据库文件正常增长的原因和特征",
+        "数据库文件异常增长的常见原因和迹象",
+        "如何分析数据库文件增长情况以判断是否为异常"
+      ]
+    },
+    {
+      "case_id": "q-038",
+      "retrieved_doc_ids": [
+        "disk_high_usage",
+        "postgres_connection_failed",
+        "memory_high_usage",
+        "slow_response",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "disk_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "f54d7888-9fc0-4847-91e9-1596385910d6",
+        "2d8ec782-d3c6-4264-b268-11517fafeafd",
+        "5f634413-230e-4428-a9d6-4ee484770ff8",
+        "428abf00-9b52-481c-b1b8-14948243b6d4",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "disk",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "备份文件占用大量磁盘，应该怎么优化？",
+        "备份文件占用大量磁盘的原因",
+        "优化备份文件存储的方法",
+        "减少备份文件占用空间的技术"
+      ]
+    },
+    {
+      "case_id": "q-039",
+      "retrieved_doc_ids": [
+        "postgres_connection_failed",
+        "document_index_failed",
+        "rq_worker_stopped",
+        "milvus_unavailable",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "bce25d85-fa13-49eb-a78b-b97dc5b6c976",
+        "2b7f6583-1f4b-4616-9018-867e069a031c"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": [
+        "文件上传接口返回 202，但索引状态一直不变化，先查什么？",
+        "文件上传接口返回202状态码的含义",
+        "索引状态不更新的常见原因",
+        "排查文件上传后索引未更新的步骤"
+      ]
+    },
+    {
+      "case_id": "q-040",
+      "retrieved_doc_ids": [
+        "document_index_failed",
+        "milvus_unavailable",
+        "postgres_connection_failed",
+        "dashscope_api_failed",
+        "vector_search_timeout"
+      ],
+      "expected_doc_ids": [
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "dbc0012f-352a-4a61-a66d-7a382a2fdf92",
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "e81a76ff-20a6-47ff-9e76-f30f3631f2aa",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "文档索引失败，怎么判断卡在切分、embedding 还是向量写入？",
+        "文档索引过程中切分阶段可能出现的错误",
+        "embedding阶段导致文档索引失败的原因",
+        "向量写入时遇到的问题及其解决方法"
+      ]
+    },
+    {
+      "case_id": "q-041",
+      "retrieved_doc_ids": [
+        "postgres_connection_failed",
+        "document_index_failed",
+        "rq_worker_stopped",
+        "milvus_unavailable",
+        "disk_high_usage"
+      ],
+      "expected_doc_ids": [
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "dbc0012f-352a-4a61-a66d-7a382a2fdf92",
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "8e420d44-7eb3-4bd5-9e00-35e5e39dcc62"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "只有一个超大文件索引失败，其他文件都正常，怎么排查？",
+        "超大文件索引失败的常见原因",
+        "排查单个文件索引失败的方法",
+        "对比正常文件和超大文件索引过程中的差异"
+      ]
+    },
+    {
+      "case_id": "q-042",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped",
+        "postgres_connection_failed",
+        "document_index_failed",
+        "milvus_unavailable",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "8e420d44-7eb3-4bd5-9e00-35e5e39dcc62",
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "dbc0012f-352a-4a61-a66d-7a382a2fdf92"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "索引任务重试三次仍失败，为什么不能继续无限重试？",
+        "索引任务重试机制的原理",
+        "索引任务重试三次失败的原因",
+        "无限重试索引任务的风险"
+      ]
+    },
+    {
+      "case_id": "q-043",
+      "retrieved_doc_ids": [
+        "slow_response",
+        "dependency_call_timeout",
+        "high_api_latency",
+        "api_5xx_spike",
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "high_api_latency"
+      ],
+      "retrieved_chunk_ids": [
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "00c2ec1c-7057-4881-8dd8-017e207c3db0",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "接口没有 5xx，但响应从 100ms 变成 2 秒，怎么拆分？",
+        "接口响应时间从100ms增加到2秒的原因",
+        "排查接口响应时间变长的方法",
+        "优化接口响应时间的策略"
+      ]
+    },
+    {
+      "case_id": "q-044",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout",
+        "slow_response",
+        "high_api_latency",
+        "cpu_high_usage",
+        "api_5xx_spike"
+      ],
+      "expected_doc_ids": [
+        "high_api_latency"
+      ],
+      "retrieved_chunk_ids": [
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "98d747ed-3d53-4fba-b3c9-aeed21ac572b",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "5b03988e-274d-4240-b354-1d8dd044570d"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "只有一个接口延迟升高，其他接口正常，优先看哪里？",
+        "单个接口延迟升高的常见原因",
+        "排查单个接口延迟升高时应优先检查的系统组件",
+        "与其他正常接口对比，单个接口延迟升高的可能差异"
+      ]
+    },
+    {
+      "case_id": "q-045",
+      "retrieved_doc_ids": [
+        "high_api_latency",
+        "slow_response",
+        "dependency_call_timeout",
+        "service_unavailable",
+        "api_5xx_spike"
+      ],
+      "expected_doc_ids": [
+        "high_api_latency"
+      ],
+      "retrieved_chunk_ids": [
+        "98d747ed-3d53-4fba-b3c9-aeed21ac572b",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "新版本发布后 P95 延迟立刻升高，怎么验证是否由发布引起？",
+        "新版本发布后P95延迟升高的可能原因",
+        "验证发布与P95延迟升高关联的方法",
+        "分析P95延迟变化的技术手段"
+      ]
+    },
+    {
+      "case_id": "q-046",
+      "retrieved_doc_ids": [
+        "slow_response",
+        "high_api_latency",
+        "cpu_high_usage",
+        "dependency_call_timeout",
+        "memory_high_usage"
+      ],
+      "expected_doc_ids": [
+        "high_api_latency"
+      ],
+      "retrieved_chunk_ids": [
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "94130010-13c8-4a32-bea1-a842044eabb1"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "延迟升高同时数据库慢查询增加，下一步怎么做？",
+        "延迟升高的常见原因和解决方法",
+        "数据库慢查询增加的排查步骤",
+        "同时处理延迟升高和数据库慢查询增加的最佳实践"
+      ]
+    },
+    {
+      "case_id": "q-047",
+      "retrieved_doc_ids": [
+        "mcp_service_unavailable",
+        "dependency_call_timeout",
+        "api_5xx_spike",
+        "dashscope_api_failed",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "43816b68-66c2-4394-bea8-0736f63cf539",
+        "3279ccb3-45ab-4f06-9f32-c7606abc2ffc",
+        "8de35d71-0355-4b31-9623-d4f61a95ee82",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "5cdfd72a-cc66-4693-9a5d-59a51ec875c8"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "mcp",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "MCP 工具全部调用失败，怎么确认是 Server 还是客户端问题？",
+        "MCP工具调用失败的常见原因",
+        "如何区分MCP工具调用失败是Server端问题还是客户端问题",
+        "确认MCP工具调用失败时需要检查的Server和客户端关键点"
+      ]
+    },
+    {
+      "case_id": "q-048",
+      "retrieved_doc_ids": [
+        "mcp_service_unavailable",
+        "service_unavailable",
+        "cpu_high_usage",
+        "dependency_call_timeout",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "43816b68-66c2-4394-bea8-0736f63cf539",
+        "8de35d71-0355-4b31-9623-d4f61a95ee82",
+        "3279ccb3-45ab-4f06-9f32-c7606abc2ffc",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "5b03988e-274d-4240-b354-1d8dd044570d"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "mcp",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "只有一个 MCP Server 不可用，其他工具正常，应该怎么降级？",
+        "MCP Server 不可用时的降级策略",
+        "单个 MCP Server 故障对系统的影响",
+        "保持其他工具正常运行的同时处理 MCP Server 问题的方法"
+      ]
+    },
+    {
+      "case_id": "q-049",
+      "retrieved_doc_ids": [
+        "mcp_service_unavailable",
+        "dependency_call_timeout",
+        "api_5xx_spike",
+        "redis_connection_failed",
+        "dashscope_api_failed"
+      ],
+      "expected_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "43816b68-66c2-4394-bea8-0736f63cf539",
+        "3279ccb3-45ab-4f06-9f32-c7606abc2ffc",
+        "8de35d71-0355-4b31-9623-d4f61a95ee82",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "73073552-796a-4d44-883c-c7dc460b9745"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "mcp",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "MCP 工具调用失败时，指数退避重试应该如何设置？",
+        "MCP工具调用失败时指数退避重试的基本原理",
+        "MCP工具中设置指数退避重试的最佳实践",
+        "MCP工具指数退避重试配置的常见问题"
+      ]
+    },
+    {
+      "case_id": "q-050",
+      "retrieved_doc_ids": [
+        "mcp_service_unavailable",
+        "redis_connection_failed",
+        "dependency_call_timeout",
+        "cpu_high_usage",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "43816b68-66c2-4394-bea8-0736f63cf539",
+        "3279ccb3-45ab-4f06-9f32-c7606abc2ffc",
+        "8de35d71-0355-4b31-9623-d4f61a95ee82",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "5b03988e-274d-4240-b354-1d8dd044570d"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "mcp",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "MCP 的 HTTP/SSE 连接断开后，先看哪些证据？",
+        "MCP 的 HTTP/SSE 连接断开后需要检查的日志文件",
+        "MCP 的 HTTP/SSE 连接断开后的常见原因和解决方法",
+        "MCP 的 HTTP/SSE 连接断开时应查看的系统状态指标"
+      ]
+    },
+    {
+      "case_id": "q-051",
+      "retrieved_doc_ids": [
+        "memory_high_usage",
+        "disk_high_usage",
+        "cpu_high_usage",
+        "slow_response",
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "memory_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "f4bcda95-6336-43c4-b21b-0b69de764ff2",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "8747e7f1-a15a-493f-a656-523665df716e",
+        "f54d7888-9fc0-4847-91e9-1596385910d6"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "memory",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": [
+        "内存占用已经 90% 且持续上涨，会有什么风险？",
+        "内存占用达到90%且持续上涨的风险",
+        "高内存占用对系统性能的影响",
+        "内存使用率过高时的应对措施"
+      ]
+    },
+    {
+      "case_id": "q-052",
+      "retrieved_doc_ids": [
+        "memory_high_usage",
+        "slow_response",
+        "cpu_high_usage",
+        "disk_high_usage",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "memory_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "841f2f47-e220-4e68-b03e-154af1110b4c",
+        "85b38e01-87e0-4234-9bc2-f39121937540",
+        "f9a52ade-9f72-4e43-87b0-7df09411d397",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "memory",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "内存高和 CPU 高同时出现，怎么判断是不是内存泄漏？",
+        "内存泄漏的定义和常见原因",
+        "内存高和CPU高同时出现时判断内存泄漏的方法",
+        "内存泄漏与其他导致内存和CPU使用率高的问题的区别"
+      ]
+    },
+    {
+      "case_id": "q-053",
+      "retrieved_doc_ids": [
+        "memory_high_usage",
+        "cpu_high_usage",
+        "service_unavailable",
+        "disk_high_usage",
+        "slow_response"
+      ],
+      "expected_doc_ids": [
+        "memory_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "f4bcda95-6336-43c4-b21b-0b69de764ff2",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "cfe12227-8751-4541-a07c-58c7673b97ba"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "memory",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "服务器开始使用 Swap，是否说明服务已经一定会挂？",
+        "服务器开始使用Swap的定义",
+        "服务器开始使用Swap的原因和影响",
+        "服务器开始使用Swap与服务稳定性之间的关系"
+      ]
+    },
+    {
+      "case_id": "q-054",
+      "retrieved_doc_ids": [
+        "memory_high_usage",
+        "cpu_high_usage",
+        "disk_high_usage",
+        "slow_response",
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "memory_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "841f2f47-e220-4e68-b03e-154af1110b4c",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "f4bcda95-6336-43c4-b21b-0b69de764ff2",
+        "f54d7888-9fc0-4847-91e9-1596385910d6"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "memory",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "发现某个进程内存持续增长，短期和长期分别怎么处理？",
+        "短期处理内存持续增长的进程的方法",
+        "长期解决进程内存持续增长问题的策略",
+        "监控和诊断内存持续增长进程的技术"
+      ]
+    },
+    {
+      "case_id": "q-055",
+      "retrieved_doc_ids": [
+        "milvus_unavailable",
+        "vector_search_timeout",
+        "document_index_failed",
+        "rq_worker_stopped",
+        "api_5xx_spike"
+      ],
+      "expected_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "e81a76ff-20a6-47ff-9e76-f30f3631f2aa",
+        "9860b697-dfc2-48c3-9719-d09007c57474",
+        "95dd8a79-7fb8-4cf5-80fb-162c0ee8d1c3",
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "milvus",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": [
+        "Milvus 连接不上，知识库所有查询都失败，先查什么？",
+        "Milvus 连接问题的常见原因",
+        "解决Milvus连接失败的步骤",
+        "检查Milvus服务状态的方法"
+      ]
+    },
+    {
+      "case_id": "q-056",
+      "retrieved_doc_ids": [
+        "vector_search_timeout",
+        "milvus_unavailable",
+        "postgres_connection_failed",
+        "document_index_failed",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "e81a76ff-20a6-47ff-9e76-f30f3631f2aa",
+        "52a65c6b-0200-44cd-b17d-ba2ef14e4e3c",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "67d7da2b-f16f-405b-b107-888f056064e3"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "milvus",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "Milvus 写入和查询一起变慢，可能是哪类原因？",
+        "Milvus 写入和查询性能下降的常见原因",
+        "Milvus 性能瓶颈的原理分析",
+        "对比不同场景下Milvus写入与查询速度变慢的原因"
+      ]
+    },
+    {
+      "case_id": "q-057",
+      "retrieved_doc_ids": [
+        "vector_search_timeout",
+        "high_api_latency",
+        "document_index_failed",
+        "milvus_unavailable",
+        "postgres_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "52a65c6b-0200-44cd-b17d-ba2ef14e4e3c",
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "e81a76ff-20a6-47ff-9e76-f30f3631f2aa"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "milvus",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "文档量快速增长后检索变慢，应该怎么优化？",
+        "文档量快速增长导致检索变慢的原因",
+        "优化大量文档检索性能的方法",
+        "在文档数量增加时提高检索速度的技术"
+      ]
+    },
+    {
+      "case_id": "q-058",
+      "retrieved_doc_ids": [
+        "milvus_unavailable",
+        "vector_search_timeout",
+        "document_index_failed",
+        "api_5xx_spike",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "e81a76ff-20a6-47ff-9e76-f30f3631f2aa",
+        "95dd8a79-7fb8-4cf5-80fb-162c0ee8d1c3",
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "9860b697-dfc2-48c3-9719-d09007c57474",
+        "dbc0012f-352a-4a61-a66d-7a382a2fdf92"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "milvus",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "Milvus 客户端提示连接参数或服务不可用，怎么定位？",
+        "Milvus 客户端连接参数配置要求",
+        "Milvus 服务不可用的常见原因及解决方法",
+        "排查Milvus客户端和服务连接问题的步骤"
+      ]
+    },
+    {
+      "case_id": "q-059",
+      "retrieved_doc_ids": [
+        "postgres_connection_failed",
+        "service_unavailable",
+        "slow_response",
+        "dependency_call_timeout",
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "cf5dc670-4d22-40fa-be9e-e84d821c2147",
+        "bce25d85-fa13-49eb-a78b-b97dc5b6c976",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "database",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "PostgreSQL 报 too many connections，新请求全部卡住，怎么处理？",
+        "PostgreSQL too many connections 错误的原因",
+        "解决 PostgreSQL too many connections 问题的方法",
+        "预防 PostgreSQL 出现 too many connections 的策略"
+      ]
+    },
+    {
+      "case_id": "q-060",
+      "retrieved_doc_ids": [
+        "slow_response",
+        "cpu_high_usage",
+        "memory_high_usage",
+        "postgres_connection_failed",
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "cfe12227-8751-4541-a07c-58c7673b97ba",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "database",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "数据库连接池接近满载但数据库 CPU 不高，可能是什么？",
+        "数据库连接池接近满载但CPU使用率不高的可能原因",
+        "在数据库连接池管理中，导致连接池满载而CPU利用率低的常见问题",
+        "如何诊断和解决数据库连接池满载但CPU使用率正常的情况"
+      ]
+    },
+    {
+      "case_id": "q-061",
+      "retrieved_doc_ids": [
+        "slow_response",
+        "postgres_connection_failed",
+        "dependency_call_timeout",
+        "redis_connection_failed",
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "9335b62d-b1af-4125-a485-5f8e34892015"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "database",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "PostgreSQL 连接失败同时慢查询增多，排查顺序是什么？",
+        "PostgreSQL连接失败的原因和排查步骤",
+        "慢查询增多的原因及解决方法",
+        "同时处理PostgreSQL连接失败和慢查询增多的综合排查顺序"
+      ]
+    },
+    {
+      "case_id": "q-062",
+      "retrieved_doc_ids": [
+        "service_unavailable",
+        "postgres_connection_failed",
+        "redis_connection_failed",
+        "slow_response",
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "cf5dc670-4d22-40fa-be9e-e84d821c2147",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "bce25d85-fa13-49eb-a78b-b97dc5b6c976"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "database",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "数据库重启后应用仍无法恢复连接，应该检查什么？",
+        "数据库重启后应用无法恢复连接的原因",
+        "数据库重启后应用无法恢复连接的检查步骤",
+        "数据库重启后常见的连接问题及解决方法"
+      ]
+    },
+    {
+      "case_id": "q-063",
+      "retrieved_doc_ids": [
+        "redis_connection_failed",
+        "slow_response",
+        "memory_high_usage",
+        "service_unavailable",
+        "postgres_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "58e7ecbb-b744-48e9-b309-87e4c16d8392",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "redis",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "Redis 连不上后缓存全部 miss，为什么会拖垮数据库？",
+        "Redis 连接失败导致缓存全部miss的原因",
+        "缓存全部miss对数据库性能的影响",
+        "如何缓解因Redis连接问题导致的数据库压力"
+      ]
+    },
+    {
+      "case_id": "q-064",
+      "retrieved_doc_ids": [
+        "redis_connection_failed",
+        "rq_worker_stopped",
+        "service_unavailable",
+        "dependency_call_timeout",
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "6ebb606b-0564-4d46-9006-28a9c2f46229",
+        "58e7ecbb-b744-48e9-b309-87e4c16d8392",
+        "9335b62d-b1af-4125-a485-5f8e34892015"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "redis",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "Redis 报 max number of clients reached，怎么定位？",
+        "Redis 报错 max number of clients reached 的原因",
+        "解决 Redis max number of clients reached 问题的方法",
+        "Redis 配置中与客户端连接数相关的参数"
+      ]
+    },
+    {
+      "case_id": "q-065",
+      "retrieved_doc_ids": [
+        "redis_connection_failed",
+        "slow_response",
+        "memory_high_usage",
+        "high_api_latency",
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "58e7ecbb-b744-48e9-b309-87e4c16d8392",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "redis",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "Redis CPU 和内存都很高，应该看哪些典型问题？",
+        "Redis CPU和内存占用高的常见原因",
+        "解决Redis高CPU和内存使用问题的典型方法",
+        "监控和诊断Redis性能问题的关键指标"
+      ]
+    },
+    {
+      "case_id": "q-066",
+      "retrieved_doc_ids": [
+        "redis_connection_failed",
+        "rq_worker_stopped",
+        "api_5xx_spike",
+        "postgres_connection_failed",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "6ebb606b-0564-4d46-9006-28a9c2f46229",
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "2b7f6583-1f4b-4616-9018-867e069a031c"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "redis",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "Redis 故障时 RQ Worker 和 API 同时异常，如何判断影响面？",
+        "Redis 故障对RQ Worker和API的影响范围",
+        "判断RQ Worker和API异常影响面的方法",
+        "Redis故障时RQ Worker与API同时异常的常见问题"
+      ]
+    },
+    {
+      "case_id": "q-067",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped",
+        "redis_connection_failed",
+        "document_index_failed",
+        "postgres_connection_failed",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "retrieved_chunk_ids": [
+        "2b7f6583-1f4b-4616-9018-867e069a031c",
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "6ebb606b-0564-4d46-9006-28a9c2f46229",
+        "67d7da2b-f16f-405b-b107-888f056064e3"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": [
+        "RQ Worker 进程没了，上传任务会出现什么现象？",
+        "RQ Worker 进程缺失时上传任务的表现",
+        "RQ Worker 不可用对任务队列的影响",
+        "没有 RQ Worker 时任务处理的常见问题"
+      ]
+    },
+    {
+      "case_id": "q-068",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped",
+        "redis_connection_failed",
+        "document_index_failed",
+        "cpu_high_usage",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "retrieved_chunk_ids": [
+        "6ebb606b-0564-4d46-9006-28a9c2f46229",
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "2b7f6583-1f4b-4616-9018-867e069a031c",
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "f789adf1-739e-429c-a252-046264d70f50"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "Worker 还活着但队列没有推进，怎么判断是任务卡死？",
+        "Worker 还活着但队列没有推进的原因",
+        "如何判断任务是否卡死在Worker中",
+        "Worker与队列间通信异常的常见问题"
+      ]
+    },
+    {
+      "case_id": "q-069",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped",
+        "redis_connection_failed",
+        "service_unavailable",
+        "document_index_failed",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "retrieved_chunk_ids": [
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "6ebb606b-0564-4d46-9006-28a9c2f46229",
+        "2b7f6583-1f4b-4616-9018-867e069a031c",
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "f789adf1-739e-429c-a252-046264d70f50"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "RQ Worker 频繁崩溃重启，排查顺序是什么？",
+        "RQ Worker频繁崩溃重启的原因",
+        "排查RQ Worker频繁崩溃重启的步骤",
+        "解决RQ Worker频繁崩溃重启的方法"
+      ]
+    },
+    {
+      "case_id": "q-070",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped",
+        "redis_connection_failed",
+        "document_index_failed",
+        "postgres_connection_failed",
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "retrieved_chunk_ids": [
+        "6ebb606b-0564-4d46-9006-28a9c2f46229",
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "bce25d85-fa13-49eb-a78b-b97dc5b6c976"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "Worker 停止时为什么不能只把任务标记为失败就结束？",
+        "Worker 停止时任务处理的最佳实践",
+        "标记任务为失败的局限性",
+        "Worker 停止后除了标记任务失败还需要执行的操作"
+      ]
+    },
+    {
+      "case_id": "q-071",
+      "retrieved_doc_ids": [
+        "service_unavailable",
+        "mcp_service_unavailable",
+        "slow_response",
+        "cpu_high_usage",
+        "memory_high_usage"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "cc65d177-6f0e-49a7-80d8-67601b871cc2",
+        "f9a52ade-9f72-4e43-87b0-7df09411d397",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "8746a5f7-358b-49ed-9214-fc62f26e9444",
+        "9335b62d-b1af-4125-a485-5f8e34892015"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "健康检查全部失败但主机 CPU、内存看起来正常，先查什么？",
+        "健康检查全部失败的原因",
+        "主机CPU和内存正常时的故障排查步骤",
+        "健康检查与系统资源使用情况的关系"
+      ]
+    },
+    {
+      "case_id": "q-072",
+      "retrieved_doc_ids": [
+        "service_unavailable",
+        "slow_response",
+        "cpu_high_usage",
+        "api_5xx_spike",
+        "memory_high_usage"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "a6315506-7126-4f59-b773-13867c8c854b",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "73073552-796a-4d44-883c-c7dc460b9745"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "新版本部署后服务无法启动，怎么快速恢复？",
+        "新版本部署后服务无法启动的原因",
+        "快速恢复服务的方法",
+        "新版本部署时的常见问题及解决方案"
+      ]
+    },
+    {
+      "case_id": "q-073",
+      "retrieved_doc_ids": [
+        "service_unavailable",
+        "postgres_connection_failed",
+        "slow_response",
+        "redis_connection_failed",
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "cf5dc670-4d22-40fa-be9e-e84d821c2147",
+        "bce25d85-fa13-49eb-a78b-b97dc5b6c976"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "服务不可用但只有数据库连接错误，应用侧怎么做？",
+        "服务不可用时数据库连接错误的常见原因",
+        "解决应用侧数据库连接问题的方法",
+        "应用侧处理数据库连接错误的最佳实践"
+      ]
+    },
+    {
+      "case_id": "q-074",
+      "retrieved_doc_ids": [
+        "service_unavailable",
+        "cpu_high_usage",
+        "dependency_call_timeout",
+        "mcp_service_unavailable",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "a6315506-7126-4f59-b773-13867c8c854b",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "cc65d177-6f0e-49a7-80d8-67601b871cc2"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": [
+        "服务启动失败且提示环境变量缺失，应该怎样处理？",
+        "服务启动失败时环境变量缺失的常见原因",
+        "解决服务启动时环境变量缺失问题的方法",
+        "检查和配置环境变量以确保服务正常启动的步骤"
+      ]
+    },
+    {
+      "case_id": "q-075",
+      "retrieved_doc_ids": [
+        "slow_response",
+        "cpu_high_usage",
+        "postgres_connection_failed",
+        "dependency_call_timeout",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "slow_response"
+      ],
+      "retrieved_chunk_ids": [
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "00c2ec1c-7057-4881-8dd8-017e207c3db0",
+        "ec6cb85f-748b-494a-b709-87a9324d9903",
+        "8746a5f7-358b-49ed-9214-fc62f26e9444",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": [
+        "P99 响应时间持续超过 3 秒，第一轮看哪些日志？",
+        "P99 响应时间持续超过 3 秒时，第一轮应该检查的日志类型",
+        "在处理 P99 响应时间问题时，日志分析的重点领域",
+        "解决 P99 响应时间过长问题时，初步日志审查的步骤"
+      ]
+    },
+    {
+      "case_id": "q-076",
+      "retrieved_doc_ids": [
+        "slow_response",
+        "dependency_call_timeout",
+        "high_api_latency",
+        "dashscope_api_failed",
+        "api_5xx_spike"
+      ],
+      "expected_doc_ids": [
+        "slow_response"
+      ],
+      "retrieved_chunk_ids": [
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "98d747ed-3d53-4fba-b3c9-aeed21ac572b"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "外部 API 慢导致接口整体慢，如何避免无限等待？",
+        "外部API慢导致接口整体慢的原因",
+        "避免外部API慢导致无限等待的方法",
+        "处理外部API响应慢的最佳实践"
+      ]
+    },
+    {
+      "case_id": "q-077",
+      "retrieved_doc_ids": [
+        "slow_response",
+        "memory_high_usage",
+        "cpu_high_usage",
+        "redis_connection_failed",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "slow_response"
+      ],
+      "retrieved_chunk_ids": [
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "缓存命中率突然下降并且数据库查询量上升，怎么排查？",
+        "缓存命中率下降的原因和排查方法",
+        "数据库查询量上升的可能原因及解决策略",
+        "缓存命中率与数据库查询量之间的关系"
+      ]
+    },
+    {
+      "case_id": "q-078",
+      "retrieved_doc_ids": [
+        "slow_response",
+        "high_api_latency",
+        "dependency_call_timeout",
+        "vector_search_timeout",
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "slow_response"
+      ],
+      "retrieved_chunk_ids": [
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "94130010-13c8-4a32-bea1-a842044eabb1",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "没有明显错误但接口变慢，如何确认是不是代码性能问题？",
+        "接口变慢时如何诊断代码性能问题",
+        "确认接口变慢原因的常见方法",
+        "排除非代码因素后如何定位性能瓶颈"
+      ]
+    },
+    {
+      "case_id": "q-079",
+      "retrieved_doc_ids": [
+        "vector_search_timeout",
+        "high_api_latency",
+        "slow_response",
+        "dependency_call_timeout",
+        "milvus_unavailable"
+      ],
+      "expected_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "52a65c6b-0200-44cd-b17d-ba2ef14e4e3c",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": [
+        "向量检索平均耗时超过 3 秒，先区分服务慢还是查询慢？",
+        "向量检索平均耗时超过3秒的原因分析",
+        "区分服务响应慢与查询处理慢的方法",
+        "解决向量检索延迟高的策略"
+      ]
+    },
+    {
+      "case_id": "q-080",
+      "retrieved_doc_ids": [
+        "vector_search_timeout",
+        "high_api_latency",
+        "milvus_unavailable",
+        "slow_response",
+        "document_index_failed"
+      ],
+      "expected_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "e81a76ff-20a6-47ff-9e76-f30f3631f2aa",
+        "83b8bf7e-99b5-4de5-bdee-33c7587e999e",
+        "52a65c6b-0200-44cd-b17d-ba2ef14e4e3c"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "知识库扩容后所有检索都变慢，应该看哪些参数？",
+        "知识库扩容后检索变慢的原因",
+        "知识库扩容后影响检索速度的关键参数",
+        "解决知识库扩容导致检索变慢的方法"
+      ]
+    },
+    {
+      "case_id": "q-081",
+      "retrieved_doc_ids": [
+        "vector_search_timeout",
+        "high_api_latency",
+        "slow_response",
+        "milvus_unavailable",
+        "postgres_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "52a65c6b-0200-44cd-b17d-ba2ef14e4e3c",
+        "83b8bf7e-99b5-4de5-bdee-33c7587e999e",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": [
+        "查询改写后 query 变长，检索耗时和候选数一起上升，怎么优化？",
+        "查询改写导致长度增加对检索性能的影响",
+        "优化长查询检索耗时的方法",
+        "控制候选结果数量的策略"
+      ]
+    },
+    {
+      "case_id": "q-082",
+      "retrieved_doc_ids": [
+        "vector_search_timeout",
+        "high_api_latency",
+        "document_index_failed",
+        "dashscope_api_failed",
+        "milvus_unavailable"
+      ],
+      "expected_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "52a65c6b-0200-44cd-b17d-ba2ef14e4e3c",
+        "83b8bf7e-99b5-4de5-bdee-33c7587e999e",
+        "7e99072c-06df-40e8-adb9-aa1fa71bdf59"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": [
+        "Rerank 开销占了大部分检索时间，如何做取舍？",
+        "Rerank开销优化方法",
+        "检索时间中Rerank与其他阶段的时间占比",
+        "在保证检索效果的前提下减少Rerank开销的策略"
+      ]
+    }
+  ]
+}

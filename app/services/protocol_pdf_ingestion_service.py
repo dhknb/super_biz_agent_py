@@ -1,14 +1,9 @@
-"""Protocol PDF ingestion service.
-
-The MVP intentionally stops at a reviewable dry-run plan. Confirmation records
-the four ordered states without mutating device/point/threshold business tables.
-"""
+"""Protocol PDF ingestion service."""
 
 from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -36,15 +31,15 @@ class ExtractedPdf:
 class PdfTextExtractor:
     def extract(self, file_path: str) -> ExtractedPdf:
         try:
-            from pypdf import PdfReader
+            import fitz
         except ImportError as exc:
-            raise RuntimeError("缺少 pypdf 依赖，无法抽取 PDF 文本") from exc
+            raise RuntimeError("缺少 PyMuPDF(fitz) 依赖，无法抽取 PDF 文本") from exc
 
-        reader = PdfReader(file_path)
         pages: list[dict[str, Any]] = []
-        for index, page in enumerate(reader.pages, start=1):
-            page_text = page.extract_text() or ""
-            pages.append({"page": index, "text": page_text})
+        with fitz.open(file_path) as doc:
+            for index, page in enumerate(doc, start=1):
+                page_text = page.get_text("text") or ""
+                pages.append({"page": index, "text": page_text})
 
         text = "\n\n".join(
             f"[page {page['page']}]\n{page['text']}" for page in pages if page["text"].strip()
@@ -114,22 +109,14 @@ class ProtocolPdfIngestionService:
             raise ValueError("校验仍存在错误，不能确认写入")
 
         repo.set_status(ingestion, ProtocolIngestionStatus.WRITING, phase="protocol_saved")
-
+        state_trace = repo.write_protocol_catalog(ingestion)
         operations = ingestion.dry_run_plan.get("operations", [])
-        state_trace = []
-        for phase in STATE_ORDER:
+        for state in state_trace:
             phase_operations = [
-                operation for operation in operations if operation.get("phase") == phase
+                operation for operation in operations if operation.get("phase") == state["phase"]
             ]
-            state_trace.append(
-                {
-                    "phase": phase,
-                    "status": "recorded",
-                    "operation_count": len(phase_operations),
-                    "operations": phase_operations,
-                    "at": datetime.utcnow().isoformat(),
-                }
-            )
+            state["operation_count"] = len(phase_operations)
+            state["operations"] = phase_operations
 
         logger.info(f"协议 PDF 入库确认完成: ingestion_id={ingestion_id}")
         return repo.confirm_with_state_trace(
@@ -145,7 +132,11 @@ class ProtocolPdfIngestionService:
         pages: list[dict[str, Any]],
         filename: str,
     ) -> dict[str, Any]:
-        lines = [line.strip() for line in text.splitlines() if line.strip()]
+        lines = [
+            line.strip()#去掉首尾空行跟换行符
+            for line in text.splitlines()
+            if line.strip() and not re.fullmatch(r"\[page\s+\d+\]", line.strip(), re.IGNORECASE)
+        ]
         protocol_name = lines[0] if lines else Path(filename).stem
         devices = self._extract_devices(lines)
         detection_items = self._extract_detection_items(lines, pages)
@@ -275,9 +266,9 @@ class ProtocolPdfIngestionService:
     ) -> list[dict[str, Any]]:
         items: list[dict[str, Any]] = []
         threshold_pattern = re.compile(
-            r"(?P<name>[\w\u4e00-\u9fff（）()/-]{2,30}).{0,12}"
+            r"(?P<name>[\w\u4e00-\u9fff（）()/-]{2,30}).{0,12}?"
             r"(?P<op>>=|<=|≤|≥|<|>|=)"
-            r"\s*(?P<value>-?\d+(?:\.\d+)?)\s*(?P<unit>[%℃A-Za-z/]+)?"
+            r"\s*(?P<value>-?\d+(?:\.\d+)?)\s*(?P<unit>[%℃ΩA-Za-z/]+)?"
         )
         for line in lines:
             match = threshold_pattern.search(line)

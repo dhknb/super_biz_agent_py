@@ -7,6 +7,12 @@
 """
 
 import os
+
+# [最高优先级] 抢在任何 app.* import 之前设置假环境变量，
+# 确保真实 API Key 绝不进入测试进程日志（pydantic: env var > .env）。
+os.environ["DASHSCOPE_API_KEY"] = "sk-test-fake-key-for-testing-only"
+os.environ["MILVUS_HOST"] = "localhost"
+os.environ["MILVUS_PORT"] = "19530"
 from unittest.mock import AsyncMock, MagicMock, patch
 
 import pytest
@@ -44,12 +50,20 @@ def pytest_configure(config: pytest.Config) -> None:
     p_pm_conn.start()
     _SESSION_PATCHERS.append(p_pm_conn)
 
-    # ── mock RAG agent 中的 ChatQwen 和 MemorySaver ──
+    # ── mock RAG agent 中的 MemorySaver ──
     p3 = patch("app.services.rag_agent_service.MemorySaver", MagicMock())
     p3.start()
     _SESSION_PATCHERS.append(p3)
 
-    p4 = patch("app.services.rag_agent_service.ChatQwen", MagicMock())
+    # ── mock ChatQwen ──
+    # 打在源头 langchain_qwq.ChatQwen 上，而不是某个 service 模块的引用上。
+    # 原因：ChatQwen 现在统一由 app/core/llm_factory.py 的 create_qwen_model
+    # 在函数体内延迟 import（`from langchain_qwq import ChatQwen`），
+    # 属性在**调用时**才解析，所以打源头一处即可覆盖所有调用方。
+    # 反过来说，打在 `app.services.xxx.ChatQwen` 上是脆弱的 ——
+    # 一旦某个 service 不再直接 import 它，patch 就会以
+    # AttributeError 的形式在 pytest_configure 阶段炸掉整个测试会话。
+    p4 = patch("langchain_qwq.ChatQwen", MagicMock())
     p4.start()
     _SESSION_PATCHERS.append(p4)
 
@@ -114,5 +128,38 @@ def client():
     app.dependency_overrides[get_db] = override_get_db
     try:
         return TC(app)
+    finally:
+        app.dependency_overrides.pop(get_db, None)
+
+
+@pytest.fixture
+def client_no_raise():
+    """和 `client` 相同，但不把服务端异常抛回测试 —— 用于验证错误响应本身。
+
+    为什么需要单独一个 fixture：
+
+    Starlette 的 `ServerErrorMiddleware` 在调用完 `Exception` 处理器之后
+    **总是 `raise exc`**（源码注释写的理由是「让服务器能记日志、让测试客户端
+    可以选择在用例内抛出」）。而 `TestClient` 默认 `raise_server_exceptions=True`，
+    于是 `client.post(...)` 会直接抛 RuntimeError，根本拿不到 response 对象 ——
+    想断言状态码是 500 还是 504 就无从下手。
+
+    关掉这个开关后，TestClient 的行为与真实 uvicorn 一致：把处理器生成的响应
+    如实返回给调用方。这正是我们要验证的东西。
+
+    保留默认 `client` 仍然抛异常是有意的：其他用例里冒出的意外异常应该
+    响亮地失败，而不是被悄悄吞成一个 500 响应。
+    """
+    from fastapi.testclient import TestClient as TC
+
+    from app.core.database import get_db
+    from app.main import app
+
+    def override_get_db():
+        yield MagicMock()
+
+    app.dependency_overrides[get_db] = override_get_db
+    try:
+        return TC(app, raise_server_exceptions=False)
     finally:
         app.dependency_overrides.pop(get_db, None)

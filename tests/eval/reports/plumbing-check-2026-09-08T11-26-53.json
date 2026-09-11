@@ -1,0 +1,1963 @@
+{
+  "tag": "plumbing-check",
+  "timestamp": "2026-09-08T11-26-53",
+  "run_meta": {
+    "total_seconds": 0.0,
+    "avg_seconds_per_case": 0.0,
+    "max_seconds_per_case": 0.0,
+    "avg_sub_queries": 0.0,
+    "rewrite_degraded_cases": 0
+  },
+  "summary": {
+    "total": 82,
+    "hit_at_k": {
+      "1": 1.0,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "recall_at_k": {
+      "1": 0.9939024390243902,
+      "3": 1.0,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "mrr": 1.0,
+    "by_tag": {
+      "aiops": {
+        "total": 82,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.9939024390243902,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "cpu": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "easy": {
+        "total": 10,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "colloquial": {
+        "total": 18,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.9722222222222222,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "disk": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "memory": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "medium": {
+        "total": 26,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "service": {
+        "total": 6,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "latency": {
+        "total": 10,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "hard": {
+        "total": 24,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "api": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "llm": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "rpc": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "rag": {
+        "total": 11,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.9545454545454546,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "mcp": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "milvus": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "database": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "redis": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "queue": {
+        "total": 6,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.9166666666666666,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "cross": {
+        "total": 2,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.75,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "expanded": {
+        "total": 64,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "synthetic": {
+        "total": 64,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "diagnostic": {
+        "total": 18,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      }
+    }
+  },
+  "cases": [
+    {
+      "case_id": "q-001",
+      "retrieved_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "cpu",
+        "easy",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-002",
+      "retrieved_doc_ids": [
+        "disk_high_usage"
+      ],
+      "expected_doc_ids": [
+        "disk_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "disk",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-003",
+      "retrieved_doc_ids": [
+        "memory_high_usage"
+      ],
+      "expected_doc_ids": [
+        "memory_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "memory",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-004",
+      "retrieved_doc_ids": [
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-005",
+      "retrieved_doc_ids": [
+        "slow_response"
+      ],
+      "expected_doc_ids": [
+        "slow_response"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "hard",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-006",
+      "retrieved_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "expected_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "api",
+        "hard",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-007",
+      "retrieved_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "expected_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "llm",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-008",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rpc",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-009",
+      "retrieved_doc_ids": [
+        "document_index_failed"
+      ],
+      "expected_doc_ids": [
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "easy",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-010",
+      "retrieved_doc_ids": [
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "high_api_latency"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "hard",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-011",
+      "retrieved_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "mcp",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-012",
+      "retrieved_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "expected_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "milvus",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-013",
+      "retrieved_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "database",
+        "hard",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-014",
+      "retrieved_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "redis",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-015",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-016",
+      "retrieved_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "expected_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "hard",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-017",
+      "retrieved_doc_ids": [
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "hard",
+        "cross",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-018",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped",
+        "document_index_failed"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped",
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "rag",
+        "cross",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-019",
+      "retrieved_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "expected_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "api",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-020",
+      "retrieved_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "expected_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "api",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-021",
+      "retrieved_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "expected_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "api",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-022",
+      "retrieved_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "expected_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "api",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-023",
+      "retrieved_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "cpu",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-024",
+      "retrieved_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "cpu",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-025",
+      "retrieved_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "cpu",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-026",
+      "retrieved_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "cpu",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-027",
+      "retrieved_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "expected_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "llm",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-028",
+      "retrieved_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "expected_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "llm",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-029",
+      "retrieved_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "expected_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "llm",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-030",
+      "retrieved_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "expected_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "llm",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-031",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rpc",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-032",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rpc",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-033",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rpc",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-034",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rpc",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-035",
+      "retrieved_doc_ids": [
+        "disk_high_usage"
+      ],
+      "expected_doc_ids": [
+        "disk_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "disk",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-036",
+      "retrieved_doc_ids": [
+        "disk_high_usage"
+      ],
+      "expected_doc_ids": [
+        "disk_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "disk",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-037",
+      "retrieved_doc_ids": [
+        "disk_high_usage"
+      ],
+      "expected_doc_ids": [
+        "disk_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "disk",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-038",
+      "retrieved_doc_ids": [
+        "disk_high_usage"
+      ],
+      "expected_doc_ids": [
+        "disk_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "disk",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-039",
+      "retrieved_doc_ids": [
+        "document_index_failed"
+      ],
+      "expected_doc_ids": [
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-040",
+      "retrieved_doc_ids": [
+        "document_index_failed"
+      ],
+      "expected_doc_ids": [
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-041",
+      "retrieved_doc_ids": [
+        "document_index_failed"
+      ],
+      "expected_doc_ids": [
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-042",
+      "retrieved_doc_ids": [
+        "document_index_failed"
+      ],
+      "expected_doc_ids": [
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-043",
+      "retrieved_doc_ids": [
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "high_api_latency"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-044",
+      "retrieved_doc_ids": [
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "high_api_latency"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-045",
+      "retrieved_doc_ids": [
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "high_api_latency"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-046",
+      "retrieved_doc_ids": [
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "high_api_latency"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-047",
+      "retrieved_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "mcp",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-048",
+      "retrieved_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "mcp",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-049",
+      "retrieved_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "mcp",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-050",
+      "retrieved_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "mcp",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-051",
+      "retrieved_doc_ids": [
+        "memory_high_usage"
+      ],
+      "expected_doc_ids": [
+        "memory_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "memory",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-052",
+      "retrieved_doc_ids": [
+        "memory_high_usage"
+      ],
+      "expected_doc_ids": [
+        "memory_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "memory",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-053",
+      "retrieved_doc_ids": [
+        "memory_high_usage"
+      ],
+      "expected_doc_ids": [
+        "memory_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "memory",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-054",
+      "retrieved_doc_ids": [
+        "memory_high_usage"
+      ],
+      "expected_doc_ids": [
+        "memory_high_usage"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "memory",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-055",
+      "retrieved_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "expected_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "milvus",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-056",
+      "retrieved_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "expected_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "milvus",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-057",
+      "retrieved_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "expected_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "milvus",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-058",
+      "retrieved_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "expected_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "milvus",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-059",
+      "retrieved_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "database",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-060",
+      "retrieved_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "database",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-061",
+      "retrieved_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "database",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-062",
+      "retrieved_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "database",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-063",
+      "retrieved_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "redis",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-064",
+      "retrieved_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "redis",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-065",
+      "retrieved_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "redis",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-066",
+      "retrieved_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "redis",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-067",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-068",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-069",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-070",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-071",
+      "retrieved_doc_ids": [
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-072",
+      "retrieved_doc_ids": [
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-073",
+      "retrieved_doc_ids": [
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-074",
+      "retrieved_doc_ids": [
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-075",
+      "retrieved_doc_ids": [
+        "slow_response"
+      ],
+      "expected_doc_ids": [
+        "slow_response"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-076",
+      "retrieved_doc_ids": [
+        "slow_response"
+      ],
+      "expected_doc_ids": [
+        "slow_response"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-077",
+      "retrieved_doc_ids": [
+        "slow_response"
+      ],
+      "expected_doc_ids": [
+        "slow_response"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-078",
+      "retrieved_doc_ids": [
+        "slow_response"
+      ],
+      "expected_doc_ids": [
+        "slow_response"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-079",
+      "retrieved_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "expected_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-080",
+      "retrieved_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "expected_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-081",
+      "retrieved_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "expected_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-082",
+      "retrieved_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "expected_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "retrieved_chunk_ids": [],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    }
+  ]
+}

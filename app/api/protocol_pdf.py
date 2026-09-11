@@ -1,6 +1,7 @@
 """Protocol PDF ingestion API."""
 
 import hashlib
+from datetime import UTC, datetime
 from pathlib import Path
 
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
@@ -51,14 +52,14 @@ async def upload_protocol_pdf(
     PROTOCOL_UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
     file_path = PROTOCOL_UPLOAD_DIR / safe_filename
     if file_path.exists():
-        stem = file_path.stem
+        stem = file_path.stem#取文件名主体，不包括扩展名。比如 test.pdf 的 stem 是 test。
         suffix = file_path.suffix
         file_path = PROTOCOL_UPLOAD_DIR / f"{stem}_{hashlib.sha256(content).hexdigest()[:8]}{suffix}"
 
-    file_path.write_bytes(content)
+    file_path.write_bytes(content)#写入磁盘
     logger.info(f"协议 PDF 上传成功: {file_path}")
 
-    repo = ProtocolIngestionRepository(db)
+    repo = ProtocolIngestionRepository(db)#门负责数据库操作
     ingestion = repo.create_ingestion(
         filename=file_path.name,
         original_filename=file.filename,
@@ -69,7 +70,7 @@ async def upload_protocol_pdf(
     job = repo.create_job(ingestion.id)
 
     try:
-        rq_job = enqueue_protocol_pdf_ingestion_job(job.id)
+        rq_job = enqueue_protocol_pdf_ingestion_job(job.id)#开始尝试把任务放进后台队列
         repo.bind_rq_job(job.id, rq_job.id)
     except Exception as exc:
         logger.exception(f"协议 PDF 入库任务入队失败: ingestion_id={ingestion.id}, job_id={job.id}")
@@ -103,10 +104,10 @@ async def list_protocol_pdf_ingestions(db: Session = Depends(get_db)):
         "code": 200,
         "message": "success",
         "data": [_serialize_summary(item) for item in repo.list_ingestions()],
-    }
+    }#_serialize_summary(item)也就是把数据库对象转换成前端更容易用的 dict。
 
 
-@router.get("/{ingestion_id}")
+@router.get("/{ingestion_id}")#注册一个详情查询接口
 async def get_protocol_pdf_ingestion(
     ingestion_id: str,
     db: Session = Depends(get_db),
@@ -118,7 +119,7 @@ async def get_protocol_pdf_ingestion(
     return {"code": 200, "message": "success", "data": _serialize_detail(ingestion)}
 
 
-@router.post("/{ingestion_id}/confirm")
+@router.post("/{ingestion_id}/confirm")#注册确认入库接口
 async def confirm_protocol_pdf_ingestion(
     ingestion_id: str,
     request: ConfirmProtocolPdfRequest,
@@ -152,7 +153,7 @@ async def reject_protocol_pdf_ingestion(
     )
     return {"code": 200, "message": "success", "data": _serialize_detail(ingestion)}
 
-
+#函数名前面有 _，表示这是模块内部辅助函数
 def _serialize_summary(ingestion: ProtocolPdfIngestion) -> dict:
     return {
         "id": ingestion.id,
@@ -162,8 +163,8 @@ def _serialize_summary(ingestion: ProtocolPdfIngestion) -> dict:
         "current_phase": ingestion.current_phase,
         "file_size": ingestion.file_size,
         "content_hash": ingestion.content_hash,
-        "created_at": ingestion.created_at.isoformat(),
-        "updated_at": ingestion.updated_at.isoformat(),
+        "created_at": _serialize_utc(ingestion.created_at),
+        "updated_at": _serialize_utc(ingestion.updated_at),
         "error_message": ingestion.error_message,
     }
 
@@ -178,7 +179,15 @@ def _serialize_detail(ingestion: ProtocolPdfIngestion) -> dict:
             "dry_run_plan": ingestion.dry_run_plan,
             "state_trace": ingestion.state_trace,
             "confirmed_by": ingestion.confirmed_by,
-            "confirmed_at": ingestion.confirmed_at.isoformat() if ingestion.confirmed_at else None,
+            "confirmed_at": _serialize_utc(ingestion.confirmed_at),
         }
     )
     return data
+
+
+def _serialize_utc(value: datetime | None) -> str | None:
+    """将数据库保存的 naive UTC 时间明确序列化为带 Z 的 ISO-8601。"""
+    if value is None:
+        return None
+    aware = value.replace(tzinfo=UTC) if value.tzinfo is None else value.astimezone(UTC)
+    return aware.isoformat().replace("+00:00", "Z")

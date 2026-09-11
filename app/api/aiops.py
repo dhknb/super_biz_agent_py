@@ -2,152 +2,145 @@
 AIOps 智能运维接口
 """
 
-import json
-from fastapi import APIRouter
-from sse_starlette.sse import EventSourceResponse
-from loguru import logger
+from typing import Any, Optional
 
-from app.models.aiops import AIOpsRequest
-from app.services.aiops_service import aiops_service
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel, Field
+from sqlalchemy.orm import Session
+
+from app.core.database import get_db
+from app.models.aiops_diagnosis import AiopsDiagnosisTask, DiagnosisTaskStatus
+from app.repositories.aiops_diagnosis_repository import AiopsDiagnosisRepository
+from app.services.alert_diagnosis_orchestrator import alert_diagnosis_orchestrator
 
 router = APIRouter()
 
 
-@router.post("/aiops")
-async def diagnose_stream(request: AIOpsRequest):
+# ──────────────────────────────────────────────────────────────
+# 告警首响分析：AlarmEvent → 落库诊断任务 + 结构化报告
+# ──────────────────────────────────────────────────────────────
+class AnalyzeAlertRequest(BaseModel):
+    """单条告警首响分析请求。
+
+    payload 是告警原始数据；source 决定用哪个归一化器（manual / prometheus）。
     """
-    AIOps 故障诊断接口（流式 SSE）
 
-    **功能说明：**
-    - 自动获取当前系统的活动告警
-    - 使用 Plan-Execute-Replan 模式进行智能诊断
-    - 流式返回诊断过程和结果
-
-    **SSE 事件类型：**
-
-    1. `status` - 状态更新
-       ```json
-       {
-         "type": "status",
-         "stage": "fetching_alerts",
-         "message": "正在获取系统告警信息..."
-       }
-       ```
-
-    2. `plan` - 诊断计划制定完成
-       ```json
-       {
-         "type": "plan",
-         "stage": "plan_created",
-         "message": "诊断计划已制定，共 6 个步骤",
-         "target_alert": {...},
-         "plan": ["步骤1: ...", "步骤2: ..."]
-       }
-       ```
-
-    3. `step_complete` - 步骤执行完成
-       ```json
-       {
-         "type": "step_complete",
-         "stage": "step_executed",
-         "message": "步骤执行完成 (2/6)",
-         "current_step": "查询系统日志",
-         "result_preview": "...",
-         "remaining_steps": 4
-       }
-       ```
-
-    4. `report` - 最终诊断报告
-       ```json
-       {
-         "type": "report",
-         "stage": "final_report",
-         "message": "最终诊断报告已生成",
-         "report": "# 故障诊断报告\\n...",
-         "evidence": {...}
-       }
-       ```
-
-    5. `complete` - 诊断完成
-       ```json
-       {
-         "type": "complete",
-         "stage": "diagnosis_complete",
-         "message": "诊断流程完成",
-         "diagnosis": {...}
-       }
-       ```
-
-    6. `error` - 错误信息
-       ```json
-       {
-         "type": "error",
-         "stage": "error",
-         "message": "诊断过程发生错误: ..."
-       }
-       ```
-
-    **使用示例：**
-    ```bash
-    curl -X POST "http://localhost:9900/api/aiops" \\
-      -H "Content-Type: application/json" \\
-      -d '{"session_id": "session-123"}' \\
-      --no-buffer
-    ```
-
-    **前端使用示例：**
-    ```javascript
-    const eventSource = new EventSource('/api/aiops');
-
-    eventSource.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-
-      if (data.type === 'plan') {
-        console.log('诊断计划:', data.plan);
-      } else if (data.type === 'step_complete') {
-        console.log('步骤完成:', data.current_step);
-      } else if (data.type === 'report') {
-        console.log('最终报告:', data.report);
-      } else if (data.type === 'complete') {
-        console.log('诊断完成');
-        eventSource.close();
-      }
-    };
-    ```
-
-    Args:
-        request: AIOps 诊断请求
-
-    Returns:
-        SSE 事件流
-    """
-    session_id = request.session_id or "default"
-    logger.info(f"[会话 {session_id}] 收到 AIOps 诊断请求（流式）")
-
-    async def event_generator():
-        try:
-            async for event in aiops_service.diagnose(session_id=session_id):
-                # 发送事件
-                yield {
-                    "event": "message",
-                    "data": json.dumps(event, ensure_ascii=False)
-                }
-
-                # 如果是完成或错误事件，结束流
-                if event.get("type") in ["complete", "error"]:
-                    break
-
-            logger.info(f"[会话 {session_id}] AIOps 诊断流式响应完成")
-
-        except Exception as e:
-            logger.error(f"[会话 {session_id}] AIOps 诊断流式响应异常: {e}", exc_info=True)
-            yield {
-                "event": "message",
-                "data": json.dumps({
-                    "type": "error",
-                    "stage": "exception",
-                    "message": f"诊断异常: {str(e)}"
-                }, ensure_ascii=False)
+    model_config = {
+        "json_schema_extra": {
+            "example": {
+                "source": "manual",
+                "session_id": None,
+                "payload": {
+                    "alert_name": "HighCPUUsage",
+                    "severity": "critical",
+                    "service": "order-api",
+                    "instance": "10.0.0.12:9100",
+                    "summary": "CPU 使用率持续超过 90%",
+                    "labels": {"env": "prod"},
+                },
             }
+        }
+    }
 
-    return EventSourceResponse(event_generator())
+    payload: dict[str, Any] = Field(description="告警原始数据（单条）")
+    source: str = Field(default="manual", description="告警来源：manual / prometheus")
+    session_id: Optional[str] = Field(default=None, description="可选会话 ID")
+
+
+@router.post("/aiops/alerts/analyze", status_code=201)
+async def analyze_alert(
+    request: AnalyzeAlertRequest,
+    db: Session = Depends(get_db),
+):
+    """对一条告警做首响分析，产出可追踪的诊断任务与结构化报告。"""
+    try:
+        task, report = await alert_diagnosis_orchestrator.run(
+            db,
+            payload=request.payload,
+            source=request.source,
+            session_id=request.session_id,
+        )
+    except ValueError as exc:  # 未知来源等归一化错误
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
+
+    return {
+        "code": 201,
+        "message": "success",
+        "data": {
+            "task_id": task.id,
+            "status": task.status.value,
+            "report": report.model_dump(mode="json"),
+            "report_markdown": report.to_markdown(),
+        },
+    }
+
+
+@router.get("/aiops/tasks")
+async def list_diagnosis_tasks(
+    status: Optional[str] = None,
+    limit: int = 50,
+    db: Session = Depends(get_db),
+):
+    """列出诊断任务，可按状态过滤。"""
+    repo = AiopsDiagnosisRepository(db)
+    status_enum = None
+    if status:
+        try:
+            status_enum = DiagnosisTaskStatus(status)
+        except ValueError as exc:
+            raise HTTPException(status_code=400, detail=f"未知状态: {status}") from exc
+
+    tasks = repo.list_tasks(limit=limit, status=status_enum)
+    return {
+        "code": 200,
+        "message": "success",
+        "data": [_serialize_task_summary(task) for task in tasks],
+    }
+
+
+@router.get("/aiops/tasks/{task_id}")
+async def get_diagnosis_task(
+    task_id: str,
+    db: Session = Depends(get_db),
+):
+    """查询单个诊断任务详情（含报告与事件时间线）。"""
+    repo = AiopsDiagnosisRepository(db)
+    task = repo.get_task(task_id)
+    if task is None:
+        raise HTTPException(status_code=404, detail="诊断任务不存在")
+
+    events = repo.list_events(task_id)
+    data = _serialize_task_summary(task)
+    data.update(
+        {
+            "alarm_event": task.alarm_event,
+            "report": task.report,
+            "error_message": task.error_message,
+            "events": [
+                {
+                    "phase": ev.phase,
+                    "message": ev.message,
+                    "payload": ev.payload,
+                    "created_at": ev.created_at.isoformat(),
+                }
+                for ev in events
+            ],
+        }
+    )
+    return {"code": 200, "message": "success", "data": data}
+
+
+def _serialize_task_summary(task: AiopsDiagnosisTask) -> dict[str, Any]:
+    """诊断任务的摘要序列化（列表与详情共用）。"""
+    return {
+        "task_id": task.id,
+        "alert_id": task.alert_id,
+        "alert_name": task.alert_name,
+        "severity": task.severity,
+        "source": task.source,
+        "status": task.status.value,
+        "current_phase": task.current_phase,
+        "summary": task.summary,
+        "created_at": task.created_at.isoformat(),
+        "updated_at": task.updated_at.isoformat(),
+    }

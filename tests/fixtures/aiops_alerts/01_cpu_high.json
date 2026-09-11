@@ -1,0 +1,17 @@
+{
+  "source": "manual",
+  "payload": {
+    "alert_id": "alert-cpu-001",
+    "alert_name": "HighCPUUsage",
+    "severity": "critical",
+    "service": "order-api",
+    "instance": "10.0.0.12:9100",
+    "metric_name": "node_cpu_usage",
+    "metric_value": 95.3,
+    "summary": "order-api CPU 使用率持续超过 90% 已 10 分钟",
+    "labels": {"env": "prod", "cluster": "cn-hangzhou"},
+    "fired_at": "2026-07-23T10:00:00Z"
+  },
+  "expected_sop_keywords": ["CPU", "top", "进程"],
+  "expected_report_points": ["CPU", "进程", "日志"]
+}

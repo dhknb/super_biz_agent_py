@@ -1,0 +1,2782 @@
+{
+  "tag": "mq-A-vector",
+  "timestamp": "2026-09-08T12-07-23",
+  "run_meta": {
+    "total_seconds": 20.26,
+    "avg_seconds_per_case": 0.247,
+    "max_seconds_per_case": 1.359,
+    "avg_sub_queries": 0.0,
+    "rewrite_degraded_cases": 0
+  },
+  "summary": {
+    "total": 82,
+    "hit_at_k": {
+      "1": 0.7560975609756098,
+      "3": 0.9512195121951219,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "recall_at_k": {
+      "1": 0.75,
+      "3": 0.9451219512195121,
+      "5": 1.0,
+      "10": 1.0
+    },
+    "mrr": 0.8571138211382113,
+    "by_tag": {
+      "aiops": {
+        "total": 82,
+        "hit_at_k": {
+          "1": 0.7560975609756098,
+          "3": 0.9512195121951219,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.75,
+          "3": 0.9451219512195121,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.8571138211382113,
+        "by_tag": {}
+      },
+      "cpu": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 0.8,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.8,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.9,
+        "by_tag": {}
+      },
+      "easy": {
+        "total": 10,
+        "hit_at_k": {
+          "1": 0.8,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.8,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.9,
+        "by_tag": {}
+      },
+      "colloquial": {
+        "total": 18,
+        "hit_at_k": {
+          "1": 0.7777777777777778,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.75,
+          "3": 0.9722222222222222,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.8703703703703703,
+        "by_tag": {}
+      },
+      "disk": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "memory": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 0.6,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.6,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.8,
+        "by_tag": {}
+      },
+      "medium": {
+        "total": 26,
+        "hit_at_k": {
+          "1": 0.8461538461538461,
+          "3": 0.9615384615384616,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.8461538461538461,
+          "3": 0.9615384615384616,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.907051282051282,
+        "by_tag": {}
+      },
+      "service": {
+        "total": 6,
+        "hit_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.7222222222222222,
+        "by_tag": {}
+      },
+      "latency": {
+        "total": 10,
+        "hit_at_k": {
+          "1": 0.6,
+          "3": 0.8,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.6,
+          "3": 0.8,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.7166666666666667,
+        "by_tag": {}
+      },
+      "hard": {
+        "total": 24,
+        "hit_at_k": {
+          "1": 0.625,
+          "3": 0.9166666666666666,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.625,
+          "3": 0.9166666666666666,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.76875,
+        "by_tag": {}
+      },
+      "api": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 0.6,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.6,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.7666666666666666,
+        "by_tag": {}
+      },
+      "llm": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 0.8,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.8,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.9,
+        "by_tag": {}
+      },
+      "rpc": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "rag": {
+        "total": 11,
+        "hit_at_k": {
+          "1": 0.7272727272727273,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.6818181818181818,
+          "3": 0.9545454545454546,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.8636363636363636,
+        "by_tag": {}
+      },
+      "mcp": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "milvus": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 0.6,
+          "3": 0.8,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.6,
+          "3": 0.8,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.74,
+        "by_tag": {}
+      },
+      "database": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 0.6,
+          "3": 0.8,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.6,
+          "3": 0.8,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.75,
+        "by_tag": {}
+      },
+      "redis": {
+        "total": 5,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "queue": {
+        "total": 6,
+        "hit_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.9166666666666666,
+          "3": 0.9166666666666666,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 1.0,
+        "by_tag": {}
+      },
+      "cross": {
+        "total": 2,
+        "hit_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.25,
+          "3": 0.75,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.6666666666666666,
+        "by_tag": {}
+      },
+      "expanded": {
+        "total": 64,
+        "hit_at_k": {
+          "1": 0.75,
+          "3": 0.9375,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.75,
+          "3": 0.9375,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.8533854166666667,
+        "by_tag": {}
+      },
+      "synthetic": {
+        "total": 64,
+        "hit_at_k": {
+          "1": 0.75,
+          "3": 0.9375,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.75,
+          "3": 0.9375,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.8533854166666667,
+        "by_tag": {}
+      },
+      "diagnostic": {
+        "total": 18,
+        "hit_at_k": {
+          "1": 0.7777777777777778,
+          "3": 0.9444444444444444,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "recall_at_k": {
+          "1": 0.7777777777777778,
+          "3": 0.9444444444444444,
+          "5": 1.0,
+          "10": 1.0
+        },
+        "mrr": 0.875,
+        "by_tag": {}
+      }
+    }
+  },
+  "cases": [
+    {
+      "case_id": "q-001",
+      "retrieved_doc_ids": [
+        "cpu_high_usage",
+        "mcp_service_unavailable",
+        "high_api_latency",
+        "slow_response",
+        "disk_high_usage"
+      ],
+      "expected_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "3279ccb3-45ab-4f06-9f32-c7606abc2ffc",
+        "8746a5f7-358b-49ed-9214-fc62f26e9444",
+        "94130010-13c8-4a32-bea1-a842044eabb1",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "cpu",
+        "easy",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-002",
+      "retrieved_doc_ids": [
+        "disk_high_usage",
+        "memory_high_usage",
+        "cpu_high_usage",
+        "postgres_connection_failed",
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "disk_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "2d8ec782-d3c6-4264-b268-11517fafeafd",
+        "428abf00-9b52-481c-b1b8-14948243b6d4",
+        "f54d7888-9fc0-4847-91e9-1596385910d6",
+        "8747e7f1-a15a-493f-a656-523665df716e",
+        "841f2f47-e220-4e68-b03e-154af1110b4c"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "disk",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-003",
+      "retrieved_doc_ids": [
+        "disk_high_usage",
+        "memory_high_usage",
+        "cpu_high_usage",
+        "redis_connection_failed",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "memory_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "8747e7f1-a15a-493f-a656-523665df716e",
+        "841f2f47-e220-4e68-b03e-154af1110b4c",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "f4bcda95-6336-43c4-b21b-0b69de764ff2",
+        "5b03988e-274d-4240-b354-1d8dd044570d"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "memory",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-004",
+      "retrieved_doc_ids": [
+        "mcp_service_unavailable",
+        "service_unavailable",
+        "slow_response",
+        "dashscope_api_failed",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "43816b68-66c2-4394-bea8-0736f63cf539",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "cc65d177-6f0e-49a7-80d8-67601b871cc2",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "7e99072c-06df-40e8-adb9-aa1fa71bdf59"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-005",
+      "retrieved_doc_ids": [
+        "slow_response",
+        "high_api_latency",
+        "vector_search_timeout",
+        "dashscope_api_failed",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "slow_response"
+      ],
+      "retrieved_chunk_ids": [
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "94130010-13c8-4a32-bea1-a842044eabb1",
+        "52a65c6b-0200-44cd-b17d-ba2ef14e4e3c"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "hard",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-006",
+      "retrieved_doc_ids": [
+        "api_5xx_spike",
+        "slow_response",
+        "dependency_call_timeout",
+        "high_api_latency",
+        "dashscope_api_failed"
+      ],
+      "expected_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "retrieved_chunk_ids": [
+        "5cdfd72a-cc66-4693-9a5d-59a51ec875c8",
+        "73073552-796a-4d44-883c-c7dc460b9745",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "98d747ed-3d53-4fba-b3c9-aeed21ac572b"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "api",
+        "hard",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-007",
+      "retrieved_doc_ids": [
+        "dashscope_api_failed",
+        "document_index_failed",
+        "milvus_unavailable",
+        "redis_connection_failed",
+        "mcp_service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "fadf8029-4b9d-4138-a6f7-44490400c6ad",
+        "7e99072c-06df-40e8-adb9-aa1fa71bdf59",
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "da3ae4ab-3382-4a78-a2e5-f25218132981",
+        "dbc0012f-352a-4a61-a66d-7a382a2fdf92"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "llm",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-008",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout",
+        "slow_response",
+        "high_api_latency",
+        "service_unavailable",
+        "api_5xx_spike"
+      ],
+      "expected_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "00c2ec1c-7057-4881-8dd8-017e207c3db0",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rpc",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-009",
+      "retrieved_doc_ids": [
+        "document_index_failed",
+        "milvus_unavailable",
+        "postgres_connection_failed",
+        "rq_worker_stopped",
+        "vector_search_timeout"
+      ],
+      "expected_doc_ids": [
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "8e420d44-7eb3-4bd5-9e00-35e5e39dcc62",
+        "e81a76ff-20a6-47ff-9e76-f30f3631f2aa",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "2b7f6583-1f4b-4616-9018-867e069a031c"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "easy",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-010",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout",
+        "slow_response",
+        "high_api_latency",
+        "api_5xx_spike",
+        "dashscope_api_failed"
+      ],
+      "expected_doc_ids": [
+        "high_api_latency"
+      ],
+      "retrieved_chunk_ids": [
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "98d747ed-3d53-4fba-b3c9-aeed21ac572b",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "94130010-13c8-4a32-bea1-a842044eabb1"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "hard",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-011",
+      "retrieved_doc_ids": [
+        "mcp_service_unavailable",
+        "dependency_call_timeout",
+        "service_unavailable",
+        "dashscope_api_failed",
+        "api_5xx_spike"
+      ],
+      "expected_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "43816b68-66c2-4394-bea8-0736f63cf539",
+        "3279ccb3-45ab-4f06-9f32-c7606abc2ffc",
+        "8de35d71-0355-4b31-9623-d4f61a95ee82",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "9335b62d-b1af-4125-a485-5f8e34892015"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "mcp",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-012",
+      "retrieved_doc_ids": [
+        "milvus_unavailable",
+        "vector_search_timeout",
+        "document_index_failed",
+        "api_5xx_spike",
+        "postgres_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "e81a76ff-20a6-47ff-9e76-f30f3631f2aa",
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "9860b697-dfc2-48c3-9719-d09007c57474",
+        "95dd8a79-7fb8-4cf5-80fb-162c0ee8d1c3"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "milvus",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-013",
+      "retrieved_doc_ids": [
+        "postgres_connection_failed",
+        "dependency_call_timeout",
+        "service_unavailable",
+        "cpu_high_usage",
+        "slow_response"
+      ],
+      "expected_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "cf5dc670-4d22-40fa-be9e-e84d821c2147",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "bce25d85-fa13-49eb-a78b-b97dc5b6c976"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "database",
+        "hard",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-014",
+      "retrieved_doc_ids": [
+        "redis_connection_failed",
+        "memory_high_usage",
+        "service_unavailable",
+        "slow_response",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "58e7ecbb-b744-48e9-b309-87e4c16d8392",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "f789adf1-739e-429c-a252-046264d70f50"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "redis",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-015",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped",
+        "redis_connection_failed",
+        "document_index_failed",
+        "high_api_latency",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "retrieved_chunk_ids": [
+        "6ebb606b-0564-4d46-9006-28a9c2f46229",
+        "2b7f6583-1f4b-4616-9018-867e069a031c",
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "58e7ecbb-b744-48e9-b309-87e4c16d8392"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "medium",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-016",
+      "retrieved_doc_ids": [
+        "vector_search_timeout",
+        "high_api_latency",
+        "slow_response",
+        "milvus_unavailable",
+        "document_index_failed"
+      ],
+      "expected_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "e81a76ff-20a6-47ff-9e76-f30f3631f2aa",
+        "67d7da2b-f16f-405b-b107-888f056064e3"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "hard",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-017",
+      "retrieved_doc_ids": [
+        "mcp_service_unavailable",
+        "redis_connection_failed",
+        "service_unavailable",
+        "cpu_high_usage",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "43816b68-66c2-4394-bea8-0736f63cf539",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "3279ccb3-45ab-4f06-9f32-c7606abc2ffc",
+        "cf75cbf4-2ea6-429b-a090-ed0d0bafa50b"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "hard",
+        "cross",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-018",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped",
+        "postgres_connection_failed",
+        "redis_connection_failed",
+        "document_index_failed",
+        "milvus_unavailable"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped",
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "6ebb606b-0564-4d46-9006-28a9c2f46229",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "2b7f6583-1f4b-4616-9018-867e069a031c"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "rag",
+        "cross",
+        "colloquial"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-019",
+      "retrieved_doc_ids": [
+        "api_5xx_spike",
+        "dependency_call_timeout",
+        "service_unavailable",
+        "slow_response",
+        "dashscope_api_failed"
+      ],
+      "expected_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "retrieved_chunk_ids": [
+        "73073552-796a-4d44-883c-c7dc460b9745",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "a6315506-7126-4f59-b773-13867c8c854b"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "api",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-020",
+      "retrieved_doc_ids": [
+        "api_5xx_spike",
+        "slow_response",
+        "dashscope_api_failed",
+        "redis_connection_failed",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "retrieved_chunk_ids": [
+        "c566a212-6f56-4ede-abb5-ab10acd1a143",
+        "73073552-796a-4d44-883c-c7dc460b9745",
+        "00c2ec1c-7057-4881-8dd8-017e207c3db0",
+        "7e99072c-06df-40e8-adb9-aa1fa71bdf59",
+        "f789adf1-739e-429c-a252-046264d70f50"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "api",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-021",
+      "retrieved_doc_ids": [
+        "dashscope_api_failed",
+        "mcp_service_unavailable",
+        "api_5xx_spike",
+        "high_api_latency",
+        "document_index_failed"
+      ],
+      "expected_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "retrieved_chunk_ids": [
+        "fadf8029-4b9d-4138-a6f7-44490400c6ad",
+        "7e99072c-06df-40e8-adb9-aa1fa71bdf59",
+        "43816b68-66c2-4394-bea8-0736f63cf539",
+        "5cdfd72a-cc66-4693-9a5d-59a51ec875c8",
+        "3279ccb3-45ab-4f06-9f32-c7606abc2ffc"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "api",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-022",
+      "retrieved_doc_ids": [
+        "service_unavailable",
+        "api_5xx_spike",
+        "dependency_call_timeout",
+        "redis_connection_failed",
+        "slow_response"
+      ],
+      "expected_doc_ids": [
+        "api_5xx_spike"
+      ],
+      "retrieved_chunk_ids": [
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "a6315506-7126-4f59-b773-13867c8c854b",
+        "c566a212-6f56-4ede-abb5-ab10acd1a143",
+        "73073552-796a-4d44-883c-c7dc460b9745",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "api",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-023",
+      "retrieved_doc_ids": [
+        "memory_high_usage",
+        "cpu_high_usage",
+        "high_api_latency",
+        "redis_connection_failed",
+        "disk_high_usage"
+      ],
+      "expected_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "f4bcda95-6336-43c4-b21b-0b69de764ff2",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "cfe12227-8751-4541-a07c-58c7673b97ba",
+        "8746a5f7-358b-49ed-9214-fc62f26e9444",
+        "98d747ed-3d53-4fba-b3c9-aeed21ac572b"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "cpu",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-024",
+      "retrieved_doc_ids": [
+        "cpu_high_usage",
+        "service_unavailable",
+        "redis_connection_failed",
+        "slow_response",
+        "memory_high_usage"
+      ],
+      "expected_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "8746a5f7-358b-49ed-9214-fc62f26e9444",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "cpu",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-025",
+      "retrieved_doc_ids": [
+        "cpu_high_usage",
+        "memory_high_usage",
+        "slow_response",
+        "disk_high_usage",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "cfe12227-8751-4541-a07c-58c7673b97ba",
+        "8746a5f7-358b-49ed-9214-fc62f26e9444"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "cpu",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-026",
+      "retrieved_doc_ids": [
+        "cpu_high_usage",
+        "mcp_service_unavailable",
+        "dependency_call_timeout",
+        "memory_high_usage",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "cpu_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "cfe12227-8751-4541-a07c-58c7673b97ba",
+        "43816b68-66c2-4394-bea8-0736f63cf539",
+        "8746a5f7-358b-49ed-9214-fc62f26e9444",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "cpu",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-027",
+      "retrieved_doc_ids": [
+        "dashscope_api_failed",
+        "api_5xx_spike",
+        "document_index_failed",
+        "mcp_service_unavailable",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "fadf8029-4b9d-4138-a6f7-44490400c6ad",
+        "7e99072c-06df-40e8-adb9-aa1fa71bdf59",
+        "da3ae4ab-3382-4a78-a2e5-f25218132981",
+        "73073552-796a-4d44-883c-c7dc460b9745",
+        "67d7da2b-f16f-405b-b107-888f056064e3"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "llm",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-028",
+      "retrieved_doc_ids": [
+        "dashscope_api_failed",
+        "document_index_failed",
+        "rq_worker_stopped",
+        "milvus_unavailable",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "fadf8029-4b9d-4138-a6f7-44490400c6ad",
+        "7e99072c-06df-40e8-adb9-aa1fa71bdf59",
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "da3ae4ab-3382-4a78-a2e5-f25218132981"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "llm",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-029",
+      "retrieved_doc_ids": [
+        "dashscope_api_failed",
+        "document_index_failed",
+        "api_5xx_spike",
+        "vector_search_timeout",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "da3ae4ab-3382-4a78-a2e5-f25218132981",
+        "fadf8029-4b9d-4138-a6f7-44490400c6ad",
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "73073552-796a-4d44-883c-c7dc460b9745",
+        "5cdfd72a-cc66-4693-9a5d-59a51ec875c8"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "llm",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-030",
+      "retrieved_doc_ids": [
+        "document_index_failed",
+        "dashscope_api_failed",
+        "postgres_connection_failed",
+        "milvus_unavailable",
+        "rq_worker_stopped"
+      ],
+      "expected_doc_ids": [
+        "dashscope_api_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "7e99072c-06df-40e8-adb9-aa1fa71bdf59",
+        "dbc0012f-352a-4a61-a66d-7a382a2fdf92",
+        "fadf8029-4b9d-4138-a6f7-44490400c6ad",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "llm",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-031",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout",
+        "slow_response",
+        "redis_connection_failed",
+        "postgres_connection_failed",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "fdac0f8f-8873-423b-8765-33e8179d35e5",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "f789adf1-739e-429c-a252-046264d70f50"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rpc",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-032",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout",
+        "slow_response",
+        "redis_connection_failed",
+        "high_api_latency",
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "fdac0f8f-8873-423b-8765-33e8179d35e5",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rpc",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-033",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout",
+        "document_index_failed",
+        "redis_connection_failed",
+        "milvus_unavailable",
+        "vector_search_timeout"
+      ],
+      "expected_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "dbc0012f-352a-4a61-a66d-7a382a2fdf92",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "95dd8a79-7fb8-4cf5-80fb-162c0ee8d1c3",
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rpc",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-034",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout",
+        "slow_response",
+        "redis_connection_failed",
+        "service_unavailable",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "dependency_call_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "fdac0f8f-8873-423b-8765-33e8179d35e5",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "f789adf1-739e-429c-a252-046264d70f50"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rpc",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-035",
+      "retrieved_doc_ids": [
+        "disk_high_usage",
+        "postgres_connection_failed",
+        "cpu_high_usage",
+        "service_unavailable",
+        "memory_high_usage"
+      ],
+      "expected_doc_ids": [
+        "disk_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "f54d7888-9fc0-4847-91e9-1596385910d6",
+        "428abf00-9b52-481c-b1b8-14948243b6d4",
+        "1f998ebf-158a-4d89-bb8f-75f73c488ce1",
+        "2d8ec782-d3c6-4264-b268-11517fafeafd",
+        "cf5dc670-4d22-40fa-be9e-e84d821c2147"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "disk",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-036",
+      "retrieved_doc_ids": [
+        "disk_high_usage",
+        "memory_high_usage",
+        "cpu_high_usage",
+        "service_unavailable",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "disk_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "f54d7888-9fc0-4847-91e9-1596385910d6",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "2d8ec782-d3c6-4264-b268-11517fafeafd",
+        "1f998ebf-158a-4d89-bb8f-75f73c488ce1",
+        "428abf00-9b52-481c-b1b8-14948243b6d4"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "disk",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-037",
+      "retrieved_doc_ids": [
+        "disk_high_usage",
+        "postgres_connection_failed",
+        "memory_high_usage",
+        "cpu_high_usage",
+        "slow_response"
+      ],
+      "expected_doc_ids": [
+        "disk_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "8747e7f1-a15a-493f-a656-523665df716e",
+        "428abf00-9b52-481c-b1b8-14948243b6d4",
+        "2d8ec782-d3c6-4264-b268-11517fafeafd",
+        "cf5dc670-4d22-40fa-be9e-e84d821c2147",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "disk",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-038",
+      "retrieved_doc_ids": [
+        "disk_high_usage",
+        "postgres_connection_failed",
+        "memory_high_usage",
+        "slow_response",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "disk_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "f54d7888-9fc0-4847-91e9-1596385910d6",
+        "2d8ec782-d3c6-4264-b268-11517fafeafd",
+        "428abf00-9b52-481c-b1b8-14948243b6d4",
+        "5f634413-230e-4428-a9d6-4ee484770ff8",
+        "1f998ebf-158a-4d89-bb8f-75f73c488ce1"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "disk",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-039",
+      "retrieved_doc_ids": [
+        "document_index_failed",
+        "postgres_connection_failed",
+        "rq_worker_stopped",
+        "milvus_unavailable",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "bce25d85-fa13-49eb-a78b-b97dc5b6c976",
+        "2b7f6583-1f4b-4616-9018-867e069a031c"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-040",
+      "retrieved_doc_ids": [
+        "document_index_failed",
+        "milvus_unavailable",
+        "rq_worker_stopped",
+        "dashscope_api_failed",
+        "postgres_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "dbc0012f-352a-4a61-a66d-7a382a2fdf92",
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "e81a76ff-20a6-47ff-9e76-f30f3631f2aa",
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "7e99072c-06df-40e8-adb9-aa1fa71bdf59"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-041",
+      "retrieved_doc_ids": [
+        "postgres_connection_failed",
+        "document_index_failed",
+        "disk_high_usage",
+        "milvus_unavailable",
+        "rq_worker_stopped"
+      ],
+      "expected_doc_ids": [
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "dbc0012f-352a-4a61-a66d-7a382a2fdf92",
+        "f54d7888-9fc0-4847-91e9-1596385910d6",
+        "95dd8a79-7fb8-4cf5-80fb-162c0ee8d1c3",
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-042",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped",
+        "document_index_failed",
+        "postgres_connection_failed",
+        "milvus_unavailable",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "document_index_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "8e420d44-7eb3-4bd5-9e00-35e5e39dcc62",
+        "67d7da2b-f16f-405b-b107-888f056064e3",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "bce25d85-fa13-49eb-a78b-b97dc5b6c976"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-043",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout",
+        "slow_response",
+        "api_5xx_spike",
+        "high_api_latency",
+        "dashscope_api_failed"
+      ],
+      "expected_doc_ids": [
+        "high_api_latency"
+      ],
+      "retrieved_chunk_ids": [
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "73073552-796a-4d44-883c-c7dc460b9745",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "98d747ed-3d53-4fba-b3c9-aeed21ac572b"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-044",
+      "retrieved_doc_ids": [
+        "dependency_call_timeout",
+        "slow_response",
+        "high_api_latency",
+        "cpu_high_usage",
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "high_api_latency"
+      ],
+      "retrieved_chunk_ids": [
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "98d747ed-3d53-4fba-b3c9-aeed21ac572b"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-045",
+      "retrieved_doc_ids": [
+        "high_api_latency",
+        "dependency_call_timeout",
+        "slow_response",
+        "cpu_high_usage",
+        "api_5xx_spike"
+      ],
+      "expected_doc_ids": [
+        "high_api_latency"
+      ],
+      "retrieved_chunk_ids": [
+        "98d747ed-3d53-4fba-b3c9-aeed21ac572b",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "5b03988e-274d-4240-b354-1d8dd044570d"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-046",
+      "retrieved_doc_ids": [
+        "slow_response",
+        "postgres_connection_failed",
+        "cpu_high_usage",
+        "high_api_latency",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "high_api_latency"
+      ],
+      "retrieved_chunk_ids": [
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "ec6cb85f-748b-494a-b709-87a9324d9903",
+        "cf5dc670-4d22-40fa-be9e-e84d821c2147",
+        "5b03988e-274d-4240-b354-1d8dd044570d"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-047",
+      "retrieved_doc_ids": [
+        "mcp_service_unavailable",
+        "dependency_call_timeout",
+        "milvus_unavailable",
+        "dashscope_api_failed",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "43816b68-66c2-4394-bea8-0736f63cf539",
+        "3279ccb3-45ab-4f06-9f32-c7606abc2ffc",
+        "8de35d71-0355-4b31-9623-d4f61a95ee82",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "95dd8a79-7fb8-4cf5-80fb-162c0ee8d1c3"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "mcp",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-048",
+      "retrieved_doc_ids": [
+        "mcp_service_unavailable",
+        "service_unavailable",
+        "cpu_high_usage",
+        "dependency_call_timeout",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "43816b68-66c2-4394-bea8-0736f63cf539",
+        "8de35d71-0355-4b31-9623-d4f61a95ee82",
+        "3279ccb3-45ab-4f06-9f32-c7606abc2ffc",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "5b03988e-274d-4240-b354-1d8dd044570d"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "mcp",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-049",
+      "retrieved_doc_ids": [
+        "mcp_service_unavailable",
+        "dependency_call_timeout",
+        "api_5xx_spike",
+        "redis_connection_failed",
+        "dashscope_api_failed"
+      ],
+      "expected_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "43816b68-66c2-4394-bea8-0736f63cf539",
+        "3279ccb3-45ab-4f06-9f32-c7606abc2ffc",
+        "8de35d71-0355-4b31-9623-d4f61a95ee82",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "73073552-796a-4d44-883c-c7dc460b9745"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "mcp",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-050",
+      "retrieved_doc_ids": [
+        "mcp_service_unavailable",
+        "high_api_latency",
+        "api_5xx_spike",
+        "dependency_call_timeout",
+        "memory_high_usage"
+      ],
+      "expected_doc_ids": [
+        "mcp_service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "43816b68-66c2-4394-bea8-0736f63cf539",
+        "3279ccb3-45ab-4f06-9f32-c7606abc2ffc",
+        "8de35d71-0355-4b31-9623-d4f61a95ee82",
+        "98d747ed-3d53-4fba-b3c9-aeed21ac572b",
+        "73073552-796a-4d44-883c-c7dc460b9745"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "mcp",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-051",
+      "retrieved_doc_ids": [
+        "disk_high_usage",
+        "memory_high_usage",
+        "cpu_high_usage",
+        "postgres_connection_failed",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "memory_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "8747e7f1-a15a-493f-a656-523665df716e",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "f4bcda95-6336-43c4-b21b-0b69de764ff2",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "f54d7888-9fc0-4847-91e9-1596385910d6"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "memory",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-052",
+      "retrieved_doc_ids": [
+        "memory_high_usage",
+        "cpu_high_usage",
+        "slow_response",
+        "dependency_call_timeout",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "memory_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "841f2f47-e220-4e68-b03e-154af1110b4c",
+        "85b38e01-87e0-4234-9bc2-f39121937540",
+        "f9a52ade-9f72-4e43-87b0-7df09411d397",
+        "5b03988e-274d-4240-b354-1d8dd044570d"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "memory",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-053",
+      "retrieved_doc_ids": [
+        "memory_high_usage",
+        "cpu_high_usage",
+        "service_unavailable",
+        "disk_high_usage",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "memory_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "f4bcda95-6336-43c4-b21b-0b69de764ff2",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "cf75cbf4-2ea6-429b-a090-ed0d0bafa50b",
+        "cfe12227-8751-4541-a07c-58c7673b97ba"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "memory",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-054",
+      "retrieved_doc_ids": [
+        "memory_high_usage",
+        "disk_high_usage",
+        "cpu_high_usage",
+        "slow_response",
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "memory_high_usage"
+      ],
+      "retrieved_chunk_ids": [
+        "841f2f47-e220-4e68-b03e-154af1110b4c",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "2d8ec782-d3c6-4264-b268-11517fafeafd",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "f54d7888-9fc0-4847-91e9-1596385910d6"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "memory",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-055",
+      "retrieved_doc_ids": [
+        "milvus_unavailable",
+        "vector_search_timeout",
+        "document_index_failed",
+        "postgres_connection_failed",
+        "api_5xx_spike"
+      ],
+      "expected_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "e81a76ff-20a6-47ff-9e76-f30f3631f2aa",
+        "9860b697-dfc2-48c3-9719-d09007c57474",
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "52a65c6b-0200-44cd-b17d-ba2ef14e4e3c",
+        "67d7da2b-f16f-405b-b107-888f056064e3"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "milvus",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-056",
+      "retrieved_doc_ids": [
+        "vector_search_timeout",
+        "milvus_unavailable",
+        "postgres_connection_failed",
+        "document_index_failed",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "e81a76ff-20a6-47ff-9e76-f30f3631f2aa",
+        "95dd8a79-7fb8-4cf5-80fb-162c0ee8d1c3",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "52a65c6b-0200-44cd-b17d-ba2ef14e4e3c"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "milvus",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-057",
+      "retrieved_doc_ids": [
+        "vector_search_timeout",
+        "high_api_latency",
+        "document_index_failed",
+        "slow_response",
+        "milvus_unavailable"
+      ],
+      "expected_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "52a65c6b-0200-44cd-b17d-ba2ef14e4e3c",
+        "83b8bf7e-99b5-4de5-bdee-33c7587e999e",
+        "67d7da2b-f16f-405b-b107-888f056064e3"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "milvus",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-058",
+      "retrieved_doc_ids": [
+        "milvus_unavailable",
+        "vector_search_timeout",
+        "api_5xx_spike",
+        "document_index_failed",
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "milvus_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "e81a76ff-20a6-47ff-9e76-f30f3631f2aa",
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "95dd8a79-7fb8-4cf5-80fb-162c0ee8d1c3",
+        "9860b697-dfc2-48c3-9719-d09007c57474",
+        "73073552-796a-4d44-883c-c7dc460b9745"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "milvus",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-059",
+      "retrieved_doc_ids": [
+        "postgres_connection_failed",
+        "service_unavailable",
+        "dependency_call_timeout",
+        "cpu_high_usage",
+        "slow_response"
+      ],
+      "expected_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "cf5dc670-4d22-40fa-be9e-e84d821c2147",
+        "bce25d85-fa13-49eb-a78b-b97dc5b6c976",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "database",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-060",
+      "retrieved_doc_ids": [
+        "slow_response",
+        "cpu_high_usage",
+        "memory_high_usage",
+        "postgres_connection_failed",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "cf5dc670-4d22-40fa-be9e-e84d821c2147",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "database",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-061",
+      "retrieved_doc_ids": [
+        "postgres_connection_failed",
+        "dependency_call_timeout",
+        "slow_response",
+        "vector_search_timeout",
+        "redis_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "bce25d85-fa13-49eb-a78b-b97dc5b6c976",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "cf5dc670-4d22-40fa-be9e-e84d821c2147",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "database",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-062",
+      "retrieved_doc_ids": [
+        "service_unavailable",
+        "postgres_connection_failed",
+        "redis_connection_failed",
+        "slow_response",
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "postgres_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "cf5dc670-4d22-40fa-be9e-e84d821c2147",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "5b03988e-274d-4240-b354-1d8dd044570d"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "database",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-063",
+      "retrieved_doc_ids": [
+        "redis_connection_failed",
+        "slow_response",
+        "memory_high_usage",
+        "service_unavailable",
+        "postgres_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "58e7ecbb-b744-48e9-b309-87e4c16d8392",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "f789adf1-739e-429c-a252-046264d70f50"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "redis",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-064",
+      "retrieved_doc_ids": [
+        "redis_connection_failed",
+        "dependency_call_timeout",
+        "rq_worker_stopped",
+        "api_5xx_spike",
+        "mcp_service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "58e7ecbb-b744-48e9-b309-87e4c16d8392",
+        "809189a8-79a8-4a57-884e-b2b5395af6ee",
+        "6ebb606b-0564-4d46-9006-28a9c2f46229"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "redis",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-065",
+      "retrieved_doc_ids": [
+        "redis_connection_failed",
+        "cpu_high_usage",
+        "slow_response",
+        "memory_high_usage",
+        "vector_search_timeout"
+      ],
+      "expected_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "58e7ecbb-b744-48e9-b309-87e4c16d8392",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "redis",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-066",
+      "retrieved_doc_ids": [
+        "redis_connection_failed",
+        "rq_worker_stopped",
+        "postgres_connection_failed",
+        "dependency_call_timeout",
+        "api_5xx_spike"
+      ],
+      "expected_doc_ids": [
+        "redis_connection_failed"
+      ],
+      "retrieved_chunk_ids": [
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "6ebb606b-0564-4d46-9006-28a9c2f46229",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "cf5dc670-4d22-40fa-be9e-e84d821c2147"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "redis",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-067",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped",
+        "redis_connection_failed",
+        "document_index_failed",
+        "postgres_connection_failed",
+        "high_api_latency"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "retrieved_chunk_ids": [
+        "2b7f6583-1f4b-4616-9018-867e069a031c",
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "6ebb606b-0564-4d46-9006-28a9c2f46229",
+        "67d7da2b-f16f-405b-b107-888f056064e3"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-068",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped",
+        "redis_connection_failed",
+        "cpu_high_usage",
+        "document_index_failed",
+        "mcp_service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "retrieved_chunk_ids": [
+        "6ebb606b-0564-4d46-9006-28a9c2f46229",
+        "2b7f6583-1f4b-4616-9018-867e069a031c",
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-069",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped",
+        "redis_connection_failed",
+        "service_unavailable",
+        "document_index_failed",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "retrieved_chunk_ids": [
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "6ebb606b-0564-4d46-9006-28a9c2f46229",
+        "2b7f6583-1f4b-4616-9018-867e069a031c",
+        "f789adf1-739e-429c-a252-046264d70f50"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-070",
+      "retrieved_doc_ids": [
+        "rq_worker_stopped",
+        "redis_connection_failed",
+        "document_index_failed",
+        "postgres_connection_failed",
+        "service_unavailable"
+      ],
+      "expected_doc_ids": [
+        "rq_worker_stopped"
+      ],
+      "retrieved_chunk_ids": [
+        "2b7f6583-1f4b-4616-9018-867e069a031c",
+        "4731fafa-36c3-466a-b18b-ba0ea4e1e053",
+        "6ebb606b-0564-4d46-9006-28a9c2f46229",
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "67d7da2b-f16f-405b-b107-888f056064e3"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "queue",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-071",
+      "retrieved_doc_ids": [
+        "cpu_high_usage",
+        "service_unavailable",
+        "redis_connection_failed",
+        "mcp_service_unavailable",
+        "memory_high_usage"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "cc65d177-6f0e-49a7-80d8-67601b871cc2",
+        "f789adf1-739e-429c-a252-046264d70f50",
+        "8746a5f7-358b-49ed-9214-fc62f26e9444"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-072",
+      "retrieved_doc_ids": [
+        "service_unavailable",
+        "cpu_high_usage",
+        "api_5xx_spike",
+        "memory_high_usage",
+        "slow_response"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "a6315506-7126-4f59-b773-13867c8c854b",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "73073552-796a-4d44-883c-c7dc460b9745",
+        "841f2f47-e220-4e68-b03e-154af1110b4c"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-073",
+      "retrieved_doc_ids": [
+        "service_unavailable",
+        "postgres_connection_failed",
+        "slow_response",
+        "redis_connection_failed",
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "22b7aab9-b34d-4e35-b611-5890e824e2aa",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "cf5dc670-4d22-40fa-be9e-e84d821c2147",
+        "f789adf1-739e-429c-a252-046264d70f50"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-074",
+      "retrieved_doc_ids": [
+        "service_unavailable",
+        "cpu_high_usage",
+        "dependency_call_timeout",
+        "slow_response",
+        "api_5xx_spike"
+      ],
+      "expected_doc_ids": [
+        "service_unavailable"
+      ],
+      "retrieved_chunk_ids": [
+        "9335b62d-b1af-4125-a485-5f8e34892015",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "a6315506-7126-4f59-b773-13867c8c854b",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "service",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-075",
+      "retrieved_doc_ids": [
+        "slow_response",
+        "cpu_high_usage",
+        "dependency_call_timeout",
+        "redis_connection_failed",
+        "postgres_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "slow_response"
+      ],
+      "retrieved_chunk_ids": [
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "00c2ec1c-7057-4881-8dd8-017e207c3db0",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "ec6cb85f-748b-494a-b709-87a9324d9903",
+        "8746a5f7-358b-49ed-9214-fc62f26e9444"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "easy"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-076",
+      "retrieved_doc_ids": [
+        "slow_response",
+        "dependency_call_timeout",
+        "high_api_latency",
+        "dashscope_api_failed",
+        "api_5xx_spike"
+      ],
+      "expected_doc_ids": [
+        "slow_response"
+      ],
+      "retrieved_chunk_ids": [
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "fdac0f8f-8873-423b-8765-33e8179d35e5",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-077",
+      "retrieved_doc_ids": [
+        "slow_response",
+        "memory_high_usage",
+        "redis_connection_failed",
+        "cpu_high_usage",
+        "dependency_call_timeout"
+      ],
+      "expected_doc_ids": [
+        "slow_response"
+      ],
+      "retrieved_chunk_ids": [
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "9e4b8eb9-9ce7-4e45-90b6-528d21e6cb9f",
+        "1a29920f-19b2-4bfe-9ba4-e65736adfeea",
+        "5b03988e-274d-4240-b354-1d8dd044570d",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-078",
+      "retrieved_doc_ids": [
+        "slow_response",
+        "high_api_latency",
+        "dependency_call_timeout",
+        "api_5xx_spike",
+        "cpu_high_usage"
+      ],
+      "expected_doc_ids": [
+        "slow_response"
+      ],
+      "retrieved_chunk_ids": [
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "94130010-13c8-4a32-bea1-a842044eabb1",
+        "706a927f-7874-4fe2-b73b-c7012c76dbdd"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "latency",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-079",
+      "retrieved_doc_ids": [
+        "vector_search_timeout",
+        "high_api_latency",
+        "milvus_unavailable",
+        "document_index_failed",
+        "dashscope_api_failed"
+      ],
+      "expected_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "83b8bf7e-99b5-4de5-bdee-33c7587e999e",
+        "52a65c6b-0200-44cd-b17d-ba2ef14e4e3c",
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "e81a76ff-20a6-47ff-9e76-f30f3631f2aa"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "diagnostic"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-080",
+      "retrieved_doc_ids": [
+        "vector_search_timeout",
+        "high_api_latency",
+        "slow_response",
+        "milvus_unavailable",
+        "postgres_connection_failed"
+      ],
+      "expected_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "52a65c6b-0200-44cd-b17d-ba2ef14e4e3c",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "7ab8ff14-751a-4ace-a609-2f05cc8e467e",
+        "9c6feff7-b5da-4bbc-b310-1410f43b7834"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-081",
+      "retrieved_doc_ids": [
+        "vector_search_timeout",
+        "high_api_latency",
+        "milvus_unavailable",
+        "postgres_connection_failed",
+        "slow_response"
+      ],
+      "expected_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "52a65c6b-0200-44cd-b17d-ba2ef14e4e3c",
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "95dd8a79-7fb8-4cf5-80fb-162c0ee8d1c3",
+        "83b8bf7e-99b5-4de5-bdee-33c7587e999e"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "medium"
+      ],
+      "sub_queries": []
+    },
+    {
+      "case_id": "q-082",
+      "retrieved_doc_ids": [
+        "high_api_latency",
+        "vector_search_timeout",
+        "dashscope_api_failed",
+        "milvus_unavailable",
+        "document_index_failed"
+      ],
+      "expected_doc_ids": [
+        "vector_search_timeout"
+      ],
+      "retrieved_chunk_ids": [
+        "53ac0699-d7f0-4a87-9a71-eb7a1b27b05d",
+        "3e59ecc9-982c-4220-bf5f-4bde5b954403",
+        "52a65c6b-0200-44cd-b17d-ba2ef14e4e3c",
+        "7e99072c-06df-40e8-adb9-aa1fa71bdf59",
+        "83b8bf7e-99b5-4de5-bdee-33c7587e999e"
+      ],
+      "expected_chunk_ids": [],
+      "tags": [
+        "aiops",
+        "rag",
+        "expanded",
+        "synthetic",
+        "hard"
+      ],
+      "sub_queries": []
+    }
+  ]
+}

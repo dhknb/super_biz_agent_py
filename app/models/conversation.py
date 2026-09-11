@@ -89,6 +89,11 @@ class ConversationSession(Base):
         back_populates="session",
         cascade="all, delete-orphan",
     )
+    memory_snapshot: Mapped["ConversationMemorySnapshot | None"] = relationship(
+        back_populates="session",
+        cascade="all, delete-orphan",
+        uselist=False,
+    )
 
 
 class ConversationMessage(Base):
@@ -112,3 +117,33 @@ class ConversationMessage(Base):
     deleted_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
 
     session: Mapped[ConversationSession] = relationship(back_populates="messages")
+
+
+class ConversationMemorySnapshot(Base):
+    """一段会话的压缩记忆快照。
+
+    原始消息始终保留在 ``conversation_messages`` 中；本表只保存供模型注入的
+    滚动摘要和已压缩到哪个消息的游标，从而避免每轮把完整历史发送给模型。
+    """
+
+    __tablename__ = "conversation_memory_snapshots"
+
+    session_id: Mapped[str] = mapped_column(
+        String(64),
+        ForeignKey("conversation_sessions.id"),
+        primary_key=True,
+    )
+    summary: Mapped[str] = mapped_column(Text, nullable=False, default="")
+    summarized_through_message_id: Mapped[str | None] = mapped_column(
+        String(64),
+        nullable=True,
+    )
+    version: Mapped[int] = mapped_column(default=1, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow_naive)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime,
+        default=_utcnow_naive,
+        onupdate=_utcnow_naive,
+    )
+
+    session: Mapped[ConversationSession] = relationship(back_populates="memory_snapshot")

@@ -1,6 +1,6 @@
 """Knowledge base persistence models."""
 
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import StrEnum
 from uuid import uuid4
 
@@ -8,6 +8,11 @@ from sqlalchemy import DateTime, Enum, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.core.database import Base
+
+def _utcnow_naive() -> datetime:
+    """与项目其余模型保持一致：存 naive UTC 时间。"""
+    return datetime.now(UTC).replace(tzinfo=None)
+
 
 
 class DocumentStatus(StrEnum):
@@ -43,11 +48,11 @@ class KnowledgeDocument(Base):
         index=True,
     )
     error_message: Mapped[str | None] = mapped_column(Text, nullable=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow_naive)
     updated_at: Mapped[datetime] = mapped_column(
         DateTime,
-        default=datetime.utcnow,
-        onupdate=datetime.utcnow,
+        default=_utcnow_naive,
+        onupdate=_utcnow_naive,
     )
 
     chunks: Mapped[list["KnowledgeChunk"]] = relationship(
@@ -71,7 +76,7 @@ class KnowledgeChunk(Base):
     content: Mapped[str] = mapped_column(Text, nullable=False)
     content_hash: Mapped[str] = mapped_column(String(128), nullable=False)
     token_count: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow_naive)
 
     document: Mapped[KnowledgeDocument] = relationship(back_populates="chunks")
 
@@ -97,6 +102,6 @@ class IndexJob(Base):
     error_message: Mapped[str | None] = mapped_column(Text, nullable=True)
     started_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     finished_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow_naive)
 
     document: Mapped[KnowledgeDocument] = relationship(back_populates="jobs")
